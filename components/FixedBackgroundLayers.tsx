@@ -42,7 +42,7 @@ export default function FixedBackgroundLayers() {
           width:    "800px",
           height:   "800px",
           y:        y1,
-          background:   "radial-gradient(circle, rgba(194,118,26,0.015) 0%, transparent 65%)",
+          background:   "radial-gradient(circle, rgba(0,229,192,0.015) 0%, transparent 65%)",
           borderRadius: "50%",
           filter:       "blur(60px)",
         }}
@@ -57,7 +57,7 @@ export default function FixedBackgroundLayers() {
           width:    "600px",
           height:   "600px",
           y:        y2,
-          background:   "radial-gradient(circle, rgba(20,33,61,0.02) 0%, transparent 65%)",
+          background:   "radial-gradient(circle, rgba(0,229,192,0.02) 0%, transparent 65%)",
           borderRadius: "50%",
           filter:       "blur(50px)",
         }}
@@ -72,7 +72,7 @@ export default function FixedBackgroundLayers() {
           width:    "200px",
           height:   "200px",
           y:        y3,
-          background:   "radial-gradient(circle, rgba(194,118,26,0.025) 0%, transparent 65%)",
+          background:   "radial-gradient(circle, rgba(0,229,192,0.025) 0%, transparent 65%)",
           borderRadius: "50%",
           filter:       "blur(30px)",
         }}

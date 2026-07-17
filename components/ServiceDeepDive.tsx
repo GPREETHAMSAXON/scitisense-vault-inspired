@@ -20,7 +20,7 @@ export default function ServiceDeepDive({ sections }: Props) {
   const noMotion = useReducedMotion() === true;
 
   return (
-    <section style={{ backgroundColor: "#FBF3E7", padding: "80px 24px" }}>
+    <section style={{ backgroundColor: "#080808", padding: "80px 24px" }}>
       <div className="container">
         <div className="flex flex-col gap-5">
           {sections.map((sec, i) => {
@@ -36,8 +36,8 @@ export default function ServiceDeepDive({ sections }: Props) {
                 transition={{ duration: 0.55, delay: i * 0.05, ease }}
                 className="card-3d"
                 style={{
-                  background:   "#FFFFFF",
-                  border:       "1px solid rgba(20,33,61,0.10)",
+                  background:   "#0F0F0F",
+                  border:       "1px solid rgba(255,255,255,0.08)",
                   padding:      "36px 40px",
                 }}
               >
@@ -50,12 +50,12 @@ export default function ServiceDeepDive({ sections }: Props) {
                       style={{
                         width:          "48px",
                         height:         "48px",
-                        background:     "rgba(194,118,26,0.10)",
+                        background:     "rgba(0,229,192,0.10)",
                         borderRadius:   "12px",
                         display:        "flex",
                         alignItems:     "center",
                         justifyContent: "center",
-                        color:          "#C2761A",
+                        color:          "#00E5C0",
                         flexShrink:     0,
                       }}
                     >
@@ -65,7 +65,7 @@ export default function ServiceDeepDive({ sections }: Props) {
                       <span
                         style={{
                           display:       "block",
-                          color:         "#C2761A",
+                          color:         "#00E5C0",
                           fontSize:      "0.68rem",
                           fontWeight:    700,
                           letterSpacing: "0.14em",
@@ -79,7 +79,7 @@ export default function ServiceDeepDive({ sections }: Props) {
                         style={{
                           fontSize:  "1.1rem",
                           fontWeight: 700,
-                          color:     "#14213D",
+                          color:     "#FFFFFF",
                           lineHeight: 1.3,
                         }}
                       >
@@ -91,12 +91,12 @@ export default function ServiceDeepDive({ sections }: Props) {
                   {/* Divider */}
                   <div
                     className="hidden md:block self-stretch"
-                    style={{ width: "1px", background: "rgba(20,33,61,0.10)", flexShrink: 0 }}
+                    style={{ width: "1px", background: "rgba(255,255,255,0.08)", flexShrink: 0 }}
                   />
 
                   {/* Body side */}
                   <div className="md:flex-1">
-                    <p style={{ color: "#4A5568", fontSize: "0.95rem", lineHeight: 1.82 }}>
+                    <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.95rem", lineHeight: 1.82 }}>
                       {sec.body}
                     </p>
                   </div>

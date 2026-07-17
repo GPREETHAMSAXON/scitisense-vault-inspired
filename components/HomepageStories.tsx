@@ -50,16 +50,16 @@ function StoryCard({
       transition={{ duration: 0.6, delay: index * 0.1, ease }}
       whileHover={noMotion ? {} : {
         y: -8,
-        boxShadow: "0 16px 48px rgba(194,118,26,0.12), 0 4px 16px rgba(20,33,61,0.06)",
+        boxShadow: "0 16px 48px rgba(0,229,192,0.10)",
         transition: { type: "spring" as const, stiffness: 300, damping: 20 },
       }}
+      className="card-vault"
       style={{
-        background:    "#FFFFFF",
+        background:    "#0F0F0F",
         borderRadius:  "20px",
         padding:       "36px 32px",
-        border:        "1px solid #E2E8F0",
-        borderLeft:    "4px solid #C2761A",
-        boxShadow:     "0 4px 24px rgba(20,33,61,0.06)",
+        border:        "1px solid rgba(255,255,255,0.08)",
+        borderLeft:    "3px solid #00E5C0",
         display:       "flex",
         flexDirection: "column",
         gap:           "16px",
@@ -70,19 +70,19 @@ function StoryCard({
       <div style={{
         display:       "inline-flex",
         alignItems:    "center",
-        background:    "rgba(194,118,26,0.08)",
-        border:        "1px solid rgba(194,118,26,0.18)",
+        background:    "rgba(0,229,192,0.08)",
+        border:        "1px solid rgba(0,229,192,0.18)",
         borderRadius:  "999px",
         padding:       "4px 12px",
         width:         "fit-content",
       }}>
-        <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "#C2761A", letterSpacing: "0.06em" }}>
+        <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "#00E5C0", letterSpacing: "0.06em" }}>
           {story.category}
         </span>
       </div>
 
       {/* Client type */}
-      <p style={{ fontSize: "0.8rem", color: "#94A3B8", fontWeight: 500, margin: 0 }}>
+      <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.4)", fontWeight: 500, margin: 0 }}>
         {story.client}
       </p>
 
@@ -90,7 +90,7 @@ function StoryCard({
       <h3 style={{
         fontSize:      "1.35rem",
         fontWeight:    700,
-        color:         "#14213D",
+        color:         "#FFFFFF",
         lineHeight:    1.25,
         margin:        0,
         letterSpacing: "-0.015em",
@@ -101,7 +101,7 @@ function StoryCard({
       {/* Context */}
       <p style={{
         fontSize:   "0.875rem",
-        color:      "#64748B",
+        color:      "rgba(255,255,255,0.55)",
         lineHeight: 1.65,
         margin:     0,
         flexGrow:   1,
@@ -115,13 +115,13 @@ function StoryCard({
           <span
             key={m}
             style={{
-              background:   "#F8FAFC",
-              border:       "1px solid #E2E8F0",
+              background:   "rgba(0,229,192,0.08)",
+              border:       "1px solid rgba(0,229,192,0.20)",
               borderRadius: "999px",
               padding:      "4px 12px",
               fontSize:     "0.75rem",
               fontWeight:   600,
-              color:        "#14213D",
+              color:        "#00E5C0",
               whiteSpace:   "nowrap",
             }}
           >
@@ -134,7 +134,7 @@ function StoryCard({
       <a
         href="/stories"
         className="inline-flex items-center gap-1.5 text-sm font-semibold mt-1"
-        style={{ color: "#C2761A", width: "fit-content" }}
+        style={{ color: "#00E5C0", width: "fit-content" }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
       >
@@ -151,7 +151,7 @@ export default function HomepageStories() {
   const noMotion = useReducedMotion() === true;
 
   return (
-    <section style={{ background: "#F8FAFC", paddingBlock: "120px" }}>
+    <section style={{ background: "#080808", paddingBlock: "120px" }}>
       <div className="container px-5 md:px-8">
 
         {/* ── Header ── */}
@@ -166,7 +166,7 @@ export default function HomepageStories() {
               fontWeight:    700,
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color:         "#C2761A",
+              color:         "#00E5C0",
               marginBottom:  "14px",
             }}
           >
@@ -181,7 +181,7 @@ export default function HomepageStories() {
             style={{
               fontSize:      "clamp(1.8rem, 3.5vw, 2.8rem)",
               fontWeight:    800,
-              color:         "#14213D",
+              color:         "#FFFFFF",
               lineHeight:    1.1,
               letterSpacing: "-0.025em",
               marginBottom:  "14px",
@@ -195,7 +195,7 @@ export default function HomepageStories() {
             whileInView={noMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.16, ease }}
-            style={{ fontSize: "1rem", color: "#64748B", margin: 0 }}
+            style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", margin: 0 }}
           >
             Real results from real implementations.
           </motion.p>
@@ -220,16 +220,15 @@ export default function HomepageStories() {
             href="/stories"
             className="inline-flex items-center gap-2 font-semibold text-sm"
             style={{
-              color:         "#14213D",
-              border:        "2px solid rgba(20,33,61,0.20)",
+              color:         "#FFFFFF",
+              border:        "1px solid rgba(255,255,255,0.20)",
               borderRadius:  "999px",
               padding:       "12px 28px",
               transition:    "all 0.2s ease",
             }}
             whileHover={noMotion ? {} : {
-              backgroundColor: "#14213D",
-              color:           "#FFFFFF",
-              borderColor:     "#14213D",
+              borderColor:     "#00E5C0",
+              color:           "#00E5C0",
             }}
             whileTap={noMotion ? {} : { scale: 0.97 }}
             transition={{ duration: 0.2, ease }}

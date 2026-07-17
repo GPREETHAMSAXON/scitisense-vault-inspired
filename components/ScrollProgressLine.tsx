@@ -44,7 +44,7 @@ export default function ScrollProgressLine() {
         style={{
           position:   "absolute",
           inset:      0,
-          background: "rgba(194,118,26,0.10)",
+          background: "rgba(0,229,192,0.10)",
         }}
       />
 
@@ -56,10 +56,10 @@ export default function ScrollProgressLine() {
           left:            0,
           width:           "100%",
           height:          "100%",
-          background:      "linear-gradient(to bottom, #C2761A, #E0941F)",
+          background:      "linear-gradient(to bottom, #00E5C0, #00C4A6)",
           scaleY,
           transformOrigin: "top",
-          boxShadow:       "2px 0 12px rgba(194,118,26,0.4)",
+          boxShadow:       "2px 0 12px rgba(0,229,192,0.4)",
           willChange:      "transform",
         }}
       />
@@ -88,8 +88,8 @@ export default function ScrollProgressLine() {
               animate={{
                 width:     active ? "10px" : "6px",
                 height:    active ? "10px" : "6px",
-                boxShadow: active ? "0 0 8px 2px rgba(194,118,26,0.7)" : "none",
-                backgroundColor: active ? "#C2761A" : "rgba(194,118,26,0.35)",
+                boxShadow: active ? "0 0 8px 2px rgba(0,229,192,0.7)" : "none",
+                backgroundColor: active ? "#00E5C0" : "rgba(0,229,192,0.35)",
               }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               style={{
@@ -111,15 +111,15 @@ export default function ScrollProgressLine() {
                   left:            "16px",
                   top:             "50%",
                   transform:       "translateY(-50%)",
-                  background:      "rgba(20,33,61,0.92)",
-                  color:           "#FBF3E7",
+                  background:      "rgba(15,15,15,0.92)",
+                  color:           "#FFFFFF",
                   fontSize:        "11px",
                   fontWeight:      500,
                   padding:         "4px 8px",
                   borderRadius:    "4px",
                   whiteSpace:      "nowrap",
                   backdropFilter:  "blur(8px)",
-                  border:          "1px solid rgba(194,118,26,0.2)",
+                  border:          "1px solid rgba(0,229,192,0.2)",
                   pointerEvents:   "none",
                 }}
               >

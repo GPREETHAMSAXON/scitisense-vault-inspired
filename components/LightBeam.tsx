@@ -9,7 +9,7 @@ interface LightBeamProps {
 }
 
 export default function LightBeam({
-  color     = "#C2761A",
+  color     = "#00E5C0",
   position  = "center",
   intensity = 0.4,
 }: LightBeamProps) {

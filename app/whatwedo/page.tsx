@@ -72,8 +72,8 @@ export default function WhatWeDo() {
             paddingTop: "160px",
             paddingBottom: "80px",
             backgroundImage:
-              "radial-gradient(ellipse at 30% 60%, rgba(194,118,26,0.06) 0%, transparent 55%), " +
-              "radial-gradient(ellipse at 75% 30%, rgba(20,33,61,0.05) 0%, transparent 55%)",
+              "radial-gradient(ellipse at 30% 60%, rgba(0,229,192,0.08) 0%, transparent 55%), " +
+              "radial-gradient(ellipse at 75% 30%, rgba(0,229,192,0.04) 0%, transparent 55%)",
           }}
         >
           <div className="container px-5 md:px-8">
@@ -128,17 +128,16 @@ export default function WhatWeDo() {
                       ? {}
                       : {
                           y: -6,
-                          boxShadow:
-                            "0 4px 12px rgba(20,33,61,0.06), 0 16px 40px rgba(194,118,26,0.10), 0 32px 64px rgba(194,118,26,0.08)",
+                          boxShadow: "0 8px 48px rgba(0,229,192,0.10)",
                         }
                   }
                   transition={{ duration: 0.3, ease }}
+                  className="card-vault"
                   style={{
-                    background:   "#FFFFFF",
+                    background:   "#0F0F0F",
                     borderRadius: "20px",
                     padding:      "40px 44px",
-                    border:       "1px solid rgba(20,33,61,0.08)",
-                    boxShadow:    "0 2px 8px rgba(20,33,61,0.04), 0 8px 24px rgba(20,33,61,0.06), 0 24px 48px rgba(20,33,61,0.04)",
+                    border:       "1px solid rgba(255,255,255,0.08)",
                     position:     "relative",
                     overflow:     "hidden",
                     cursor:       "default",
@@ -153,7 +152,7 @@ export default function WhatWeDo() {
                       right:        "40px",
                       fontSize:     "3rem",
                       fontWeight:   800,
-                      color:        "rgba(194,118,26,0.08)",
+                      color:        "rgba(0,229,192,0.08)",
                       lineHeight:   1,
                       pointerEvents:"none",
                       userSelect:   "none",
@@ -162,12 +161,12 @@ export default function WhatWeDo() {
                     0{i + 1}
                   </div>
 
-                  {/* Butterscotch accent bar */}
+                  {/* Teal accent bar */}
                   <div
                     style={{
                       width:        "48px",
                       height:       "4px",
-                      background:   "#C2761A",
+                      background:   "#00E5C0",
                       borderRadius: "999px",
                       marginBottom: "24px",
                     }}
@@ -177,7 +176,7 @@ export default function WhatWeDo() {
                     style={{
                       fontSize:     "1.5rem",
                       fontWeight:   700,
-                      color:        "#14213D",
+                      color:        "#FFFFFF",
                       marginBottom: "16px",
                       lineHeight:   1.2,
                     }}
@@ -187,7 +186,7 @@ export default function WhatWeDo() {
                   <p
                     style={{
                       fontSize:  "1rem",
-                      color:     "#4A5568",
+                      color:     "rgba(255,255,255,0.55)",
                       lineHeight: 1.8,
                       maxWidth:  "780px",
                     }}
@@ -205,14 +204,14 @@ export default function WhatWeDo() {
           style={{
             paddingTop:      "100px",
             paddingBottom:   "120px",
-            backgroundColor: "#14213D",
+            backgroundColor: "#080808",
             borderTop:       "1px solid rgba(255,255,255,0.06)",
           }}
         >
           <div className="container px-5 md:px-8">
             <motion.p
               className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-3"
-              style={{ color: "#C2761A" }}
+              style={{ color: "#00E5C0" }}
               {...fadeUp(noMotion)}
             >
               Our Solutions
@@ -221,7 +220,7 @@ export default function WhatWeDo() {
               className="font-bold tracking-[-0.025em] mb-14"
               style={{
                 fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-                color:    "#F4E8D5",
+                color:    "#FFFFFF",
               }}
               {...fadeUp(noMotion, 0.08)}
             >
@@ -237,42 +236,41 @@ export default function WhatWeDo() {
                   key={sol.id}
                   {...fadeUp(noMotion, i * 0.05)}
                   style={{
-                    background:    "#FFFFFF",
+                    background:    "rgba(255,255,255,0.03)",
                     borderRadius:  "16px",
                     padding:       "28px 24px",
-                    border:        "1px solid rgba(20,33,61,0.06)",
-                    boxShadow:     "0 2px 12px rgba(20,33,61,0.06)",
+                    border:        "1px solid rgba(255,255,255,0.07)",
                     display:       "flex",
                     flexDirection: "column",
                     cursor:        "default",
-                    transition:    "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, border-color 0.3s ease",
+                    transition:    "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
                     if (noMotion) return;
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.transform   = "translateY(-4px)";
-                    el.style.boxShadow   = "0 8px 24px rgba(194,118,26,0.12)";
-                    el.style.borderColor = "rgba(194,118,26,0.20)";
+                    el.style.borderColor = "rgba(0,229,192,0.25)";
+                    el.style.background  = "rgba(0,229,192,0.04)";
                   }}
                   onMouseLeave={(e) => {
                     if (noMotion) return;
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.transform   = "translateY(0)";
-                    el.style.boxShadow   = "0 2px 12px rgba(20,33,61,0.06)";
-                    el.style.borderColor = "rgba(20,33,61,0.06)";
+                    el.style.borderColor = "rgba(255,255,255,0.07)";
+                    el.style.background  = "rgba(255,255,255,0.03)";
                   }}
                 >
                   <div
                     style={{
                       width:          "40px",
                       height:         "40px",
-                      background:     "rgba(194,118,26,0.08)",
+                      background:     "rgba(0,229,192,0.08)",
                       borderRadius:   "10px",
                       display:        "flex",
                       alignItems:     "center",
                       justifyContent: "center",
                       marginBottom:   "16px",
-                      color:          "#C2761A",
+                      color:          "#00E5C0",
                       flexShrink:     0,
                     }}
                   >
@@ -283,7 +281,7 @@ export default function WhatWeDo() {
                     style={{
                       fontSize:     "0.9rem",
                       fontWeight:   700,
-                      color:        "#14213D",
+                      color:        "#FFFFFF",
                       marginBottom: "8px",
                     }}
                   >
@@ -292,7 +290,7 @@ export default function WhatWeDo() {
                   <p
                     style={{
                       fontSize:    "0.8rem",
-                      color:       "#4A5568",
+                      color:       "rgba(255,255,255,0.50)",
                       lineHeight:  1.65,
                       flexGrow:    1,
                       marginBottom:"20px",
@@ -306,7 +304,7 @@ export default function WhatWeDo() {
                     style={{
                       fontSize:   "0.8rem",
                       fontWeight: 600,
-                      color:      "#C2761A",
+                      color:      "#00E5C0",
                       marginTop:  "auto",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}

@@ -49,7 +49,6 @@ export interface ServiceLineSectionProps {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-const GRAIN = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E";
 
 // ─── Magnetic hook ────────────────────────────────────────────────────────────
 
@@ -72,38 +71,26 @@ function useMagnetic() {
 // ─── Item card ────────────────────────────────────────────────────────────────
 
 function ItemCard({
-  item, index, isNavy, noMotion,
+  item, index, noMotion,
 }: {
   item: ServiceLineItem;
   index: number;
-  isNavy: boolean;
   noMotion: boolean;
 }) {
   const Icon      = ICON_MAP[item.icon] ?? Bot;
   const glowRef   = useRef<HTMLDivElement>(null);
   const accentRef = useRef<HTMLDivElement>(null);
 
-  const cardStyle: React.CSSProperties = isNavy ? {
+  const cardStyle: React.CSSProperties = {
     position:     "relative",
     overflow:     "hidden",
     borderRadius: "20px",
     padding:      "28px 24px",
     cursor:       "default",
     willChange:   "transform",
-    background:   "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-    border:       "1px solid rgba(244,232,213,0.10)",
-    boxShadow:    "0 1px 2px rgba(0,0,0,0.20), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08)",
-    transition:   "border-color 0.3s ease, box-shadow 0.3s ease",
-  } : {
-    position:     "relative",
-    overflow:     "hidden",
-    borderRadius: "20px",
-    padding:      "28px 24px",
-    cursor:       "default",
-    willChange:   "transform",
-    background:   "#FFFFFF",
-    border:       "1px solid rgba(20,33,61,0.07)",
-    boxShadow:    "0 1px 3px rgba(20,33,61,0.04), 0 4px 12px rgba(20,33,61,0.06), 0 12px 28px rgba(20,33,61,0.04)",
+    background:   "#0F0F0F",
+    border:       "1px solid rgba(255,255,255,0.08)",
+    boxShadow:    "0 4px 24px rgba(0,0,0,0.8)",
     transition:   "border-color 0.3s ease, box-shadow 0.3s ease",
   };
 
@@ -113,33 +100,23 @@ function ItemCard({
     const x    = e.clientX - rect.left;
     const y    = e.clientY - rect.top;
     glowRef.current.style.background =
-      `radial-gradient(160px circle at ${x}px ${y}px, rgba(194,118,26,${isNavy ? "0.15" : "0.10"}), transparent 70%)`;
+      `radial-gradient(160px circle at ${x}px ${y}px, rgba(0,229,192,0.12), transparent 70%)`;
     glowRef.current.style.opacity = "1";
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     if (noMotion) return;
     const el = e.currentTarget as HTMLDivElement;
-    if (isNavy) {
-      el.style.boxShadow   = "0 2px 4px rgba(0,0,0,0.20), 0 16px 40px rgba(194,118,26,0.18), inset 0 1px 0 rgba(255,255,255,0.12)";
-      el.style.borderColor = "rgba(194,118,26,0.25)";
-    } else {
-      el.style.boxShadow   = "0 8px 32px rgba(194,118,26,0.12), 0 12px 28px rgba(20,33,61,0.08)";
-      el.style.borderColor = "rgba(194,118,26,0.25)";
-    }
+    el.style.boxShadow   = "0 8px 48px rgba(0,229,192,0.10)";
+    el.style.borderColor = "rgba(0,229,192,0.25)";
     if (accentRef.current) accentRef.current.style.transform = "scaleX(1)";
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (noMotion) return;
     const el = e.currentTarget as HTMLDivElement;
-    if (isNavy) {
-      el.style.boxShadow   = "0 1px 2px rgba(0,0,0,0.20), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08)";
-      el.style.borderColor = "rgba(244,232,213,0.10)";
-    } else {
-      el.style.boxShadow   = "0 1px 3px rgba(20,33,61,0.04), 0 4px 12px rgba(20,33,61,0.06), 0 12px 28px rgba(20,33,61,0.04)";
-      el.style.borderColor = "rgba(20,33,61,0.07)";
-    }
+    el.style.boxShadow   = "0 4px 24px rgba(0,0,0,0.8)";
+    el.style.borderColor = "rgba(255,255,255,0.08)";
     if (glowRef.current)   glowRef.current.style.opacity = "0";
     if (accentRef.current) accentRef.current.style.transform = "scaleX(0)";
   };
@@ -171,24 +148,19 @@ function ItemCard({
         }}
       />
 
-      {/* Navy inner glow */}
-      {isNavy && (
-        <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(194,118,26,0.10) 0%, transparent 60%)", pointerEvents: "none", zIndex: 0 }} />
-      )}
-
       <div style={{ position: "relative", zIndex: 1 }}>
-        <div style={{ width: "44px", height: "44px", background: isNavy ? "rgba(194,118,26,0.15)" : "rgba(194,118,26,0.10)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#C2761A" }}>
+        <div style={{ width: "44px", height: "44px", background: "rgba(0,229,192,0.08)", border: "1px solid rgba(0,229,192,0.15)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#00E5C0" }}>
           <Icon size={20} strokeWidth={1.8} />
         </div>
-        <h3 style={{ fontSize: "1rem", fontWeight: 700, color: isNavy ? "#F4E8D5" : "#14213D", marginBottom: "8px", lineHeight: 1.3 }}>
+        <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "8px", lineHeight: 1.3 }}>
           {item.title}
         </h3>
-        <p style={{ fontSize: "0.875rem", color: isNavy ? "rgba(244,232,213,0.60)" : "#4A5568", lineHeight: 1.65 }}>
+        <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.50)", lineHeight: 1.65 }}>
           {item.description}
         </p>
       </div>
 
-      {/* Bottom butterscotch accent line */}
+      {/* Bottom teal accent line */}
       <div
         ref={accentRef}
         aria-hidden="true"
@@ -198,7 +170,7 @@ function ItemCard({
           left:            0,
           right:           0,
           height:          "3px",
-          background:      "linear-gradient(90deg, #C2761A, #E0941F)",
+          background:      "linear-gradient(90deg, #00E5C0, #00C4A6)",
           borderRadius:    "0 0 20px 20px",
           transform:       "scaleX(0)",
           transformOrigin: "left",
@@ -213,48 +185,32 @@ function ItemCard({
 // ─── Section ──────────────────────────────────────────────────────────────────
 
 export default function ServiceLineSection({
-  id, label, heading, description, background, items, items2, items2Label,
+  id, label, heading, description, items, items2, items2Label,
 }: ServiceLineSectionProps) {
   const noMotion = useReducedMotion() === true;
-  const isNavy   = background === "navy";
   const mag       = useMagnetic();
-
-  const headingColor = isNavy ? "#F4E8D5"  : "#14213D";
-  const bodyColor    = isNavy ? "rgba(244,232,213,0.70)" : "#4A5568";
 
   return (
     <section
       id={id}
       className="relative overflow-hidden"
-      style={{ padding: "120px 24px" }}
+      style={{ padding: "120px 24px", background: "#080808" }}
     >
-      {/* ── Base background ── */}
-      <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: isNavy ? "#14213D" : "#FBF3E7", zIndex: 0 }} />
-
-      {/* ── Depth glows ── */}
-      {isNavy ? (
-        <>
-          <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none", background: "radial-gradient(ellipse at 15% 25%, rgba(194,118,26,0.05) 0%, transparent 50%), radial-gradient(ellipse at 85% 75%, rgba(42,63,102,0.35) 0%, transparent 50%)" }} />
-          <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none", backgroundImage: `url("${GRAIN}")`, backgroundRepeat: "repeat", backgroundSize: "200px 200px", opacity: 0.02, mixBlendMode: "overlay" }} />
-        </>
-      ) : (
-        <div aria-hidden="true" style={{ position: "absolute", top: "30%", left: "60%", width: "600px", height: "400px", background: "radial-gradient(ellipse, rgba(194,118,26,0.04) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none", zIndex: 1 }} />
-      )}
-
-      {/* ── Floating decorative elements (cream sections only) ── */}
-      {!isNavy && (
-        <>
-          <ParallaxSection speed={0.15} style={{ position: "absolute", top: "15%", right: "8%", pointerEvents: "none", zIndex: 1 }}>
-            <div aria-hidden="true" style={{ width: "100px", height: "100px", borderRadius: "50%", border: "2px solid rgba(194,118,26,0.05)", background: "rgba(194,118,26,0.04)" }} />
-          </ParallaxSection>
-          <ParallaxSection speed={0.30} style={{ position: "absolute", bottom: "20%", right: "15%", pointerEvents: "none", zIndex: 1 }}>
-            <div aria-hidden="true" style={{ width: "60px", height: "60px", borderRadius: "50%", background: "rgba(194,118,26,0.05)" }} />
-          </ParallaxSection>
-          <ParallaxSection speed={0.45} style={{ position: "absolute", top: "40%", left: "5%", pointerEvents: "none", zIndex: 1 }}>
-            <div aria-hidden="true" style={{ width: "40px", height: "40px", borderRadius: "4px", background: "rgba(194,118,26,0.06)", transform: "rotate(15deg)" }} />
-          </ParallaxSection>
-        </>
-      )}
+      {/* ── Ambient teal glow ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: "20%",
+          left: "60%",
+          width: "600px",
+          height: "400px",
+          background: "radial-gradient(ellipse, rgba(0,229,192,0.05) 0%, transparent 70%)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
 
       {/* ── Content ── */}
       <div className="relative container" style={{ zIndex: 3 }}>
@@ -263,13 +219,13 @@ export default function ServiceLineSection({
         <ParallaxSection speed={0.25}>
           <div style={{ marginBottom: "56px" }}>
             <RevealBlock direction="perspective">
-              <p style={{ color: "#C2761A", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "16px" }}>
+              <p style={{ color: "#00E5C0", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "16px" }}>
                 {label}
               </p>
-              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: headingColor, lineHeight: 1.08, letterSpacing: "-0.025em", marginBottom: "20px" }}>
+              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#FFFFFF", lineHeight: 1.08, letterSpacing: "-0.025em", marginBottom: "20px" }}>
                 {heading}
               </h2>
-              <p style={{ fontSize: "1.05rem", color: bodyColor, lineHeight: 1.75, maxWidth: "700px" }}>
+              <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.75, maxWidth: "700px" }}>
                 {description}
               </p>
             </RevealBlock>
@@ -280,7 +236,7 @@ export default function ServiceLineSection({
         <ParallaxSection speed={0.35}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style={{ gap: "24px" }}>
           {items.map((item, i) => (
-            <ItemCard key={item.title} item={item} index={i} isNavy={isNavy} noMotion={noMotion} />
+            <ItemCard key={item.title} item={item} index={i} noMotion={noMotion} />
           ))}
         </div>
         </ParallaxSection>
@@ -294,20 +250,20 @@ export default function ServiceLineSection({
                 whileInView={noMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-60px" }}
                 transition={{ duration: 0.45, ease }}
-                style={{ color: "#C2761A", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "24px" }}
+                style={{ color: "#00E5C0", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "24px" }}
               >
                 {items2Label}
               </motion.p>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style={{ gap: "24px" }}>
               {items2.map((item, i) => (
-                <ItemCard key={item.title} item={item} index={i} isNavy={isNavy} noMotion={noMotion} />
+                <ItemCard key={item.title} item={item} index={i} noMotion={noMotion} />
               ))}
             </div>
           </div>
         )}
 
-        {/* Magnetic CTA */}
+        {/* Explore Projects CTA */}
         <div style={{ textAlign: "center", marginTop: "56px" }}>
           <motion.a
             href="/contact"
@@ -317,19 +273,19 @@ export default function ServiceLineSection({
               display:      "inline-flex",
               alignItems:   "center",
               gap:          "8px",
-              background:   "#C2761A",
-              color:        "#FFFFFF",
+              background:   "transparent",
+              border:       "1px solid rgba(0,229,192,0.40)",
+              color:        "#00E5C0",
               fontWeight:   700,
               fontSize:     "0.95rem",
               padding:      "14px 32px",
               borderRadius: "999px",
               textDecoration: "none",
-              boxShadow:    "0 2px 0 rgba(140,80,10,0.35), 0 4px 16px rgba(194,118,26,0.28)",
             }}
             onMouseMove={mag.onMove}
             onMouseLeave={mag.onLeave}
-            whileHover={noMotion ? {} : { scale: 1.04, boxShadow: "0 2px 0 rgba(140,80,10,0.35), 0 8px 28px rgba(194,118,26,0.35)" }}
-            whileTap={noMotion ? {} : { scale: 0.97, y: 1, boxShadow: "0 1px 0 rgba(140,80,10,0.35)" } as Parameters<typeof motion.a>[0]["whileTap"]}
+            whileHover={noMotion ? {} : { scale: 1.04, backgroundColor: "rgba(0,229,192,0.08)" }}
+            whileTap={noMotion ? {} : { scale: 0.97 }}
             transition={{ duration: 0.2, ease }}
           >
             Explore {heading} Projects

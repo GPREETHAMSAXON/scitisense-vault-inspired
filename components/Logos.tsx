@@ -28,31 +28,34 @@ function LogoPill({ name, file }: { name: string; file: string }) {
   return (
     <div
       style={{
-        background:     "#FFFFFF",
-        border:         "1px solid rgba(0,0,0,0.08)",
-        boxShadow:      "0 2px 8px rgba(0,0,0,0.06)",
-        borderRadius:   "16px",
-        padding:        "14px 24px",
+        background:     "rgba(255,255,255,0.04)",
+        border:         "1px solid rgba(255,255,255,0.08)",
+        borderRadius:   "12px",
+        padding:        "16px 28px",
         marginRight:    "32px",
         flexShrink:     0,
         display:        "flex",
         alignItems:     "center",
         justifyContent: "center",
         minWidth:       "120px",
-        transition:     "transform 0.2s ease, box-shadow 0.2s ease",
+        transition:     "transform 0.2s ease, border-color 0.2s ease, background 0.2s ease",
         cursor:         "default",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLDivElement;
         el.style.transform  = "translateY(-5px) scale(1.03)";
-        el.style.boxShadow  = "0 8px 24px rgba(194,118,26,0.15), 0 2px 8px rgba(0,0,0,0.06)";
-        el.style.borderColor = "rgba(194,118,26,0.18)";
+        el.style.borderColor = "rgba(0,229,192,0.20)";
+        el.style.background  = "rgba(0,229,192,0.04)";
+        const img = el.querySelector("img");
+        if (img) img.style.filter = "none";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLDivElement;
         el.style.transform  = "translateY(0) scale(1)";
-        el.style.boxShadow  = "0 2px 8px rgba(0,0,0,0.06)";
-        el.style.borderColor = "rgba(0,0,0,0.08)";
+        el.style.borderColor = "rgba(255,255,255,0.08)";
+        el.style.background  = "rgba(255,255,255,0.04)";
+        const img = el.querySelector("img");
+        if (img) img.style.filter = "brightness(0) invert(1)";
       }}
     >
       <Image
@@ -60,7 +63,7 @@ function LogoPill({ name, file }: { name: string; file: string }) {
         alt={name}
         width={130}
         height={50}
-        style={{ objectFit: "contain" }}
+        style={{ objectFit: "contain", filter: "brightness(0) invert(1)", transition: "filter 0.2s ease" }}
         draggable={false}
       />
     </div>
@@ -81,7 +84,7 @@ export default function Logos() {
   };
 
   return (
-    <section style={{ paddingTop: "100px", paddingBottom: "100px", background: "#F8FAFC" }}>
+    <section style={{ paddingTop: "100px", paddingBottom: "100px", background: "#080808" }}>
       {/* Keyframe + hover-pause via class selector */}
       <style>{`
         @keyframes marquee {

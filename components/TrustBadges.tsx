@@ -56,7 +56,13 @@ export default function TrustBadges() {
   const noMotion = useReducedMotion() === true;
 
   return (
-    <section style={{ background: "#FFFFFF", paddingBlock: "64px" }}>
+    <section
+      style={{
+        background: "#080808",
+        paddingBlock: "64px",
+        borderTop: "1px solid rgba(0,229,192,0.15)",
+      }}
+    >
       <div className="container px-5 md:px-8">
 
         {/* Desktop: 3-col grid — Mobile: single column */}
@@ -66,36 +72,36 @@ export default function TrustBadges() {
           <motion.div
             {...fadeUp(noMotion, 0)}
             className="flex flex-col items-center md:items-start md:border-r md:pr-10 lg:pr-14"
-            style={{ borderColor: "#E2E8F0" }}
+            style={{ borderColor: "rgba(255,255,255,0.08)" }}
           >
             <p style={{
               fontSize:      "0.65rem",
               fontWeight:    700,
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color:         "#C2761A",
+              color:         "#00E5C0",
               marginBottom:  "16px",
             }}>
               Certifications &amp; Compliance
             </p>
 
             <div className="flex flex-col gap-3">
-              {CERT_BADGES.map(({ icon: Icon, color, label }) => (
+              {CERT_BADGES.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
                   style={{
                     display:       "flex",
                     alignItems:    "center",
                     gap:           "8px",
-                    background:    "#F8FAFC",
-                    border:        "1px solid #E2E8F0",
+                    background:    "rgba(0,229,192,0.06)",
+                    border:        "1px solid rgba(0,229,192,0.20)",
                     borderRadius:  "999px",
                     padding:       "8px 16px",
                     width:         "fit-content",
                   }}
                 >
-                  <Icon size={16} style={{ color, flexShrink: 0 }} strokeWidth={2} />
-                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#14213D", whiteSpace: "nowrap" }}>
+                  <Icon size={16} style={{ color: "#00E5C0", flexShrink: 0 }} strokeWidth={2} />
+                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#FFFFFF", whiteSpace: "nowrap" }}>
                     {label}
                   </span>
                 </div>
@@ -107,7 +113,7 @@ export default function TrustBadges() {
           <motion.div
             {...fadeUp(noMotion, 0.1)}
             className="flex flex-col items-center md:border-r md:px-8 lg:px-12"
-            style={{ borderColor: "#E2E8F0" }}
+            style={{ borderColor: "rgba(255,255,255,0.08)" }}
           >
             <div
               className="grid grid-cols-3 w-full"
@@ -119,14 +125,14 @@ export default function TrustBadges() {
                   style={{
                     textAlign:   "center",
                     padding:     "20px 12px",
-                    borderRight: last ? "none" : "1px solid #E2E8F0",
+                    borderRight: last ? "none" : "1px solid rgba(255,255,255,0.08)",
                   }}
                 >
                   <span style={{
                     display:    "block",
                     fontSize:   "1.9rem",
                     fontWeight: 800,
-                    color:      "#C2761A",
+                    color:      "#00E5C0",
                     lineHeight: 1,
                     marginBottom: "6px",
                   }}>
@@ -136,7 +142,7 @@ export default function TrustBadges() {
                     display:    "block",
                     fontSize:   "0.78rem",
                     fontWeight: 600,
-                    color:      "#14213D",
+                    color:      "#FFFFFF",
                     lineHeight: 1.3,
                     marginBottom: "4px",
                   }}>
@@ -145,7 +151,7 @@ export default function TrustBadges() {
                   <span style={{
                     display:  "block",
                     fontSize: "0.68rem",
-                    color:    "#94A3B8",
+                    color:    "rgba(255,255,255,0.30)",
                     lineHeight: 1.4,
                   }}>
                     {source}
@@ -165,7 +171,7 @@ export default function TrustBadges() {
               fontWeight:    700,
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color:         "#C2761A",
+              color:         "#00E5C0",
               marginBottom:  "16px",
               alignSelf:     "flex-start",
             }}>
@@ -180,8 +186,8 @@ export default function TrustBadges() {
                     display:       "flex",
                     alignItems:    "center",
                     gap:           "8px",
-                    background:    "#F8FAFC",
-                    border:        "1px solid #E2E8F0",
+                    background:    "rgba(255,255,255,0.04)",
+                    border:        "1px solid rgba(255,255,255,0.08)",
                     borderRadius:  "999px",
                     padding:       "8px 16px",
                     width:         "fit-content",
@@ -190,9 +196,9 @@ export default function TrustBadges() {
                   <Check
                     size={14}
                     strokeWidth={2.5}
-                    style={{ color: "#10B981", flexShrink: 0 }}
+                    style={{ color: "#00E5C0", flexShrink: 0 }}
                   />
-                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#14213D", whiteSpace: "nowrap" }}>
+                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap" }}>
                     {partner}
                   </span>
                 </div>

@@ -54,17 +54,17 @@ const SOFTWARE_SECTIONS = [
 
 function GroupLabel({ label }: { label: string }) {
   return (
-    <div style={{ backgroundColor: "#FFFFFF", padding: "40px 24px 0" }}>
+    <div style={{ backgroundColor: "#080808", padding: "40px 24px 0" }}>
       <div className="container">
         <p
           style={{
-            color:         "#C2761A",
+            color:         "#00E5C0",
             fontSize:      "0.75rem",
             fontWeight:    700,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             paddingBottom: "24px",
-            borderBottom:  "1px solid rgba(194,118,26,0.15)",
+            borderBottom:  "1px solid rgba(0,229,192,0.15)",
           }}
         >
           {label}

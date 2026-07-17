@@ -19,7 +19,7 @@ const STORIES = [
     desc:
       "Deployed ServiceNow ITSM across a 3,000-seat enterprise, replacing a fragmented legacy ticketing system. Incident resolution times dropped by 42% within 90 days of go-live, and SLA breach rates fell from 31% to under 6%. Change management workflows were fully automated, eliminating manual approval bottlenecks.",
     outcomes: ["42% faster incident resolution", "SLA breaches cut to under 6%", "Full change automation"],
-    accent: "#22D3EE",
+    accent: "#00E5C0",
   },
   {
     id: 1,
@@ -29,7 +29,7 @@ const STORIES = [
     desc:
       "Delivered a unified ServiceNow implementation spanning Asset Management, Operations Management, and HR Service Delivery across 12 global sites. Complete hardware and software asset visibility reduced shadow IT costs by 28%. Automated infrastructure event correlation cut P1 incidents by 55%, while the HRSD rollout reduced HR case backlog by 70%.",
     outcomes: ["28% reduction in shadow IT costs", "55% fewer P1 incidents", "70% drop in HR case backlog"],
-    accent: "#818CF8",
+    accent: "#00E5C0",
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const STORIES = [
     desc:
       "Designed and deployed a sovereign ServiceNow environment for a central government body managing citizen-facing services. The engagement included full ITSM, ITOM, and SecOps integration — meeting strict compliance requirements while improving internal IT response times by 60%. The platform now supports 8,000+ government employees across 6 departments.",
     outcomes: ["60% faster IT response times", "8,000+ users onboarded", "Full SecOps compliance met"],
-    accent: "#34D399",
+    accent: "#00E5C0",
   },
 ];
 
@@ -76,8 +76,8 @@ export default function Stories() {
             paddingTop: "160px",
             paddingBottom: "100px",
             backgroundImage:
-              "radial-gradient(ellipse at 25% 55%, rgba(34,211,238,0.07) 0%, transparent 55%), " +
-              "radial-gradient(ellipse at 78% 30%, rgba(129,140,248,0.07) 0%, transparent 55%)",
+              "radial-gradient(ellipse at 25% 55%, rgba(0,229,192,0.08) 0%, transparent 55%), " +
+              "radial-gradient(ellipse at 78% 30%, rgba(0,229,192,0.04) 0%, transparent 55%)",
           }}
         >
           <div className="container px-5 md:px-8">
@@ -129,10 +129,10 @@ export default function Stories() {
                   className="rounded-full text-xs transition-all duration-200"
                   style={{
                     padding:         "8px 18px",
-                    backgroundColor: active === i ? "#C2761A"              : "rgba(0,0,0,0.04)",
-                    color:           active === i ? "#FFFFFF"              : "#6B7280",
-                    fontWeight:      active === i ? 600                    : 500,
-                    border:          active === i ? "none"                 : "1px solid rgba(0,0,0,0.08)",
+                    backgroundColor: active === i ? "#00E5C0"              : "rgba(255,255,255,0.04)",
+                    color:           active === i ? "#080808"              : "rgba(255,255,255,0.55)",
+                    fontWeight:      active === i ? 700                    : 500,
+                    border:          active === i ? "none"                 : "1px solid rgba(255,255,255,0.08)",
                   }}
                 >
                   {s.tag}
@@ -213,13 +213,13 @@ export default function Stories() {
                       style={{
                         display:      "inline-flex",
                         alignItems:   "center",
-                        background:   "rgba(194,118,26,0.08)",
-                        border:       "1px solid rgba(194,118,26,0.2)",
+                        background:   "rgba(0,229,192,0.08)",
+                        border:       "1px solid rgba(0,229,192,0.2)",
                         borderRadius: "999px",
                         padding:      "6px 14px",
                         fontSize:     "0.8rem",
                         fontWeight:   600,
-                        color:        "#C2761A",
+                        color:        "#00E5C0",
                       }}
                     >
                       {o}

@@ -77,7 +77,7 @@ function HCard({
           width:        "300px",
           flexShrink:   0,
           background:   "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-          border:       `1px solid ${divider ? "rgba(194,118,26,0.3)" : "rgba(244,232,213,0.10)"}`,
+          border:       `1px solid ${divider ? "rgba(0,229,192,0.3)" : "rgba(255,255,255,0.10)"}`,
           borderRadius: "20px",
           padding:      "28px 24px",
           position:     "relative",
@@ -90,25 +90,25 @@ function HCard({
         onMouseEnter={(e) => {
           const el = e.currentTarget as HTMLDivElement;
           el.style.transform   = "translateY(-5px)";
-          el.style.boxShadow   = "0 2px 4px rgba(0,0,0,0.20), 0 16px 40px rgba(194,118,26,0.18), inset 0 1px 0 rgba(255,255,255,0.12)";
-          el.style.borderColor = "rgba(194,118,26,0.25)";
+          el.style.boxShadow   = "0 2px 4px rgba(0,0,0,0.20), 0 16px 40px rgba(0,229,192,0.18), inset 0 1px 0 rgba(255,255,255,0.12)";
+          el.style.borderColor = "rgba(0,229,192,0.25)";
         }}
         onMouseLeave={(e) => {
           const el = e.currentTarget as HTMLDivElement;
           el.style.transform   = "translateY(0)";
           el.style.boxShadow   = "0 1px 2px rgba(0,0,0,0.20), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08)";
-          el.style.borderColor = divider ? "rgba(194,118,26,0.3)" : "rgba(244,232,213,0.10)";
+          el.style.borderColor = divider ? "rgba(0,229,192,0.3)" : "rgba(255,255,255,0.10)";
         }}
       >
-        <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(194,118,26,0.10) 0%, transparent 60%)", pointerEvents: "none", zIndex: 0 }} />
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(0,229,192,0.10) 0%, transparent 60%)", pointerEvents: "none", zIndex: 0 }} />
         <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ width: "44px", height: "44px", background: "rgba(194,118,26,0.15)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#C2761A" }}>
+          <div style={{ width: "44px", height: "44px", background: "rgba(0,229,192,0.15)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#00E5C0" }}>
             <Icon size={20} strokeWidth={1.8} />
           </div>
-          <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#F4E8D5", marginBottom: "8px", lineHeight: 1.3 }}>
+          <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "8px", lineHeight: 1.3 }}>
             {item.title}
           </h3>
-          <p style={{ fontSize: "0.875rem", color: "rgba(244,232,213,0.60)", lineHeight: 1.65 }}>
+          <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.60)", lineHeight: 1.65 }}>
             {item.description}
           </p>
         </div>
@@ -127,13 +127,13 @@ function HCard({
         willChange: "transform",
       }}
     >
-      <div style={{ width: "44px", height: "44px", background: "rgba(194,118,26,0.10)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#C2761A" }}>
+      <div style={{ width: "44px", height: "44px", background: "rgba(0,229,192,0.10)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#00E5C0" }}>
         <Icon size={20} strokeWidth={1.8} />
       </div>
-      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#14213D", marginBottom: "8px", lineHeight: 1.3 }}>
+      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#080808", marginBottom: "8px", lineHeight: 1.3 }}>
         {item.title}
       </h3>
-      <p style={{ fontSize: "0.875rem", color: "#4A5568", lineHeight: 1.65 }}>
+      <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
         {item.description}
       </p>
     </div>
@@ -154,7 +154,7 @@ function MobileCard({ item, index, isNavy, noMotion }: {
         transition={{ duration: 0.5, delay: index * 0.08, ease }}
         style={{
           background:   "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-          border:       "1px solid rgba(244,232,213,0.10)",
+          border:       "1px solid rgba(255,255,255,0.10)",
           borderRadius: "20px",
           padding:      "28px 24px",
           position:     "relative",
@@ -163,13 +163,13 @@ function MobileCard({ item, index, isNavy, noMotion }: {
           boxShadow:    "0 1px 2px rgba(0,0,0,0.20), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08)",
         }}
       >
-        <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(194,118,26,0.10) 0%, transparent 60%)", pointerEvents: "none", zIndex: 0 }} />
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(0,229,192,0.10) 0%, transparent 60%)", pointerEvents: "none", zIndex: 0 }} />
         <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ width: "44px", height: "44px", background: "rgba(194,118,26,0.15)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#C2761A" }}>
+          <div style={{ width: "44px", height: "44px", background: "rgba(0,229,192,0.15)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#00E5C0" }}>
             <Icon size={20} strokeWidth={1.8} />
           </div>
-          <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#F4E8D5", marginBottom: "8px", lineHeight: 1.3 }}>{item.title}</h3>
-          <p style={{ fontSize: "0.875rem", color: "rgba(244,232,213,0.60)", lineHeight: 1.65 }}>{item.description}</p>
+          <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "8px", lineHeight: 1.3 }}>{item.title}</h3>
+          <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.60)", lineHeight: 1.65 }}>{item.description}</p>
         </div>
       </motion.div>
     );
@@ -183,11 +183,11 @@ function MobileCard({ item, index, isNavy, noMotion }: {
       transition={{ duration: 0.5, delay: index * 0.08, ease }}
       style={{ padding: "28px 24px", cursor: "default" }}
     >
-      <div style={{ width: "44px", height: "44px", background: "rgba(194,118,26,0.10)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#C2761A" }}>
+      <div style={{ width: "44px", height: "44px", background: "rgba(0,229,192,0.10)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#00E5C0" }}>
         <Icon size={20} strokeWidth={1.8} />
       </div>
-      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#14213D", marginBottom: "8px", lineHeight: 1.3 }}>{item.title}</h3>
-      <p style={{ fontSize: "0.875rem", color: "#4A5568", lineHeight: 1.65 }}>{item.description}</p>
+      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#080808", marginBottom: "8px", lineHeight: 1.3 }}>{item.title}</h3>
+      <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>{item.description}</p>
     </motion.div>
   );
 }
@@ -211,9 +211,9 @@ export default function HorizontalScrollSection({
   }, []);
 
   const allItems   = [...items, ...(items2 ?? [])];
-  const headingColor = isNavy ? "#F4E8D5"                   : "#14213D";
-  const bodyColor    = isNavy ? "rgba(244,232,213,0.70)"    : "#4A5568";
-  const bg           = isNavy ? "#14213D"                    : "#FBF3E7";
+  const headingColor = isNavy ? "#FFFFFF"                   : "#080808";
+  const bodyColor    = isNavy ? "rgba(255,255,255,0.70)"    : "rgba(255,255,255,0.55)";
+  const bg           = isNavy ? "#080808"                    : "#080808";
 
   const outerRef           = useRef<HTMLDivElement>(null);
   const [ready, setReady]  = useState(false);
@@ -238,12 +238,12 @@ export default function HorizontalScrollSection({
       <section id={id} style={{ position: "relative", overflow: "hidden", padding: "120px 24px" }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: bg, zIndex: 0 }} />
         {isNavy && (
-          <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none", background: "radial-gradient(ellipse at 15% 25%, rgba(194,118,26,0.05) 0%, transparent 50%), radial-gradient(ellipse at 85% 75%, rgba(42,63,102,0.35) 0%, transparent 50%)" }} />
+          <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none", background: "radial-gradient(ellipse at 15% 25%, rgba(0,229,192,0.05) 0%, transparent 50%), radial-gradient(ellipse at 85% 75%, rgba(42,63,102,0.35) 0%, transparent 50%)" }} />
         )}
         <div className="relative container" style={{ zIndex: 3 }}>
           <div style={{ marginBottom: "56px" }}>
             <RevealBlock direction="perspective">
-              <p style={{ color: "#C2761A", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "16px" }}>{label}</p>
+              <p style={{ color: "#00E5C0", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "16px" }}>{label}</p>
               <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: headingColor, lineHeight: 1.08, letterSpacing: "-0.025em", marginBottom: "20px" }}>{heading}</h2>
               <p style={{ fontSize: "1.05rem", color: bodyColor, lineHeight: 1.75, maxWidth: "700px" }}>{description}</p>
             </RevealBlock>
@@ -254,7 +254,7 @@ export default function HorizontalScrollSection({
           {items2 && items2.length > 0 && (
             <div style={{ marginTop: "56px" }}>
               {items2Label && (
-                <p style={{ color: "#C2761A", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "24px" }}>{items2Label}</p>
+                <p style={{ color: "#00E5C0", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "24px" }}>{items2Label}</p>
               )}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style={{ gap: "24px" }}>
                 {items2.map((item, i) => <MobileCard key={item.title} item={item} index={i} isNavy={isNavy} noMotion={noMotion} />)}
@@ -262,7 +262,7 @@ export default function HorizontalScrollSection({
             </div>
           )}
           <div style={{ textAlign: "center", marginTop: "56px" }}>
-            <motion.a href="/contact" style={{ x: mag.x, y: mag.y, display: "inline-flex", alignItems: "center", gap: "8px", background: "#C2761A", color: "#FFFFFF", fontWeight: 700, fontSize: "0.95rem", padding: "14px 32px", borderRadius: "8px", textDecoration: "none", boxShadow: "0 2px 0 rgba(140,80,10,0.35), 0 4px 16px rgba(194,118,26,0.28)" }} onMouseMove={mag.onMove} onMouseLeave={mag.onLeave} whileHover={{ scale: 1.04 }} transition={{ duration: 0.2, ease }}>
+            <motion.a href="/contact" style={{ x: mag.x, y: mag.y, display: "inline-flex", alignItems: "center", gap: "8px", background: "#00E5C0", color: "#FFFFFF", fontWeight: 700, fontSize: "0.95rem", padding: "14px 32px", borderRadius: "8px", textDecoration: "none", boxShadow: "0 2px 0 rgba(140,80,10,0.35), 0 4px 16px rgba(0,229,192,0.28)" }} onMouseMove={mag.onMove} onMouseLeave={mag.onLeave} whileHover={{ scale: 1.04 }} transition={{ duration: 0.2, ease }}>
               Explore {heading} Projects <ArrowRight size={16} strokeWidth={2.5} />
             </motion.a>
           </div>
@@ -292,9 +292,9 @@ export default function HorizontalScrollSection({
       >
         {/* Background glows */}
         {isNavy ? (
-          <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at 15% 25%, rgba(194,118,26,0.05) 0%, transparent 50%), radial-gradient(ellipse at 85% 75%, rgba(42,63,102,0.35) 0%, transparent 50%)" }} />
+          <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at 15% 25%, rgba(0,229,192,0.05) 0%, transparent 50%), radial-gradient(ellipse at 85% 75%, rgba(42,63,102,0.35) 0%, transparent 50%)" }} />
         ) : (
-          <div aria-hidden="true" style={{ position: "absolute", top: "30%", left: "60%", width: "600px", height: "400px", background: "radial-gradient(ellipse, rgba(194,118,26,0.04) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
+          <div aria-hidden="true" style={{ position: "absolute", top: "30%", left: "60%", width: "600px", height: "400px", background: "radial-gradient(ellipse, rgba(0,229,192,0.04) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
         )}
 
         <div style={{ display: "flex", width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "0 24px", gap: "0", height: "100%", alignItems: "center", position: "relative", zIndex: 2 }}>
@@ -307,7 +307,7 @@ export default function HorizontalScrollSection({
             }}
           >
             <ParallaxSection speed={0.15}>
-              <p style={{ color: "#C2761A", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "16px" }}>{label}</p>
+              <p style={{ color: "#00E5C0", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "16px" }}>{label}</p>
               <h2 style={{ fontSize: "clamp(1.75rem, 2.5vw, 2.5rem)", fontWeight: 800, color: headingColor, lineHeight: 1.1, letterSpacing: "-0.025em", marginBottom: "20px" }}>{heading}</h2>
               <p style={{ fontSize: "0.95rem", color: bodyColor, lineHeight: 1.75, marginBottom: "32px" }}>{description}</p>
               <motion.a
@@ -318,14 +318,14 @@ export default function HorizontalScrollSection({
                   display:      "inline-flex",
                   alignItems:   "center",
                   gap:          "8px",
-                  background:   "#C2761A",
+                  background:   "#00E5C0",
                   color:        "#FFFFFF",
                   fontWeight:   700,
                   fontSize:     "0.9rem",
                   padding:      "12px 24px",
                   borderRadius: "8px",
                   textDecoration: "none",
-                  boxShadow:    "0 2px 0 rgba(140,80,10,0.35), 0 4px 16px rgba(194,118,26,0.28)",
+                  boxShadow:    "0 2px 0 rgba(140,80,10,0.35), 0 4px 16px rgba(0,229,192,0.28)",
                 }}
                 onMouseMove={mag.onMove}
                 onMouseLeave={mag.onLeave}
@@ -350,10 +350,10 @@ export default function HorizontalScrollSection({
               {/* Visual divider between item groups */}
               {items2 && items2.length > 0 && (
                 <>
-                  <div style={{ flexShrink: 0, width: "1px", height: "120px", background: "rgba(194,118,26,0.2)", alignSelf: "center", margin: "0 8px" }} />
+                  <div style={{ flexShrink: 0, width: "1px", height: "120px", background: "rgba(0,229,192,0.2)", alignSelf: "center", margin: "0 8px" }} />
                   {items2Label && (
                     <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", justifyContent: "center", width: "120px" }}>
-                      <p style={{ color: "#C2761A", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", lineHeight: 1.4 }}>{items2Label}</p>
+                      <p style={{ color: "#00E5C0", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", lineHeight: 1.4 }}>{items2Label}</p>
                     </div>
                   )}
                   {items2.map((item, i) => (
@@ -379,13 +379,13 @@ export default function HorizontalScrollSection({
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
-            <p style={{ fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: isNavy ? "rgba(244,232,213,0.40)" : "rgba(20,33,61,0.35)" }}>
+            <p style={{ fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: isNavy ? "rgba(255,255,255,0.40)" : "rgba(0,0,0,0.35)" }}>
               Scroll to explore
             </p>
             <motion.div
               animate={{ x: [0, 12, 0] }}
               transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-              style={{ width: "24px", height: "2px", background: "#C2761A", borderRadius: "2px", opacity: 0.6 }}
+              style={{ width: "24px", height: "2px", background: "#00E5C0", borderRadius: "2px", opacity: 0.6 }}
             />
           </div>
         </motion.div>

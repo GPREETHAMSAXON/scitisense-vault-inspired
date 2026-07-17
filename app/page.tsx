@@ -13,7 +13,6 @@ import ServiceTabNav             from "@/components/ServiceTabNav";
 import FixedBackgroundLayers     from "@/components/FixedBackgroundLayers";
 import AmbientColorController    from "@/components/AmbientColorController";
 import LightBeam                 from "@/components/LightBeam";
-import SectionCurtain            from "@/components/SectionCurtain";
 
 export default function Home() {
   return (
@@ -32,20 +31,14 @@ export default function Home() {
         {/* ── Trust & credential badges ── */}
         <TrustBadges />
 
-        {/* Curtain: white TrustBadges → navy ProblemStatement */}
-        <SectionCurtain fromColor="#FFFFFF" toColor="#14213D" height="28vh" />
-
         {/* ── Problem statement / pain points ── */}
         <ProblemStatement />
-
-        {/* Curtain: navy ProblemStatement → cream Services */}
-        <SectionCurtain fromColor="#14213D" toColor="#FBF3E7" height="28vh" />
 
         {/* ── ServiceNow / ITSM platform services ── */}
         <Services />
 
         {/* Light beam at Services → GenAI boundary */}
-        <LightBeam color="#C2761A" position="right" intensity={0.3} />
+        <LightBeam color="#00E5C0" position="right" intensity={0.3} />
 
         {/* ── Generative AI ── */}
         <ServiceLineSection
@@ -99,7 +92,7 @@ export default function Home() {
         />
 
         {/* Light beam at GenAI → Computer Vision boundary */}
-        <LightBeam color="#8B5CF6" position="left" intensity={0.25} />
+        <LightBeam color="#00E5C0" position="left" intensity={0.25} />
 
         {/* ── Computer Vision ── */}
         <ServiceLineSection
@@ -156,7 +149,7 @@ export default function Home() {
         />
 
         {/* Light beam at Computer Vision → Biomedical boundary */}
-        <LightBeam color="#3B82F6" position="right" intensity={0.25} />
+        <LightBeam color="#00E5C0" position="right" intensity={0.25} />
 
         {/* ── Biomedical Signal Processing ── */}
         <ServiceLineSection
@@ -190,7 +183,7 @@ export default function Home() {
         />
 
         {/* Light beam at Biomedical → IT Services boundary */}
-        <LightBeam color="#10B981" position="left" intensity={0.25} />
+        <LightBeam color="#00E5C0" position="left" intensity={0.25} />
 
         {/* ── IT Infrastructure & Engineering ── */}
         <ServiceLineSection
@@ -224,22 +217,16 @@ export default function Home() {
         />
 
         {/* Light beam at IT Services → Stats boundary */}
-        <LightBeam color="#C2761A" position="center" intensity={0.35} />
+        <LightBeam color="#00E5C0" position="center" intensity={0.35} />
 
         {/* ── Stats / Our Impact ── */}
         <Stats />
-
-        {/* Curtain: dark navy Stats → cool-white Logos */}
-        <SectionCurtain fromColor="#14213D" toColor="#F8FAFC" height="40vh" />
 
         {/* ── Client logos ── */}
         <Logos />
 
         {/* ── Homepage success stories ── */}
         <HomepageStories />
-
-        {/* Curtain: cool-white → navy CTABand */}
-        <SectionCurtain fromColor="#F8FAFC" toColor="#14213D" height="24vh" />
 
         {/* ── CTA band ── */}
         <CTABand />

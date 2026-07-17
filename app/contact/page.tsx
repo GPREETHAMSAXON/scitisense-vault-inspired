@@ -73,8 +73,8 @@ export default function Contact() {
             paddingTop: "160px",
             paddingBottom: "80px",
             backgroundImage:
-              "radial-gradient(ellipse at 25% 55%, rgba(34,211,238,0.07) 0%, transparent 55%), " +
-              "radial-gradient(ellipse at 75% 30%, rgba(129,140,248,0.07) 0%, transparent 55%)",
+              "radial-gradient(ellipse at 25% 55%, rgba(0,229,192,0.08) 0%, transparent 55%), " +
+              "radial-gradient(ellipse at 75% 30%, rgba(0,229,192,0.04) 0%, transparent 55%)",
           }}
         >
           <div className="container px-5 md:px-8">
@@ -128,7 +128,7 @@ export default function Contact() {
                         style={{ background: "var(--accent-dim)" }}
                       >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M5 13l4 4L19 7" stroke="#22D3EE" strokeWidth="2.2"
+                          <path d="M5 13l4 4L19 7" stroke="#00E5C0" strokeWidth="2.2"
                                 strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
@@ -161,8 +161,8 @@ export default function Contact() {
                           value={form.name}
                           onChange={handleChange}
                           style={inputBase}
-                          onFocus={(e) => (e.target.style.borderColor = "var(--accent)")}
-                          onBlur={(e)  => (e.target.style.borderColor = "var(--border)")}
+                          onFocus={(e) => { e.target.style.borderColor = "rgba(0,229,192,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(0,229,192,0.10)"; }}
+                          onBlur={(e)  => { e.target.style.borderColor = "var(--border)"; e.target.style.boxShadow = "none"; }}
                         />
                       </div>
 
@@ -183,8 +183,8 @@ export default function Contact() {
                           value={form.phone}
                           onChange={handleChange}
                           style={inputBase}
-                          onFocus={(e) => (e.target.style.borderColor = "var(--accent)")}
-                          onBlur={(e)  => (e.target.style.borderColor = "var(--border)")}
+                          onFocus={(e) => { e.target.style.borderColor = "rgba(0,229,192,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(0,229,192,0.10)"; }}
+                          onBlur={(e)  => { e.target.style.borderColor = "var(--border)"; e.target.style.boxShadow = "none"; }}
                         />
                       </div>
 
@@ -205,8 +205,8 @@ export default function Contact() {
                           value={form.email}
                           onChange={handleChange}
                           style={inputBase}
-                          onFocus={(e) => (e.target.style.borderColor = "var(--accent)")}
-                          onBlur={(e)  => (e.target.style.borderColor = "var(--border)")}
+                          onFocus={(e) => { e.target.style.borderColor = "rgba(0,229,192,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(0,229,192,0.10)"; }}
+                          onBlur={(e)  => { e.target.style.borderColor = "var(--border)"; e.target.style.boxShadow = "none"; }}
                         />
                       </div>
 
@@ -227,17 +227,17 @@ export default function Contact() {
                           value={form.message}
                           onChange={handleChange}
                           style={{ ...inputBase, resize: "vertical" }}
-                          onFocus={(e) => (e.target.style.borderColor = "var(--accent)")}
-                          onBlur={(e)  => (e.target.style.borderColor = "var(--border)")}
+                          onFocus={(e) => { e.target.style.borderColor = "rgba(0,229,192,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(0,229,192,0.10)"; }}
+                          onBlur={(e)  => { e.target.style.borderColor = "var(--border)"; e.target.style.boxShadow = "none"; }}
                         />
                       </div>
 
                       <motion.button
                         type="submit"
                         className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-sm font-semibold"
-                        style={{ backgroundColor: "var(--accent)", color: "#FFFFFF", boxShadow: "0 2px 0 rgba(140,80,10,0.3), 0 4px 12px rgba(194,118,26,0.25)" }}
-                        whileHover={noMotion ? {} : { scale: 1.02 }}
-                        whileTap={noMotion ? {}  : { scale: 0.97, y: 1, boxShadow: "0 1px 0 rgba(140,80,10,0.3)" } as Parameters<typeof motion.button>[0]["whileTap"]}
+                        style={{ backgroundColor: "var(--accent)", color: "#080808", fontWeight: 700, boxShadow: "0 0 30px rgba(0,229,192,0.3)" }}
+                        whileHover={noMotion ? {} : { scale: 1.02, boxShadow: "0 0 48px rgba(0,229,192,0.5)" }}
+                        whileTap={noMotion ? {}  : { scale: 0.97 }}
                         transition={{ duration: 0.2, ease }}
                       >
                         Send Message

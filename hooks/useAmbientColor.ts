@@ -2,13 +2,13 @@
 import { useEffect } from "react";
 
 const SECTION_COLORS = [
-  { id: "home",             bg: "#FBF3E7", accent: "#C2761A" },
-  { id: "services",         bg: "#F8F0E3", accent: "#C2761A" },
-  { id: "generative-ai",    bg: "#F5F0F8", accent: "#8B5CF6" },
-  { id: "computer-vision",  bg: "#EFF6FF", accent: "#3B82F6" },
-  { id: "biomedical",       bg: "#F0FDF4", accent: "#10B981" },
-  { id: "it-services",      bg: "#FFF7ED", accent: "#F97316" },
-  { id: "stats",            bg: "#14213D", accent: "#C2761A" },
+  { id: "home",             bg: "#080808", accent: "#00E5C0" },
+  { id: "services",         bg: "#080808", accent: "#00E5C0" },
+  { id: "generative-ai",    bg: "#080808", accent: "#00E5C0" },
+  { id: "computer-vision",  bg: "#080808", accent: "#00E5C0" },
+  { id: "biomedical",       bg: "#080808", accent: "#00E5C0" },
+  { id: "it-services",      bg: "#080808", accent: "#00E5C0" },
+  { id: "stats",            bg: "#080808", accent: "#00E5C0" },
 ] as const;
 
 export function useAmbientColor() {

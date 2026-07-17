@@ -107,42 +107,12 @@ const NAV_HREFS: Record<string, string> = {
 
 function LogoMark() {
   return (
-    <svg
-      width="26"
-      height="26"
-      viewBox="0 0 26 26"
-      fill="none"
-      aria-hidden="true"
+    <span
+      className="font-bold text-[1.05rem] tracking-[-0.03em]"
+      style={{ color: "#FFFFFF" }}
     >
-      <rect x="2" y="2" width="10" height="10" rx="2.5" fill="#C2761A" />
-      <rect
-        x="14"
-        y="2"
-        width="10"
-        height="10"
-        rx="2.5"
-        fill="#C2761A"
-        opacity="0.55"
-      />
-      <rect
-        x="2"
-        y="14"
-        width="10"
-        height="10"
-        rx="2.5"
-        fill="#C2761A"
-        opacity="0.25"
-      />
-      <rect
-        x="14"
-        y="14"
-        width="10"
-        height="10"
-        rx="2.5"
-        fill="#C2761A"
-        opacity="0.75"
-      />
-    </svg>
+      SCITISENSE <span style={{ color: "#00E5C0" }}>FUTURIZE</span>
+    </span>
   );
 }
 
@@ -160,7 +130,7 @@ export default function Navbar() {
 
   // ── Scroll detection ──────────────────────────────────────────────────────
   const { scrollY } = useScroll();
-  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 50));
+  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 60));
 
   // Close mobile menu when viewport goes ≥ 768px
   useEffect(() => {
@@ -226,15 +196,14 @@ export default function Navbar() {
         role="banner"
         style={{ position: "fixed", top: 0, left: 0, right: 0, width: "100%", zIndex: 300 }}
       >
-        {/* Frosted cream background — fades in on scroll or when mobile menu is open */}
+        {/* Dark frosted background — fades in on scroll or when mobile menu is open */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:           "rgba(251,243,231,0.92)",
+            background:           "rgba(8,8,8,0.85)",
             backdropFilter:       "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            boxShadow:            scrolled ? "0 1px 0 rgba(20,33,61,0.08), 0 4px 24px rgba(20,33,61,0.06)" : "none",
-            borderBottom:         scrolled ? "1px solid rgba(20,33,61,0.06)" : "none",
+            borderBottom:         scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
             willChange:           "opacity",
           }}
           initial={{ opacity: 0 }}
@@ -252,101 +221,72 @@ export default function Navbar() {
             aria-label="Scitisense Futurize home"
           >
             <LogoMark />
-            <span
-              className="font-semibold text-[1.05rem] tracking-[-0.022em]"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Scitisense{" "}
-              <span style={{ color: "var(--accent)" }}>Futurize</span>
-            </span>
           </a>
 
-          {/* Desktop nav links — segmented pill control ────────────────────── */}
+          {/* Desktop nav links — plain links, Vault style ───────────────────── */}
           <nav
             className="hidden md:flex items-center"
             aria-label="Primary navigation"
+            style={{ gap: "36px" }}
           >
-            <div
-              style={{
-                background:           "rgba(255,255,255,0.70)",
-                backdropFilter:       "blur(8px)",
-                WebkitBackdropFilter: "blur(8px)",
-                border:               "1px solid rgba(20,33,61,0.10)",
-                borderRadius:         "999px",
-                padding:              "6px",
-                display:              "flex",
-                gap:                  "2px",
-                boxShadow:            "0 2px 12px rgba(20,33,61,0.06)",
-              }}
-            >
-              {NAV_LINKS.map((link) =>
-                link === "Services" ? (
-                  <div
-                    key={link}
-                    ref={servicesTrigger}
-                    className="relative"
-                    onMouseEnter={openMega}
-                    onMouseLeave={closeMega}
-                  >
-                    <button
-                      style={{
-                        padding:      "10px 18px",
-                        borderRadius: "999px",
-                        fontSize:     "0.9rem",
-                        fontWeight:   600,
-                        color:        megaOpen ? "#14213D" : "#4A5568",
-                        background:   megaOpen ? "#FFFFFF"  : "transparent",
-                        boxShadow:    megaOpen ? "0 2px 8px rgba(20,33,61,0.10)" : "none",
-                        display:      "flex",
-                        alignItems:   "center",
-                        gap:          "4px",
-                        border:       "none",
-                        cursor:       "pointer",
-                        transition:   "all 0.2s ease",
-                      }}
-                      aria-haspopup="true"
-                      aria-expanded={megaOpen}
-                    >
-                      {link}
-                      <motion.span
-                        animate={{ rotate: megaOpen ? 180 : 0 }}
-                        transition={tr(0.28)}
-                        style={{ marginTop: "1px" }}
-                      >
-                        <ChevronDown size={13} strokeWidth={2.2} />
-                      </motion.span>
-                    </button>
-                  </div>
-                ) : (
-                  <a
-                    key={link}
-                    href={NAV_HREFS[link] ?? `#${link.toLowerCase().replace(/\s+/g, "-")}`}
+            {NAV_LINKS.map((link) =>
+              link === "Services" ? (
+                <div
+                  key={link}
+                  ref={servicesTrigger}
+                  className="relative"
+                  onMouseEnter={openMega}
+                  onMouseLeave={closeMega}
+                >
+                  <button
                     style={{
-                      padding:       "10px 18px",
-                      borderRadius:  "999px",
-                      fontSize:      "0.9rem",
-                      fontWeight:    600,
-                      color:         "#4A5568",
-                      textDecoration:"none",
-                      transition:    "all 0.2s ease",
+                      fontSize:     "0.875rem",
+                      fontWeight:   500,
+                      color:        megaOpen ? "#FFFFFF" : "rgba(255,255,255,0.65)",
+                      background:   "transparent",
+                      display:      "flex",
+                      alignItems:   "center",
+                      gap:          "4px",
+                      border:       "none",
+                      cursor:       "pointer",
+                      transition:   "color 0.2s ease",
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#FFFFFF";
-                      e.currentTarget.style.color      = "#14213D";
-                      e.currentTarget.style.boxShadow  = "0 2px 8px rgba(20,33,61,0.10)";
-                      setMegaOpen(false);
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "transparent";
-                      e.currentTarget.style.color      = "#4A5568";
-                      e.currentTarget.style.boxShadow  = "none";
-                    }}
+                    aria-haspopup="true"
+                    aria-expanded={megaOpen}
                   >
                     {link}
-                  </a>
-                )
-              )}
-            </div>
+                    <motion.span
+                      animate={{ rotate: megaOpen ? 180 : 0 }}
+                      transition={tr(0.28)}
+                      style={{ marginTop: "1px" }}
+                    >
+                      <ChevronDown size={13} strokeWidth={2.2} />
+                    </motion.span>
+                  </button>
+                </div>
+              ) : (
+                <a
+                  key={link}
+                  href={NAV_HREFS[link] ?? `#${link.toLowerCase().replace(/\s+/g, "-")}`}
+                  style={{
+                    fontSize:      "0.875rem",
+                    fontWeight:    500,
+                    color:         "rgba(255,255,255,0.65)",
+                    textDecoration:"none",
+                    transition:    "color 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#FFFFFF";
+                    setMegaOpen(false);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "rgba(255,255,255,0.65)";
+                  }}
+                >
+                  {link}
+                </a>
+              )
+            )}
           </nav>
 
           {/* Right side ────────────────────────────────────────────────────── */}
@@ -354,19 +294,28 @@ export default function Navbar() {
             {/* Magnetic CTA — desktop only */}
             <motion.a
               href="/contact"
-              className="hidden md:flex items-center gap-2 px-5 py-[0.56rem] text-sm font-semibold rounded-full"
+              className="hidden md:flex items-center gap-2 px-6 py-[0.62rem] text-sm font-medium rounded-full"
               style={{
-                x:          btnX,
-                y:          btnY,
-                backgroundColor: "var(--accent)",
-                color:      "#FFFFFF",
-                boxShadow:  "0 2px 0 rgba(140,80,10,0.4), 0 4px 16px rgba(194,118,26,0.3)",
+                x:            btnX,
+                y:            btnY,
+                background:   "transparent",
+                border:       "1px solid rgba(255,255,255,0.25)",
+                color:        "#FFFFFF",
               }}
               onMouseMove={onBtnMove}
               onMouseLeave={onBtnLeave}
-              whileHover={reducedMotion ? {} : { scale: 1.045 }}
-              whileTap={reducedMotion ? {} : { scale: 0.96, y: 1, boxShadow: "0 1px 0 rgba(140,80,10,0.3)" } as Parameters<typeof motion.a>[0]["whileTap"]}
-              transition={tr(0.25)}
+              whileHover={
+                reducedMotion
+                  ? {}
+                  : {
+                      scale: 1.04,
+                      backgroundColor: "#00E5C0",
+                      borderColor: "#00E5C0",
+                      color: "#080808",
+                    }
+              }
+              whileTap={reducedMotion ? {} : { scale: 0.96 }}
+              transition={tr(0.3)}
               aria-label="Book a consultation"
             >
               Book a Consult
@@ -376,7 +325,7 @@ export default function Navbar() {
             {/* Hamburger — mobile only */}
             <button
               className="md:hidden p-2 rounded-lg"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "rgba(255,255,255,0.65)" }}
               onClick={() => setMobileOpen((v) => !v)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
@@ -430,7 +379,7 @@ export default function Navbar() {
                     <div key={link}>
                       <button
                         className="w-full flex items-center justify-between px-3 py-3 text-sm rounded-lg transition-colors duration-200"
-                        style={{ color: "var(--text-secondary)" }}
+                        style={{ color: "rgba(255,255,255,0.65)" }}
                         onClick={() => setMobileServicesOpen((v) => !v)}
                         aria-expanded={mobileServicesOpen}
                       >
@@ -458,14 +407,14 @@ export default function Navbar() {
                                   key={item.id}
                                   href={`#${item.id}`}
                                   className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors duration-200"
-                                  style={{ color: "var(--text-secondary)" }}
+                                  style={{ color: "rgba(255,255,255,0.65)" }}
                                   onClick={() => setMobileOpen(false)}
                                 >
                                   <span
                                     className="w-7 h-7 rounded-md flex items-center justify-center shrink-0"
                                     style={{
-                                      background: "var(--accent-dim)",
-                                      color: "var(--accent)",
+                                      background: "rgba(0,229,192,0.08)",
+                                      color: "#00E5C0",
                                     }}
                                   >
                                     <item.icon size={14} />
@@ -483,7 +432,7 @@ export default function Navbar() {
                       key={link}
                       href={NAV_HREFS[link] ?? `#${link.toLowerCase().replace(/\s+/g, "-")}`}
                       className="px-3 py-3 text-sm rounded-lg transition-colors duration-200"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "rgba(255,255,255,0.65)" }}
                       onClick={() => setMobileOpen(false)}
                     >
                       {link}
@@ -500,8 +449,8 @@ export default function Navbar() {
                     href="/contact"
                     className="w-full flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold rounded-full"
                     style={{
-                      backgroundColor: "var(--accent)",
-                      color: "#FFFFFF",
+                      backgroundColor: "#00E5C0",
+                      color: "#080808",
                     }}
                     onClick={() => setMobileOpen(false)}
                   >
@@ -527,9 +476,10 @@ export default function Navbar() {
               top:          "5.5rem",
               left:         megaLeft,
               width:        "640px",
-              background:   "#FFFFFF",
+              background:   "#0F0F0F",
+              border:       "1px solid rgba(255,255,255,0.08)",
               borderRadius: "16px",
-              boxShadow:    "0 24px 60px rgba(20,33,61,0.25), 0 0 0 1px rgba(20,33,61,0.08)",
+              boxShadow:    "0 24px 60px rgba(0,0,0,0.8)",
               padding:      "32px",
             }}
             onMouseEnter={openMega}
@@ -542,7 +492,7 @@ export default function Navbar() {
             {/* Header label */}
             <p
               style={{
-                color:         "#C2761A",
+                color:         "#00E5C0",
                 fontSize:      "0.75rem",
                 fontWeight:    700,
                 letterSpacing: "0.1em",
@@ -567,7 +517,7 @@ export default function Navbar() {
                     textDecoration: "none",
                     transition:     "background 0.15s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(194,118,26,0.05)")}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,229,192,0.06)")}
                   onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                   onClick={() => setMegaOpen(false)}
                 >
@@ -577,9 +527,10 @@ export default function Navbar() {
                     style={{
                       width:        "36px",
                       height:       "36px",
-                      background:   "rgba(194,118,26,0.10)",
+                      background:   "rgba(0,229,192,0.08)",
+                      border:       "1px solid rgba(0,229,192,0.15)",
                       borderRadius: "8px",
-                      color:        "#C2761A",
+                      color:        "#00E5C0",
                     }}
                   >
                     <item.icon size={18} strokeWidth={1.8} />
@@ -589,13 +540,13 @@ export default function Navbar() {
                   <span>
                     <span
                       className="block"
-                      style={{ fontSize: "0.875rem", fontWeight: 600, color: "#14213D" }}
+                      style={{ fontSize: "0.875rem", fontWeight: 600, color: "#FFFFFF" }}
                     >
                       {item.name}
                     </span>
                     <span
                       className="block"
-                      style={{ fontSize: "0.78rem", color: "#4A5568", marginTop: "2px", lineHeight: 1.5 }}
+                      style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.55)", marginTop: "2px", lineHeight: 1.5 }}
                     >
                       {item.desc}
                     </span>
@@ -605,11 +556,11 @@ export default function Navbar() {
             </div>
 
             {/* Footer CTA */}
-            <div style={{ borderTop: "1px solid rgba(20,33,61,0.08)", padding: "16px 16px 0" }}>
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "16px 16px 0" }}>
               <a
                 href="/contact"
                 className="flex items-center gap-1.5 text-sm font-medium transition-opacity duration-200 hover:opacity-80"
-                style={{ color: "#C2761A" }}
+                style={{ color: "#00E5C0" }}
                 onClick={() => setMegaOpen(false)}
               >
                 Book a free discovery call

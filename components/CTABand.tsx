@@ -13,37 +13,17 @@ export default function CTABand() {
       id="cta"
       className="relative overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #14213D 0%, #2A3F66 100%)",
+        background: "#080808",
         padding: "100px 24px",
       }}
     >
-      {/* Centre ambient glow */}
+      {/* Large teal radial glow */}
       <div
         aria-hidden="true"
         style={{
           position:      "absolute",
-          top:           "-40%",
-          left:          "50%",
-          transform:     "translateX(-50%)",
-          width:         "700px",
-          height:        "700px",
-          borderRadius:  "50%",
-          background:    "radial-gradient(circle, rgba(194,118,26,0.10) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      {/* Top-right accent glow */}
-      <div
-        aria-hidden="true"
-        style={{
-          position:      "absolute",
-          top:           "-20%",
-          right:         "-10%",
-          width:         "500px",
-          height:        "500px",
-          borderRadius:  "50%",
-          background:    "radial-gradient(circle, rgba(194,118,26,0.15) 0%, transparent 60%)",
-          filter:        "blur(60px)",
+          inset:         0,
+          background:    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,229,192,0.10) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -79,9 +59,9 @@ export default function CTABand() {
             color:      "#FFFFFF",
           }}
         >
-          Ready to Transform Your
+          Ready to Transform
           <br className="hidden sm:block" />
-          {" "}IT Operations?
+          {" "}<span style={{ color: "#00E5C0" }}>Your IT Operations?</span>
         </h2>
 
         {/* Subtext */}
@@ -89,7 +69,7 @@ export default function CTABand() {
           className="mb-10"
           style={{
             fontSize:   "clamp(1rem, 1.8vw, 1.15rem)",
-            color:      "rgba(255,255,255,0.9)",
+            color:      "rgba(255,255,255,0.5)",
             lineHeight: 1.7,
             maxWidth:   "560px",
             margin:     "0 auto 40px",
@@ -101,21 +81,21 @@ export default function CTABand() {
         {/* Buttons */}
         <div className="flex items-center gap-4 flex-wrap justify-center">
 
-          {/* White filled */}
+          {/* Teal filled primary */}
           <motion.a
             href="/contact"
             className="flex items-center gap-2 font-bold"
             style={{
-              background:   "#FFFFFF",
-              color:        "#C2761A",
+              background:   "#00E5C0",
+              color:        "#080808",
               fontWeight:   700,
               padding:      "14px 32px",
               borderRadius: "999px",
               fontSize:     "0.95rem",
-              boxShadow:    "0 2px 0 rgba(140,80,10,0.20), 0 4px 12px rgba(0,0,0,0.12)",
+              boxShadow:    "0 0 40px rgba(0,229,192,0.3)",
             }}
-            whileHover={noMotion ? {} : { scale: 1.04, boxShadow: "0 2px 0 rgba(140,80,10,0.20), 0 8px 24px rgba(0,0,0,0.18)" }}
-            whileTap={noMotion ? {} : { scale: 0.97, y: 1, boxShadow: "0 1px 0 rgba(140,80,10,0.20)" } as Parameters<typeof motion.a>[0]["whileTap"]}
+            whileHover={noMotion ? {} : { scale: 1.05, boxShadow: "0 0 56px rgba(0,229,192,0.5)" }}
+            whileTap={noMotion ? {} : { scale: 0.97 }}
             transition={{ duration: 0.2, ease }}
           >
             Book a Free Consult
@@ -129,7 +109,7 @@ export default function CTABand() {
             style={{
               background:   "transparent",
               color:        "#FFFFFF",
-              border:       "2px solid rgba(255,255,255,0.6)",
+              border:       "1px solid rgba(255,255,255,0.2)",
               padding:      "14px 32px",
               borderRadius: "999px",
               fontSize:     "0.95rem",
@@ -137,7 +117,7 @@ export default function CTABand() {
             whileHover={
               noMotion
                 ? {}
-                : { scale: 1.04, backgroundColor: "rgba(255,255,255,0.10)", borderColor: "#ffffff" }
+                : { scale: 1.04, borderColor: "#00E5C0", color: "#00E5C0" }
             }
             whileTap={noMotion ? {} : { scale: 0.97 }}
             transition={{ duration: 0.2, ease }}

@@ -80,8 +80,8 @@ export default function AboutUs() {
             paddingTop: "160px",
             paddingBottom: "100px",
             backgroundImage:
-              "radial-gradient(ellipse at 20% 60%, rgba(194,118,26,0.06) 0%, transparent 55%), " +
-              "radial-gradient(ellipse at 80% 30%, rgba(20,33,61,0.05) 0%, transparent 55%)",
+              "radial-gradient(ellipse at 20% 60%, rgba(0,229,192,0.08) 0%, transparent 55%), " +
+              "radial-gradient(ellipse at 80% 30%, rgba(0,229,192,0.04) 0%, transparent 55%)",
           }}
         >
           <div className="container px-5 md:px-8">
@@ -167,9 +167,9 @@ export default function AboutUs() {
                   style={{ background: "var(--accent-dim)" }}
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#C2761A" strokeWidth="1.8" strokeLinejoin="round"/>
-                    <path d="M2 17l10 5 10-5" stroke="#C2761A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 12l10 5 10-5" stroke="#C2761A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"/>
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#00E5C0" strokeWidth="1.8" strokeLinejoin="round"/>
+                    <path d="M2 17l10 5 10-5" stroke="#00E5C0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 12l10 5 10-5" stroke="#00E5C0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"/>
                   </svg>
                 </div>
                 <p
@@ -213,9 +213,9 @@ export default function AboutUs() {
                   style={{ background: "var(--accent-dim)" }}
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <circle cx="12" cy="12" r="3" stroke="#C2761A" strokeWidth="1.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="#C2761A" strokeWidth="1.8" strokeLinecap="round"/>
-                    <circle cx="12" cy="12" r="9" stroke="#C2761A" strokeWidth="1.3" opacity="0.35"/>
+                    <circle cx="12" cy="12" r="3" stroke="#00E5C0" strokeWidth="1.8"/>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="#00E5C0" strokeWidth="1.8" strokeLinecap="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="#00E5C0" strokeWidth="1.3" opacity="0.35"/>
                   </svg>
                 </div>
                 <p

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
+import Starfield from "@/components/Starfield";
 import SmoothScrollProvider from "@/lib/lenis";
 import PageTransition from "@/components/PageTransition";
 import ScrollProgressLine from "@/components/ScrollProgressLine";
@@ -73,7 +74,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0B0F",
+  themeColor: "#080808",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -97,6 +98,7 @@ export default function RootLayout({
         />
         <SmoothScrollProvider>
           <CustomCursor />
+          <Starfield />
           <ScrollProgressLine />
           <PageTransition>{children}</PageTransition>
         </SmoothScrollProvider>

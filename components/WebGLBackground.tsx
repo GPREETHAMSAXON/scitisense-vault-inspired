@@ -69,9 +69,9 @@ function circuitShape(): Float32Array {
 
 function makeColors(): Float32Array {
   const colors = new Float32Array(N * 3);
-  const bs  = new THREE.Color("#C2761A"); // butterscotch 60%
-  const nav = new THREE.Color("#14213D"); // navy         25%
-  const amb = new THREE.Color("#E0941F"); // amber        15%
+  const bs  = new THREE.Color("#00E5C0"); // butterscotch 60%
+  const nav = new THREE.Color("#080808"); // navy         25%
+  const amb = new THREE.Color("#00C4A6"); // amber        15%
   for (let i = 0; i < N; i++) {
     const rng = Math.random();
     const c   = rng < 0.6 ? bs : rng < 0.85 ? nav : amb;
@@ -222,7 +222,7 @@ function ParticleField() {
         />
       </points>
       <lineSegments geometry={linesGeo}>
-        <lineBasicMaterial color="#C2761A" transparent opacity={0.03} />
+        <lineBasicMaterial color="#00E5C0" transparent opacity={0.03} />
       </lineSegments>
     </group>
   );
@@ -233,7 +233,7 @@ export default function WebGLBackground({ noMotion }: { noMotion: boolean }) {
   const creamBg: React.CSSProperties = {
     position: "absolute",
     inset:    0,
-    background: "linear-gradient(160deg, #FBF3E7 0%, #F4E8D5 60%, #FBF3E7 100%)",
+    background: "linear-gradient(160deg, #080808 0%, #FFFFFF 60%, #080808 100%)",
   };
 
   if (noMotion) return <div style={creamBg} />;

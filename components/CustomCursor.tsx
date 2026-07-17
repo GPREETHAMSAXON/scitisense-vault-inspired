@@ -40,7 +40,7 @@ export default function CustomCursor() {
       d.style.width = "7px"; d.style.height = "7px"; d.style.opacity = "1";
       r.style.width = "28px"; r.style.height = "28px";
       r.style.background = "transparent";
-      r.style.borderColor = "rgba(194,118,26,0.30)";
+      r.style.borderColor = "rgba(0,229,192,0.30)";
       t.style.opacity = "0";
     };
 
@@ -65,20 +65,20 @@ export default function CustomCursor() {
       if (isCta) {
         d.style.opacity = "0";
         r.style.width = "64px"; r.style.height = "64px";
-        r.style.background = "rgba(194,118,26,0.07)";
-        r.style.borderColor = "rgba(194,118,26,0.6)";
+        r.style.background = "rgba(0,229,192,0.07)";
+        r.style.borderColor = "rgba(0,229,192,0.6)";
         t.style.opacity = "1";
       } else if (isCard) {
         d.style.width = "5px"; d.style.height = "5px"; d.style.opacity = "1";
         r.style.width = "52px"; r.style.height = "52px";
-        r.style.background = "rgba(194,118,26,0.04)";
-        r.style.borderColor = "rgba(194,118,26,0.35)";
+        r.style.background = "rgba(0,229,192,0.04)";
+        r.style.borderColor = "rgba(0,229,192,0.35)";
         t.style.opacity = "0";
       } else if (isPointer) {
         d.style.opacity = "0";
         r.style.width = "44px"; r.style.height = "44px";
-        r.style.background = "rgba(194,118,26,0.05)";
-        r.style.borderColor = "rgba(194,118,26,0.6)";
+        r.style.background = "rgba(0,229,192,0.05)";
+        r.style.borderColor = "rgba(0,229,192,0.6)";
         t.style.opacity = "0";
       } else {
         setDefault();
@@ -97,7 +97,7 @@ export default function CustomCursor() {
         "width:0",
         "height:0",
         "border-radius:50%",
-        "background:rgba(194,118,26,0.3)",
+        "background:rgba(0,229,192,0.3)",
         "transform:translate(-50%,-50%)",
         "pointer-events:none",
         "z-index:9997",
@@ -140,7 +140,7 @@ export default function CustomCursor() {
             width:        "7px",
             height:       "7px",
             borderRadius: "999px",
-            background:   "#C2761A",
+            background:   "#00E5C0",
             transition:   "width 0.3s ease, height 0.3s ease, opacity 0.3s ease",
           }}
         />
@@ -166,9 +166,9 @@ export default function CustomCursor() {
             width:        "28px",
             height:       "28px",
             borderRadius: "999px",
-            border:       "1.5px solid rgba(255,255,255,0.85)",
-            background:   "rgba(255,255,255,0.08)",
-            mixBlendMode: "difference",
+            border:       "1.5px solid rgba(0,229,192,0.5)",
+            background:   "rgba(0,229,192,0.06)",
+            mixBlendMode: "normal",
             display:      "flex",
             alignItems:   "center",
             justifyContent: "center",
@@ -180,7 +180,7 @@ export default function CustomCursor() {
             style={{
               fontSize:     "0.48rem",
               fontWeight:   700,
-              color:        "#C2761A",
+              color:        "#00E5C0",
               letterSpacing:"0.12em",
               opacity:      0,
               transition:   "opacity 0.2s ease",

@@ -34,17 +34,20 @@ export default function ProblemStatement() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ background: "#14213D", paddingBlock: "120px" }}
+      style={{ background: "#080808", paddingBlock: "120px" }}
     >
-      {/* ── Depth glows ── */}
+      {/* ── Ambient teal glow ── */}
       <div aria-hidden="true" style={{
         position:   "absolute",
-        inset:      0,
+        top:        "50%",
+        left:       "50%",
+        transform:  "translate(-50%, -50%)",
+        width:      "600px",
+        height:     "600px",
         zIndex:     0,
         pointerEvents: "none",
-        background:
-          "radial-gradient(ellipse at 15% 30%, rgba(194,118,26,0.06) 0%, transparent 50%), " +
-          "radial-gradient(ellipse at 85% 70%, rgba(42,63,102,0.35) 0%, transparent 55%)",
+        background: "radial-gradient(circle, rgba(0,229,192,0.04) 0%, transparent 70%)",
+        filter:     "blur(120px)",
       }} />
 
       {/* ── Grain ── */}
@@ -74,7 +77,7 @@ export default function ProblemStatement() {
             fontWeight:    700,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
-            color:         "#C2761A",
+            color:         "#00E5C0",
             marginBottom:  "20px",
           }}
         >
@@ -90,31 +93,30 @@ export default function ProblemStatement() {
           style={{
             fontSize:      "clamp(2rem, 4vw, 3.2rem)",
             fontWeight:    800,
-            color:         "#F4E8D5",
+            color:         "#FFFFFF",
             lineHeight:    1.08,
             letterSpacing: "-0.025em",
             marginBottom:  "64px",
           }}
         >
-          IT Operations Shouldn&apos;t Feel Like This.
+          IT Operations Shouldn&apos;t Feel Like <span style={{ color: "#00E5C0" }}>This.</span>
         </motion.h2>
 
         {/* ── Pain point cards ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ perspective: "1200px" }}>
-          {PAIN_POINTS.map(({ icon: Icon, color, title, body }, i) => (
+          {PAIN_POINTS.map(({ icon: Icon, title, body }, i) => (
             <motion.div
               key={title}
               initial={noMotion ? false : { opacity: 0, rotateX: 15, y: 40 }}
               whileInView={noMotion ? undefined : { opacity: 1, rotateX: 0, y: 0 }}
               viewport={{ once: false, margin: "-60px" }}
               transition={{ duration: 0.65, delay: i * 0.12, ease }}
+              className="card-vault"
               style={{
-                background:    "rgba(255,255,255,0.04)",
-                border:        "1px solid rgba(244,232,213,0.10)",
+                background:    "rgba(255,255,255,0.03)",
+                border:        "1px solid rgba(255,255,255,0.08)",
                 borderRadius:  "20px",
                 padding:       "36px 32px",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
                 textAlign:     "left",
                 transformOrigin: "50% 0%",
               }}
@@ -124,20 +126,21 @@ export default function ProblemStatement() {
                 width:          "52px",
                 height:         "52px",
                 borderRadius:   "14px",
-                background:     `rgba(${color === "#EF4444" ? "239,68,68" : "245,158,11"},0.12)`,
+                background:     "rgba(0,229,192,0.08)",
+                border:         "1px solid rgba(0,229,192,0.15)",
                 display:        "flex",
                 alignItems:     "center",
                 justifyContent: "center",
                 marginBottom:   "20px",
               }}>
-                <Icon size={24} style={{ color }} strokeWidth={1.8} />
+                <Icon size={24} style={{ color: "#00E5C0" }} strokeWidth={1.8} />
               </div>
 
               {/* Title */}
               <h3 style={{
                 fontSize:      "1.05rem",
                 fontWeight:    700,
-                color:         "#F4E8D5",
+                color:         "#FFFFFF",
                 marginBottom:  "12px",
                 lineHeight:    1.3,
               }}>
@@ -147,7 +150,7 @@ export default function ProblemStatement() {
               {/* Body */}
               <p style={{
                 fontSize:   "0.9rem",
-                color:      "rgba(244,232,213,0.62)",
+                color:      "rgba(255,255,255,0.55)",
                 lineHeight: 1.72,
                 margin:     0,
               }}>
@@ -168,7 +171,7 @@ export default function ProblemStatement() {
           <p style={{
             fontSize:   "1.1rem",
             fontStyle:  "italic",
-            color:      "rgba(244,232,213,0.70)",
+            color:      "rgba(255,255,255,0.4)",
             lineHeight: 1.6,
             marginBottom: "20px",
           }}>
@@ -180,7 +183,7 @@ export default function ProblemStatement() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              style={{ display: "inline-block", color: "#C2761A" }}
+              style={{ display: "inline-block", color: "#00E5C0" }}
               aria-hidden="true"
             >
               <ChevronDown size={28} strokeWidth={1.8} />

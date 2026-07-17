@@ -27,7 +27,7 @@ const PALETTE: [number, number, number][] = [
   [224, 148, 31],   // amber
 ];
 
-const BASE_BG = "linear-gradient(160deg, #FBF3E7 0%, #F0E8D8 50%, #FBF3E7 100%)";
+const BASE_BG = "linear-gradient(160deg, #080808 0%, #F0E8D8 50%, #080808 100%)";
 
 export default function CanvasBackground({ noMotion }: { noMotion: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -157,7 +157,7 @@ export default function CanvasBackground({ noMotion }: { noMotion: boolean }) {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(194,118,26,${alpha})`;
+            ctx.strokeStyle = `rgba(0,229,192,${alpha})`;
             ctx.lineWidth   = 0.6;
             ctx.stroke();
           }

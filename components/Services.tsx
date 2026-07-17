@@ -201,20 +201,20 @@ function ServiceCard({ card, index }: { card: CardData; index: number }) {
           rotateX:         rotX,
           rotateY:         rotY,
           transformStyle:  "preserve-3d",
-          background:      "#FFFFFF",
-          border:          "1px solid rgba(0,0,0,0.08)",
-          boxShadow:       "0 2px 16px rgba(0,0,0,0.06)",
+          background:      "#0F0F0F",
+          border:          "1px solid rgba(255,255,255,0.08)",
+          boxShadow:       "0 4px 24px rgba(0,0,0,0.8)",
           borderRadius:    "16px",
           transition:      "box-shadow 0.25s ease",
         }}
         onMouseMove={onMove}
         onMouseEnter={(e) => {
           onEnter();
-          (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(194,118,26,0.12)";
+          (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 48px rgba(0,229,192,0.10)";
         }}
         onMouseLeave={(e) => {
           onLeave();
-          (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 16px rgba(0,0,0,0.06)";
+          (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.8)";
         }}
       >
         {/* ── Cursor-following radial glow ── */}
@@ -223,7 +223,7 @@ function ServiceCard({ card, index }: { card: CardData; index: number }) {
           className="absolute inset-0 rounded-[16px] pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle at var(--gx, 50%) var(--gy, 35%), rgba(194,118,26,0.09), transparent 65%)",
+              "radial-gradient(circle at var(--gx, 50%) var(--gy, 35%), rgba(0,229,192,0.09), transparent 65%)",
             opacity: 0,
             transition: "opacity 0.28s",
           }}
@@ -235,7 +235,7 @@ function ServiceCard({ card, index }: { card: CardData; index: number }) {
           className="absolute inset-x-0 top-0 h-[1px] pointer-events-none"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(194,118,26,0.35) 50%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(0,229,192,0.35) 50%, transparent 100%)",
             opacity: 0,
             transition: "opacity 0.35s",
           }}
@@ -246,7 +246,7 @@ function ServiceCard({ card, index }: { card: CardData; index: number }) {
           {/* Icon badge */}
           <div
             className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 shrink-0"
-            style={{ background: "rgba(194,118,26,0.10)", color: "#C2761A" }}
+            style={{ background: "rgba(0,229,192,0.10)", color: "#00E5C0" }}
           >
             <card.Icon />
           </div>
@@ -257,7 +257,7 @@ function ServiceCard({ card, index }: { card: CardData; index: number }) {
             style={{
               fontSize: "1.05rem",
               lineHeight: 1.3,
-              color: "#14213D",
+              color: "#FFFFFF",
             }}
           >
             {card.title}
@@ -266,7 +266,7 @@ function ServiceCard({ card, index }: { card: CardData; index: number }) {
           {/* Description */}
           <p
             className="text-sm flex-grow mb-6"
-            style={{ color: "#4A5568", lineHeight: 1.72 }}
+            style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.72 }}
           >
             {card.desc}
           </p>
@@ -275,7 +275,7 @@ function ServiceCard({ card, index }: { card: CardData; index: number }) {
           <a
             href={card.href}
             className="inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-200 hover:opacity-70 mt-auto w-fit"
-            style={{ color: "#C2761A" }}
+            style={{ color: "#00E5C0" }}
           >
             Learn More
             <ArrowRight size={13} strokeWidth={2.5} />
@@ -298,7 +298,7 @@ function CapabilityTile({ tile, index }: { tile: TileData; index: number }) {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     glowRef.current.style.background =
-      `radial-gradient(180px circle at ${x}px ${y}px, rgba(194,118,26,0.12), transparent 70%)`;
+      `radial-gradient(180px circle at ${x}px ${y}px, rgba(0,229,192,0.12), transparent 70%)`;
     glowRef.current.style.opacity = "1";
   };
 
@@ -326,12 +326,9 @@ function CapabilityTile({ tile, index }: { tile: TileData; index: number }) {
         borderRadius:   "20px",
         padding:        "32px 28px",
         minHeight:      "160px",
-        background:     "#FFFFFF",
-        border:         "1px solid rgba(20,33,61,0.08)",
-        boxShadow:
-          "0 1px 3px rgba(20,33,61,0.04), " +
-          "0 4px 12px rgba(20,33,61,0.06), " +
-          "0 12px 28px rgba(20,33,61,0.04)",
+        background:     "rgba(255,255,255,0.03)",
+        border:         "1px solid rgba(255,255,255,0.07)",
+        boxShadow:      "0 4px 24px rgba(0,0,0,0.5)",
         cursor:         "pointer",
         display:        "flex",
         flexDirection:  "column",
@@ -361,13 +358,13 @@ function CapabilityTile({ tile, index }: { tile: TileData; index: number }) {
           position:     "absolute",
           inset:        0,
           borderRadius: "20px",
-          border:       "1px solid rgba(194,118,26,0)",
+          border:       "1px solid rgba(0,229,192,0)",
           pointerEvents:"none",
           zIndex:       1,
         }}
         whileHover={{
-          border:     "1px solid rgba(194,118,26,0.35)",
-          boxShadow:  "0 8px 32px rgba(194,118,26,0.10), inset 0 1px 0 rgba(255,255,255,0.8)",
+          border:     "1px solid rgba(0,229,192,0.35)",
+          boxShadow:  "0 8px 32px rgba(0,229,192,0.10), inset 0 1px 0 rgba(255,255,255,0.8)",
         }}
         transition={{ duration: 0.3 }}
       />
@@ -380,15 +377,15 @@ function CapabilityTile({ tile, index }: { tile: TileData; index: number }) {
           width:          "52px",
           height:         "52px",
           borderRadius:   "14px",
-          background:     "linear-gradient(135deg, rgba(194,118,26,0.12) 0%, rgba(194,118,26,0.06) 100%)",
-          border:         "1px solid rgba(194,118,26,0.15)",
+          background:     "linear-gradient(135deg, rgba(0,229,192,0.12) 0%, rgba(0,229,192,0.06) 100%)",
+          border:         "1px solid rgba(0,229,192,0.15)",
           display:        "flex",
           alignItems:     "center",
           justifyContent: "center",
           flexShrink:     0,
         }}
       >
-        <tile.icon size={22} strokeWidth={1.6} style={{ color: "#C2761A" }} />
+        <tile.icon size={22} strokeWidth={1.6} style={{ color: "#00E5C0" }} />
       </div>
 
       {/* Text content */}
@@ -396,7 +393,7 @@ function CapabilityTile({ tile, index }: { tile: TileData; index: number }) {
         <p style={{
           fontSize:      "1rem",
           fontWeight:    700,
-          color:         "#14213D",
+          color:         "#FFFFFF",
           marginBottom:  "8px",
           letterSpacing: "-0.01em",
           lineHeight:    1.3,
@@ -406,7 +403,7 @@ function CapabilityTile({ tile, index }: { tile: TileData; index: number }) {
         <p style={{
           fontSize:   "0.85rem",
           lineHeight: 1.65,
-          color:      "#4A5568",
+          color:      "rgba(255,255,255,0.55)",
           fontWeight: 400,
         }}>
           {tile.desc}
@@ -421,7 +418,7 @@ function CapabilityTile({ tile, index }: { tile: TileData; index: number }) {
           left:            0,
           right:           0,
           height:          "3px",
-          background:      "linear-gradient(90deg, #C2761A, #E0941F)",
+          background:      "linear-gradient(90deg, #00E5C0, #00C4A6)",
           borderRadius:    "0 0 20px 20px",
           scaleX:          0,
           transformOrigin: "left",
@@ -440,7 +437,7 @@ function CapabilityTile({ tile, index }: { tile: TileData; index: number }) {
           width:        "6px",
           height:       "6px",
           borderRadius: "50%",
-          background:   "#C2761A",
+          background:   "#00E5C0",
           opacity:      0,
           zIndex:       2,
         }}
@@ -473,10 +470,10 @@ export default function Services() {
 
       {/* ── Decorative blobs (parallax) ── */}
       <ParallaxSection speed={0.2} style={{ position: "absolute", top: 0, right: "-60px", width: "400px", height: "400px", pointerEvents: "none", zIndex: 0 }}>
-        <div aria-hidden="true" style={{ width: "100%", height: "100%", background: "radial-gradient(ellipse, rgba(194,118,26,0.02) 0%, transparent 65%)", filter: "blur(40px)", borderRadius: "50%" }} />
+        <div aria-hidden="true" style={{ width: "100%", height: "100%", background: "radial-gradient(ellipse, rgba(0,229,192,0.02) 0%, transparent 65%)", filter: "blur(40px)", borderRadius: "50%" }} />
       </ParallaxSection>
       <ParallaxSection speed={0.35} style={{ position: "absolute", bottom: "80px", left: "-40px", width: "300px", height: "300px", pointerEvents: "none", zIndex: 0 }}>
-        <div aria-hidden="true" style={{ width: "100%", height: "100%", background: "radial-gradient(ellipse, rgba(194,118,26,0.02) 0%, transparent 65%)", filter: "blur(40px)", borderRadius: "50%" }} />
+        <div aria-hidden="true" style={{ width: "100%", height: "100%", background: "radial-gradient(ellipse, rgba(0,229,192,0.02) 0%, transparent 65%)", filter: "blur(40px)", borderRadius: "50%" }} />
       </ParallaxSection>
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
@@ -561,7 +558,7 @@ export default function Services() {
                 transform:    "translateX(-50%)",
                 width:        "300px",
                 height:       "60px",
-                background:   "radial-gradient(ellipse, rgba(194,118,26,0.06) 0%, transparent 70%)",
+                background:   "radial-gradient(ellipse, rgba(0,229,192,0.06) 0%, transparent 70%)",
                 filter:       "blur(10px)",
                 borderRadius: "50%",
                 zIndex:       0,
@@ -670,7 +667,7 @@ export default function Services() {
               fontWeight:    700,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color:         "#C2761A",
+              color:         "#00E5C0",
               marginBottom:  "12px",
             }}
             {...fadeUp()}
@@ -681,7 +678,7 @@ export default function Services() {
             style={{
               fontSize:      "clamp(1.4rem, 2.5vw, 2rem)",
               fontWeight:    700,
-              color:         "#14213D",
+              color:         "#FFFFFF",
               letterSpacing: "-0.02em",
               maxWidth:      "500px",
             }}
