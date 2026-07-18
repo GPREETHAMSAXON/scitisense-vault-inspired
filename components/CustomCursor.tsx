@@ -9,8 +9,8 @@ export default function CustomCursor() {
   // Position motion values — dot is instant, ring has spring lag
   const rawX = useMotionValue(-200);
   const rawY = useMotionValue(-200);
-  const ringX = useSpring(rawX, { stiffness: 100, damping: 22 });
-  const ringY = useSpring(rawY, { stiffness: 100, damping: 22 });
+  const ringX = useSpring(rawX, { stiffness: 120, damping: 28 });
+  const ringY = useSpring(rawY, { stiffness: 120, damping: 28 });
 
   // Skip on touch devices (detected after mount)
   const [isTouch, setIsTouch] = useState(false);
@@ -37,10 +37,11 @@ export default function CustomCursor() {
       const r = ringInnerRef.current;
       const t = textRef.current;
       if (!d || !r || !t) return;
-      d.style.width = "7px"; d.style.height = "7px"; d.style.opacity = "1";
-      r.style.width = "28px"; r.style.height = "28px";
+      d.style.width = "9px"; d.style.height = "9px"; d.style.opacity = "1";
+      r.style.width = "24px"; r.style.height = "24px";
       r.style.background = "transparent";
-      r.style.borderColor = "rgba(0,229,192,0.30)";
+      r.style.borderColor = "rgba(163,113,247,0.4)";
+      r.style.opacity = "0.35";
       t.style.opacity = "0";
     };
 
@@ -67,18 +68,21 @@ export default function CustomCursor() {
         r.style.width = "64px"; r.style.height = "64px";
         r.style.background = "rgba(0,229,192,0.07)";
         r.style.borderColor = "rgba(0,229,192,0.6)";
+        r.style.opacity = "1";
         t.style.opacity = "1";
       } else if (isCard) {
         d.style.width = "5px"; d.style.height = "5px"; d.style.opacity = "1";
         r.style.width = "52px"; r.style.height = "52px";
         r.style.background = "rgba(0,229,192,0.04)";
         r.style.borderColor = "rgba(0,229,192,0.35)";
+        r.style.opacity = "1";
         t.style.opacity = "0";
       } else if (isPointer) {
         d.style.opacity = "0";
-        r.style.width = "44px"; r.style.height = "44px";
+        r.style.width = "40px"; r.style.height = "40px";
         r.style.background = "rgba(0,229,192,0.05)";
         r.style.borderColor = "rgba(0,229,192,0.6)";
+        r.style.opacity = "1";
         t.style.opacity = "0";
       } else {
         setDefault();
@@ -137,8 +141,8 @@ export default function CustomCursor() {
           ref={dotInnerRef}
           style={{
             transform:    "translate(-50%, -50%)",
-            width:        "7px",
-            height:       "7px",
+            width:        "9px",
+            height:       "9px",
             borderRadius: "999px",
             background:   "#00E5C0",
             transition:   "width 0.3s ease, height 0.3s ease, opacity 0.3s ease",
@@ -163,16 +167,17 @@ export default function CustomCursor() {
           ref={ringInnerRef}
           style={{
             transform:    "translate(-50%, -50%)",
-            width:        "28px",
-            height:       "28px",
+            width:        "24px",
+            height:       "24px",
             borderRadius: "999px",
-            border:       "1.5px solid rgba(0,229,192,0.5)",
-            background:   "rgba(0,229,192,0.06)",
+            border:       "1px solid rgba(163,113,247,0.4)",
+            background:   "transparent",
+            opacity:      0.35,
             mixBlendMode: "normal",
             display:      "flex",
             alignItems:   "center",
             justifyContent: "center",
-            transition:   "width 0.3s ease, height 0.3s ease, background 0.3s ease, border-color 0.3s ease",
+            transition:   "width 0.3s ease, height 0.3s ease, background 0.3s ease, border-color 0.3s ease, opacity 0.3s ease",
           }}
         >
           <span

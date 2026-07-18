@@ -1,56 +1,13 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { Lightbulb, ShieldCheck, Layers, Zap, FlaskConical, HeartPulse } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { hexToRgb } from "@/lib/services-data";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-// ─── Count-up (inline, no shared hook across files) ──────────────────────────
-import { useEffect, useState } from "react";
-
-function useCountUp(target: number, inView: boolean, noMotion: boolean) {
-  const [count, setCount] = useState(noMotion ? target : 0);
-  useEffect(() => {
-    if (noMotion) { setCount(target); return; }
-    if (!inView)  return;
-    let raf = 0;
-    let start: number | null = null;
-    const tick = (ts: number) => {
-      if (start === null) start = ts;
-      const p = Math.min((ts - start) / 1600, 1);
-      setCount(Math.round((1 - Math.pow(2, -10 * p)) * target));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, target, noMotion]);
-  return count;
-}
-
-// ─── Stat card ────────────────────────────────────────────────────────────────
-
-function StatCard({
-  value, suffix, label, noMotion,
-}: { value: number; suffix: string; label: string; noMotion: boolean }) {
-  const ref    = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: false, margin: "-40px" });
-  const count  = useCountUp(value, inView, noMotion);
-  return (
-    <div ref={ref} className="glass-card text-center" style={{ padding: "32px" }}>
-      <span
-        className="block font-bold tabular-nums tracking-tight"
-        style={{ fontSize: "clamp(2.4rem, 5vw, 3.4rem)", color: "var(--accent)" }}
-      >
-        {count}{suffix}
-      </span>
-      <span className="text-sm font-medium mt-2 block" style={{ color: "var(--text-secondary)" }}>
-        {label}
-      </span>
-    </div>
-  );
-}
 
 function fadeUp(noMotion: boolean, delay = 0) {
   if (noMotion) return { initial: false as const };
@@ -62,6 +19,121 @@ function fadeUp(noMotion: boolean, delay = 0) {
   };
 }
 
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const DESCRIPTION_PARAGRAPHS = [
+  "At Scitisense Futurize Private Limited, we are dedicated to accelerating the pace of innovation. As a recognized leader in Scientific Research & Development and Information Technology, we provide the intellectual infrastructure and technological solutions necessary to solve complex challenges in modern science and healthcare.",
+  "We function as a strategic partner to our clients, offering end-to-end consultation and R&D services across various scientific disciplines. By integrating rigorous scientific methodology with advanced IT frameworks, we empower organizations to modernize their operations and achieve breakthrough results.",
+  "We exist at the intersection of Research and Technology. In an era where data is the new currency of healthcare and innovation is the engine of growth, Scitisense Futurize serves as a catalyst for change. We don't just consult — we co-innovate. Whether it is deep-tech scientific research or deploying next-gen Medical IT systems, our goal is to future-proof your endeavors.",
+];
+
+interface PartnerCard {
+  icon: LucideIcon;
+  color: string;
+  title: string;
+  body: string;
+}
+
+const PARTNER_CARDS: PartnerCard[] = [
+  {
+    icon: Lightbulb,
+    color: "#A371F7",
+    title: "Innovation First",
+    body: "Recognized by DPIIT and Startup India for our unique contributions to the industry.",
+  },
+  {
+    icon: ShieldCheck,
+    color: "#00E5C0",
+    title: "Trusted & Compliant",
+    body: "Fully registered with MCA and MSME, ensuring a secure and professional partnership.",
+  },
+  {
+    icon: Layers,
+    color: "#58A6FF",
+    title: "Multi-Disciplinary Expertise",
+    body: "From the laboratory bench to the cloud, our team spans the full spectrum of R&D and HealthTech.",
+  },
+  {
+    icon: Zap,
+    color: "#E5B800",
+    title: "Agile & Reliable",
+    body: "We combine the agility of a startup with the reliability of a certified enterprise.",
+  },
+];
+
+interface WhatWeDoCard {
+  icon: LucideIcon;
+  color: string;
+  title: string;
+  body: string;
+}
+
+const WHAT_WE_DO_CARDS: WhatWeDoCard[] = [
+  {
+    icon: FlaskConical,
+    color: "#A371F7",
+    title: "Scientific R&D",
+    body: "We conduct and facilitate cutting-edge research, offering consultation for experimental design, data analysis, and product development across multiple scientific sectors.",
+  },
+  {
+    icon: HeartPulse,
+    color: "#00E5C0",
+    title: "Medical Information Technology",
+    body: "We digitize the healthcare experience, creating robust IT solutions that manage medical data, improve patient outcomes, and streamline clinical workflows.",
+  },
+];
+
+// ─── Card sub-component ───────────────────────────────────────────────────────
+
+function InfoCard({
+  icon: Icon, color, title, body, noMotion, delay,
+}: {
+  icon: LucideIcon; color: string; title: string; body: string; noMotion: boolean; delay: number;
+}) {
+  const rgb = hexToRgb(color);
+  return (
+    <motion.div
+      {...fadeUp(noMotion, delay)}
+      style={{
+        background: "rgba(22,27,34,0.75)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid #30363D",
+        borderRadius: "16px",
+        padding: "28px",
+        transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+      }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLDivElement;
+        el.style.borderColor = `rgba(${rgb},0.4)`;
+        el.style.boxShadow = `0 12px 40px rgba(${rgb},0.12)`;
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLDivElement;
+        el.style.borderColor = "#30363D";
+        el.style.boxShadow = "none";
+      }}
+    >
+      <div
+        style={{
+          width: "48px",
+          height: "48px",
+          borderRadius: "12px",
+          background: `rgba(${rgb},0.12)`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "18px",
+        }}
+      >
+        <Icon size={22} strokeWidth={1.8} style={{ color }} />
+      </div>
+      <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#E6EDF3", marginBottom: "10px" }}>{title}</p>
+      <p style={{ fontSize: "0.9rem", color: "#8B949E", lineHeight: 1.75 }}>{body}</p>
+    </motion.div>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function AboutUs() {
@@ -71,16 +143,16 @@ export default function AboutUs() {
     <>
       <Navbar />
 
-      <main style={{ backgroundColor: "var(--bg-base)" }}>
+      <main className="relative" style={{ backgroundColor: "transparent" }}>
 
         {/* ── Hero ──────────────────────────────────────────────────────────── */}
         <section
           className="relative text-center overflow-hidden"
           style={{
             paddingTop: "160px",
-            paddingBottom: "100px",
+            paddingBottom: "80px",
             backgroundImage:
-              "radial-gradient(ellipse at 20% 60%, rgba(0,229,192,0.08) 0%, transparent 55%), " +
+              "radial-gradient(ellipse at 20% 60%, rgba(163,113,247,0.08) 0%, transparent 55%), " +
               "radial-gradient(ellipse at 80% 30%, rgba(0,229,192,0.04) 0%, transparent 55%)",
           }}
         >
@@ -104,229 +176,166 @@ export default function AboutUs() {
               About Scitisense Futurize
             </motion.h1>
             <motion.p
+              className="text-gradient font-semibold"
               style={{
-                fontSize:  "clamp(0.95rem, 1.7vw, 1.1rem)",
-                color:     "var(--text-secondary)",
-                lineHeight: 1.78,
+                fontSize:  "clamp(1.1rem, 2vw, 1.4rem)",
+                lineHeight: 1.6,
                 maxWidth:  "600px",
                 margin:    "0 auto",
                 textAlign: "center",
               }}
               {...fadeUp(noMotion, 0.16)}
             >
-              We exist at the intersection of wellness and productivity — helping
-              enterprises build IT environments where people and technology thrive together.
+              Accelerating the pace of innovation
             </motion.p>
           </div>
         </section>
 
-        {/* ── Mission ───────────────────────────────────────────────────────── */}
-        <section style={{ paddingTop: "100px", paddingBottom: "80px" }}>
-          <div className="container px-5 md:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-              <motion.div {...fadeUp(noMotion)}>
-                <p
-                  className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-4"
-                  style={{ color: "var(--accent)" }}
-                >
-                  Our Mission
-                </p>
-                <h2
-                  className="font-bold tracking-[-0.025em] mb-6"
+        {/* ── Company description ──────────────────────────────────────────── */}
+        <section style={{ paddingTop: "40px", paddingBottom: "100px" }}>
+          <div className="container px-5 md:px-8" style={{ maxWidth: "820px", marginInline: "auto" }}>
+            <div className="flex flex-col" style={{ gap: "24px" }}>
+              {DESCRIPTION_PARAGRAPHS.map((p, i) => (
+                <motion.p
+                  key={i}
+                  {...fadeUp(noMotion, i * 0.1)}
                   style={{
-                    fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  Empowering Enterprises to Operate at Their Best
-                </h2>
-                <p
-                  style={{
-                    fontSize: "clamp(0.92rem, 1.5vw, 1rem)",
+                    fontSize: "clamp(0.95rem, 1.6vw, 1.1rem)",
                     color: "var(--text-secondary)",
-                    lineHeight: 1.82,
+                    lineHeight: 1.85,
                   }}
                 >
-                  Our mission is to help organizations build resilient, efficient,
-                  and human-centered IT operations. We partner with enterprises
-                  across industries to implement technology that doesn&apos;t just
-                  work — it works for people. By combining deep platform expertise
-                  with a genuine understanding of how teams operate, we design
-                  solutions that reduce friction, restore focus, and unlock
-                  sustainable growth.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="glass-card"
-                style={{ padding: "32px" }}
-                {...fadeUp(noMotion, 0.12)}
-              >
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "var(--accent-dim)" }}
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#00E5C0" strokeWidth="1.8" strokeLinejoin="round"/>
-                    <path d="M2 17l10 5 10-5" stroke="#00E5C0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 12l10 5 10-5" stroke="#00E5C0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"/>
-                  </svg>
-                </div>
-                <p
-                  className="font-semibold mb-3"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  Built for the Modern Enterprise
-                </p>
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}
-                >
-                  From fast-growing mid-market companies to large government
-                  bodies, we bring the same rigour, transparency, and commitment
-                  to outcomes — regardless of scale.
-                </p>
-              </motion.div>
+                  {p}
+                </motion.p>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ── Vision ────────────────────────────────────────────────────────── */}
+        {/* ── Why Partner With Us ──────────────────────────────────────────── */}
         <section
+          className="relative"
           style={{
             paddingTop: "80px",
-            paddingBottom: "80px",
-            backgroundColor: "var(--bg-navy)",
+            paddingBottom: "100px",
+            backgroundColor: "transparent",
             borderTop: "1px solid var(--border)",
-            borderBottom: "1px solid var(--border)",
           }}
         >
           <div className="container px-5 md:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-              <motion.div
-                className="glass-card"
-                style={{ padding: "32px" }}
+            <div style={{ textAlign: "center", marginBottom: "56px" }}>
+              <motion.p
+                className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-4"
+                style={{ color: "var(--accent)" }}
                 {...fadeUp(noMotion)}
               >
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "var(--accent-dim)" }}
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <circle cx="12" cy="12" r="3" stroke="#00E5C0" strokeWidth="1.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="#00E5C0" strokeWidth="1.8" strokeLinecap="round"/>
-                    <circle cx="12" cy="12" r="9" stroke="#00E5C0" strokeWidth="1.3" opacity="0.35"/>
-                  </svg>
-                </div>
-                <p
-                  className="font-semibold mb-3"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  A Future Where IT Serves People
-                </p>
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}
-                >
-                  We envision enterprises where IT is invisible in the best sense —
-                  running smoothly in the background, freeing people to focus
-                  entirely on the work that matters.
-                </p>
-              </motion.div>
+                Why Partner With Us
+              </motion.p>
+              <motion.h2
+                className="font-bold tracking-[-0.025em]"
+                style={{
+                  fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
+                  color: "var(--text-primary)",
+                }}
+                {...fadeUp(noMotion, 0.08)}
+              >
+                Why Partner With Us?
+              </motion.h2>
+            </div>
 
-              <motion.div {...fadeUp(noMotion, 0.12)}>
-                <p
-                  className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-4"
-                  style={{ color: "var(--accent)" }}
-                >
-                  Our Vision
-                </p>
-                <h2
-                  className="font-bold tracking-[-0.025em] mb-6"
-                  style={{
-                    fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  A World Where Technology Amplifies Human Potential
-                </h2>
-                <p
-                  style={{
-                    fontSize: "clamp(0.92rem, 1.5vw, 1rem)",
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.82,
-                  }}
-                >
-                  We believe that great IT infrastructure shouldn&apos;t be a
-                  burden — it should be an enabler. Our vision is an enterprise
-                  world where IT services are so seamless and reliable that
-                  employees can redirect their full attention to innovation,
-                  collaboration, and growth. Every implementation we deliver is
-                  a step toward that future.
-                </p>
-              </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "20px", maxWidth: "880px", marginInline: "auto" }}>
+              {PARTNER_CARDS.map((card, i) => (
+                <InfoCard key={card.title} {...card} noMotion={noMotion} delay={i * 0.08} />
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ── Customer success principle ─────────────────────────────────────── */}
-        <section style={{ paddingTop: "100px", paddingBottom: "80px" }}>
-          <div className="container px-5 md:px-8 text-center">
+        {/* ── What We Do ───────────────────────────────────────────────────── */}
+        <section
+          className="relative"
+          style={{
+            paddingTop: "80px",
+            paddingBottom: "100px",
+            backgroundColor: "transparent",
+            borderTop: "1px solid var(--border)",
+          }}
+        >
+          <div className="container px-5 md:px-8">
+            <div style={{ textAlign: "center", marginBottom: "56px" }}>
+              <motion.p
+                className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-4"
+                style={{ color: "var(--accent)" }}
+                {...fadeUp(noMotion)}
+              >
+                Our Focus
+              </motion.p>
+              <motion.h2
+                className="font-bold tracking-[-0.025em]"
+                style={{
+                  fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
+                  color: "var(--text-primary)",
+                }}
+                {...fadeUp(noMotion, 0.08)}
+              >
+                What We Do
+              </motion.h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "20px", maxWidth: "880px", marginInline: "auto" }}>
+              {WHAT_WE_DO_CARDS.map((card, i) => (
+                <InfoCard key={card.title} {...card} noMotion={noMotion} delay={i * 0.1} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Our Mission ───────────────────────────────────────────────────── */}
+        <section
+          className="relative text-center"
+          style={{
+            paddingTop: "100px",
+            paddingBottom: "120px",
+            backgroundColor: "transparent",
+            borderTop: "1px solid var(--border)",
+          }}
+        >
+          <div className="container px-5 md:px-8">
             <motion.p
-              className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-4"
+              className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-6"
               style={{ color: "var(--accent)" }}
               {...fadeUp(noMotion)}
             >
-              Our Philosophy
+              Our Mission
             </motion.p>
-            <motion.h2
-              className="font-bold tracking-[-0.025em] mb-6"
-              style={{
-                fontSize:  "clamp(1.8rem, 3.5vw, 2.8rem)",
-                color:     "var(--text-primary)",
-                lineHeight: 1.12,
-                maxWidth:  "840px",
-                margin:    "0 auto 24px",
-                textAlign: "center",
-              }}
-              {...fadeUp(noMotion, 0.08)}
-            >
-              Our Success Depends On Our Customer Success
-            </motion.h2>
-            <motion.p
-              style={{
-                fontSize:  "clamp(0.92rem, 1.5vw, 1rem)",
-                color:     "var(--text-secondary)",
-                lineHeight: 1.82,
-                maxWidth:  "720px",
-                margin:    "0 auto",
-                textAlign: "center",
-              }}
-              {...fadeUp(noMotion, 0.16)}
-            >
-              We don&apos;t measure our performance in hours billed or tickets closed.
-              We measure it in your outcomes — uptime restored, processes automated,
-              costs reduced, and teams empowered. When you win, we win. That alignment
-              is the foundation of every engagement we take on.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* ── Stats ─────────────────────────────────────────────────────────── */}
-        <section
-          style={{
-            paddingTop: "80px",
-            paddingBottom: "120px",
-            backgroundColor: "var(--bg-navy)",
-            borderTop: "1px solid var(--border)",
-          }}
-        >
-          <div className="container px-5 md:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              <StatCard value={10}  suffix="+" label="Happy Clients"      noMotion={noMotion} />
-              <StatCard value={20}  suffix="+" label="Completed Projects"  noMotion={noMotion} />
-              <StatCard value={30}  suffix="+" label="Professionals"       noMotion={noMotion} />
-            </div>
+            <motion.div {...fadeUp(noMotion, 0.1)} style={{ maxWidth: "700px", margin: "0 auto" }}>
+              <span
+                aria-hidden="true"
+                style={{
+                  display: "block",
+                  fontSize: "6rem",
+                  color: "rgba(163,113,247,0.2)",
+                  lineHeight: 0,
+                  marginBottom: "24px",
+                  fontFamily: "Georgia, serif",
+                }}
+              >
+                &ldquo;
+              </span>
+              <p
+                style={{
+                  fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)",
+                  color: "#E6EDF3",
+                  fontStyle: "italic",
+                  lineHeight: 1.6,
+                  textAlign: "center",
+                }}
+              >
+                To democratize access to high-quality scientific research tools and
+                medical technology, enabling researchers and healthcare providers to
+                focus on what matters most: discovery and care.
+              </p>
+            </motion.div>
           </div>
         </section>
 

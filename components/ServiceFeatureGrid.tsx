@@ -41,7 +41,7 @@ function FeatureCard({ name, index, noMotion }: { name: string; index: number; n
     rotXRaw.set(0);
     rotYRaw.set(0);
     if (glowRef.current) glowRef.current.style.opacity = "0";
-    (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.8)";
+    (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
   };
 
   return (
@@ -57,21 +57,23 @@ function FeatureCard({ name, index, noMotion }: { name: string; index: number; n
           rotateX:        rotX,
           rotateY:        rotY,
           transformStyle: "preserve-3d",
-          background:     "#0F0F0F",
-          border:         "1px solid rgba(255,255,255,0.08)",
+          background:     "rgba(22,27,34,0.75)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border:         "1px solid #30363D",
           borderRadius:   "16px",
           padding:        "28px",
           height:         "100%",
           position:       "relative",
           overflow:       "hidden",
           cursor:         "default",
-          boxShadow:      "0 4px 24px rgba(0,0,0,0.8)",
+          boxShadow:      "0 4px 24px rgba(0,0,0,0.4)",
           transition:     "box-shadow 0.2s ease",
         }}
         onMouseMove={onMove}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLDivElement).style.boxShadow =
-            "0 8px 32px rgba(0,229,192,0.14), 0 24px 48px rgba(0,229,192,0.10)";
+            "0 8px 32px rgba(163,113,247,0.14), 0 24px 48px rgba(163,113,247,0.10)";
         }}
         onMouseLeave={onLeave}
       >
@@ -107,10 +109,10 @@ function FeatureCard({ name, index, noMotion }: { name: string; index: number; n
             <Icon size={20} strokeWidth={1.8} />
           </div>
 
-          <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "8px", lineHeight: 1.3 }}>
+          <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#E6EDF3", marginBottom: "8px", lineHeight: 1.3 }}>
             {name}
           </h3>
-          <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
+          <p style={{ fontSize: "0.82rem", color: "#8B949E", lineHeight: 1.65 }}>
             Enterprise-grade {name.toLowerCase()} configuration and optimization.
           </p>
         </div>
@@ -125,7 +127,7 @@ export default function ServiceFeatureGrid({ features }: Props) {
   const noMotion = useReducedMotion() === true;
 
   return (
-    <section style={{ backgroundColor: "#080808", padding: "80px 24px" }}>
+    <section className="relative" style={{ backgroundColor: "transparent", padding: "80px 24px" }}>
       <div className="container">
 
         <motion.p

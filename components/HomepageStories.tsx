@@ -50,16 +50,18 @@ function StoryCard({
       transition={{ duration: 0.6, delay: index * 0.1, ease }}
       whileHover={noMotion ? {} : {
         y: -8,
-        boxShadow: "0 16px 48px rgba(0,229,192,0.10)",
+        boxShadow: "0 16px 48px rgba(163,113,247,0.12)",
         transition: { type: "spring" as const, stiffness: 300, damping: 20 },
       }}
       className="card-vault"
       style={{
-        background:    "#0F0F0F",
+        background:    "rgba(22,27,34,0.75)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
         borderRadius:  "20px",
         padding:       "36px 32px",
-        border:        "1px solid rgba(255,255,255,0.08)",
-        borderLeft:    "3px solid #00E5C0",
+        border:        "1px solid #30363D",
+        borderLeft:    "3px solid #A371F7",
         display:       "flex",
         flexDirection: "column",
         gap:           "16px",
@@ -70,19 +72,19 @@ function StoryCard({
       <div style={{
         display:       "inline-flex",
         alignItems:    "center",
-        background:    "rgba(0,229,192,0.08)",
-        border:        "1px solid rgba(0,229,192,0.18)",
+        background:    "rgba(163,113,247,0.08)",
+        border:        "1px solid rgba(163,113,247,0.18)",
         borderRadius:  "999px",
         padding:       "4px 12px",
         width:         "fit-content",
       }}>
-        <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "#00E5C0", letterSpacing: "0.06em" }}>
+        <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "#A371F7", letterSpacing: "0.06em" }}>
           {story.category}
         </span>
       </div>
 
       {/* Client type */}
-      <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.4)", fontWeight: 500, margin: 0 }}>
+      <p style={{ fontSize: "0.8rem", color: "#484F58", fontWeight: 500, margin: 0 }}>
         {story.client}
       </p>
 
@@ -90,7 +92,7 @@ function StoryCard({
       <h3 style={{
         fontSize:      "1.35rem",
         fontWeight:    700,
-        color:         "#FFFFFF",
+        color:         "#E6EDF3",
         lineHeight:    1.25,
         margin:        0,
         letterSpacing: "-0.015em",
@@ -101,7 +103,7 @@ function StoryCard({
       {/* Context */}
       <p style={{
         fontSize:   "0.875rem",
-        color:      "rgba(255,255,255,0.55)",
+        color:      "#8B949E",
         lineHeight: 1.65,
         margin:     0,
         flexGrow:   1,
@@ -115,13 +117,13 @@ function StoryCard({
           <span
             key={m}
             style={{
-              background:   "rgba(0,229,192,0.08)",
-              border:       "1px solid rgba(0,229,192,0.20)",
+              background:   "rgba(163,113,247,0.08)",
+              border:       "1px solid rgba(163,113,247,0.20)",
               borderRadius: "999px",
               padding:      "4px 12px",
               fontSize:     "0.75rem",
               fontWeight:   600,
-              color:        "#00E5C0",
+              color:        "#A371F7",
               whiteSpace:   "nowrap",
             }}
           >
@@ -134,7 +136,7 @@ function StoryCard({
       <a
         href="/stories"
         className="inline-flex items-center gap-1.5 text-sm font-semibold mt-1"
-        style={{ color: "#00E5C0", width: "fit-content" }}
+        style={{ color: "#A371F7", width: "fit-content" }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
       >
@@ -151,8 +153,22 @@ export default function HomepageStories() {
   const noMotion = useReducedMotion() === true;
 
   return (
-    <section style={{ background: "#080808", paddingBlock: "120px" }}>
-      <div className="container px-5 md:px-8">
+    <section className="relative overflow-hidden" style={{ background: "transparent", paddingBlock: "120px" }}>
+      {/* Top fade — smooths transition from previous section */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "120px",
+          background: "linear-gradient(to bottom, rgba(13,17,23,0.3), transparent)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+      />
+      <div className="relative container px-5 md:px-8" style={{ zIndex: 1 }}>
 
         {/* ── Header ── */}
         <div style={{ marginBottom: "64px" }}>
@@ -181,7 +197,7 @@ export default function HomepageStories() {
             style={{
               fontSize:      "clamp(1.8rem, 3.5vw, 2.8rem)",
               fontWeight:    800,
-              color:         "#FFFFFF",
+              color:         "#E6EDF3",
               lineHeight:    1.1,
               letterSpacing: "-0.025em",
               marginBottom:  "14px",
@@ -195,7 +211,7 @@ export default function HomepageStories() {
             whileInView={noMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.16, ease }}
-            style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", margin: 0 }}
+            style={{ fontSize: "1rem", color: "#8B949E", margin: 0 }}
           >
             Real results from real implementations.
           </motion.p>
@@ -220,15 +236,15 @@ export default function HomepageStories() {
             href="/stories"
             className="inline-flex items-center gap-2 font-semibold text-sm"
             style={{
-              color:         "#FFFFFF",
-              border:        "1px solid rgba(255,255,255,0.20)",
+              color:         "#E6EDF3",
+              border:        "1px solid #30363D",
               borderRadius:  "999px",
               padding:       "12px 28px",
               transition:    "all 0.2s ease",
             }}
             whileHover={noMotion ? {} : {
-              borderColor:     "#00E5C0",
-              color:           "#00E5C0",
+              borderColor:     "#A371F7",
+              color:           "#A371F7",
             }}
             whileTap={noMotion ? {} : { scale: 0.97 }}
             transition={{ duration: 0.2, ease }}

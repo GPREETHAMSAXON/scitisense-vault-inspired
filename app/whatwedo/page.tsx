@@ -63,7 +63,7 @@ export default function WhatWeDo() {
     <>
       <Navbar />
 
-      <main style={{ backgroundColor: "var(--bg-base)" }}>
+      <main className="relative" style={{ backgroundColor: "transparent" }}>
 
         {/* ── Hero banner ───────────────────────────────────────────────────── */}
         <section
@@ -116,7 +116,7 @@ export default function WhatWeDo() {
         </section>
 
         {/* ── Service types ─────────────────────────────────────────────────── */}
-        <section style={{ paddingTop: "40px", paddingBottom: "100px" }}>
+        <section className="relative overflow-hidden" style={{ paddingTop: "40px", paddingBottom: "100px", background: "transparent" }}>
           <div className="container px-5 md:px-8">
             <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
               {SERVICE_TYPES.map((svc, i) => (
@@ -128,16 +128,18 @@ export default function WhatWeDo() {
                       ? {}
                       : {
                           y: -6,
-                          boxShadow: "0 8px 48px rgba(0,229,192,0.10)",
+                          boxShadow: "0 8px 40px rgba(163,113,247,0.12)",
                         }
                   }
                   transition={{ duration: 0.3, ease }}
                   className="card-vault"
                   style={{
-                    background:   "#0F0F0F",
+                    background:   "rgba(22,27,34,0.75)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
                     borderRadius: "20px",
                     padding:      "40px 44px",
-                    border:       "1px solid rgba(255,255,255,0.08)",
+                    border:       "1px solid #30363D",
                     position:     "relative",
                     overflow:     "hidden",
                     cursor:       "default",
@@ -152,7 +154,7 @@ export default function WhatWeDo() {
                       right:        "40px",
                       fontSize:     "3rem",
                       fontWeight:   800,
-                      color:        "rgba(0,229,192,0.08)",
+                      color:        "rgba(163,113,247,0.08)",
                       lineHeight:   1,
                       pointerEvents:"none",
                       userSelect:   "none",
@@ -161,12 +163,12 @@ export default function WhatWeDo() {
                     0{i + 1}
                   </div>
 
-                  {/* Teal accent bar */}
+                  {/* Accent bar */}
                   <div
                     style={{
                       width:        "48px",
                       height:       "4px",
-                      background:   "#00E5C0",
+                      background:   "linear-gradient(90deg, #A371F7, #00E5C0)",
                       borderRadius: "999px",
                       marginBottom: "24px",
                     }}
@@ -176,7 +178,7 @@ export default function WhatWeDo() {
                     style={{
                       fontSize:     "1.5rem",
                       fontWeight:   700,
-                      color:        "#FFFFFF",
+                      color:        "#E6EDF3",
                       marginBottom: "16px",
                       lineHeight:   1.2,
                     }}
@@ -186,7 +188,7 @@ export default function WhatWeDo() {
                   <p
                     style={{
                       fontSize:  "1rem",
-                      color:     "rgba(255,255,255,0.55)",
+                      color:     "#8B949E",
                       lineHeight: 1.8,
                       maxWidth:  "780px",
                     }}
@@ -201,26 +203,26 @@ export default function WhatWeDo() {
 
         {/* ── Solutions grid ────────────────────────────────────────────────── */}
         <section
+          className="relative"
           style={{
             paddingTop:      "100px",
             paddingBottom:   "120px",
-            backgroundColor: "#080808",
-            borderTop:       "1px solid rgba(255,255,255,0.06)",
+            backgroundColor: "transparent",
+            borderTop:       "1px solid #30363D",
           }}
         >
           <div className="container px-5 md:px-8">
             <motion.p
               className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-3"
-              style={{ color: "#00E5C0" }}
+              style={{ color: "#A371F7" }}
               {...fadeUp(noMotion)}
             >
               Our Solutions
             </motion.p>
             <motion.h2
-              className="font-bold tracking-[-0.025em] mb-14"
+              className="font-bold tracking-[-0.025em] mb-14 text-gradient"
               style={{
                 fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-                color:    "#FFFFFF",
               }}
               {...fadeUp(noMotion, 0.08)}
             >
@@ -236,10 +238,12 @@ export default function WhatWeDo() {
                   key={sol.id}
                   {...fadeUp(noMotion, i * 0.05)}
                   style={{
-                    background:    "rgba(255,255,255,0.03)",
+                    background:    "rgba(22,27,34,0.6)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
                     borderRadius:  "16px",
                     padding:       "28px 24px",
-                    border:        "1px solid rgba(255,255,255,0.07)",
+                    border:        "1px solid #30363D",
                     display:       "flex",
                     flexDirection: "column",
                     cursor:        "default",
@@ -249,15 +253,15 @@ export default function WhatWeDo() {
                     if (noMotion) return;
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.transform   = "translateY(-4px)";
-                    el.style.borderColor = "rgba(0,229,192,0.25)";
-                    el.style.background  = "rgba(0,229,192,0.04)";
+                    el.style.borderColor = "rgba(163,113,247,0.4)";
+                    el.style.boxShadow   = "0 8px 40px rgba(163,113,247,0.12)";
                   }}
                   onMouseLeave={(e) => {
                     if (noMotion) return;
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.transform   = "translateY(0)";
-                    el.style.borderColor = "rgba(255,255,255,0.07)";
-                    el.style.background  = "rgba(255,255,255,0.03)";
+                    el.style.borderColor = "#30363D";
+                    el.style.boxShadow   = "none";
                   }}
                 >
                   <div
@@ -281,7 +285,7 @@ export default function WhatWeDo() {
                     style={{
                       fontSize:     "0.9rem",
                       fontWeight:   700,
-                      color:        "#FFFFFF",
+                      color:        "#E6EDF3",
                       marginBottom: "8px",
                     }}
                   >
@@ -290,7 +294,7 @@ export default function WhatWeDo() {
                   <p
                     style={{
                       fontSize:    "0.8rem",
-                      color:       "rgba(255,255,255,0.50)",
+                      color:       "#8B949E",
                       lineHeight:  1.65,
                       flexGrow:    1,
                       marginBottom:"20px",

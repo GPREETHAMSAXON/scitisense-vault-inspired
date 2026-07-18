@@ -44,7 +44,7 @@ export default function ScrollProgressLine() {
         style={{
           position:   "absolute",
           inset:      0,
-          background: "rgba(0,229,192,0.10)",
+          background: "rgba(48,54,61,0.5)",
         }}
       />
 
@@ -56,11 +56,28 @@ export default function ScrollProgressLine() {
           left:            0,
           width:           "100%",
           height:          "100%",
-          background:      "linear-gradient(to bottom, #00E5C0, #00C4A6)",
+          background:      "linear-gradient(to bottom, #A371F7, #00E5C0)",
           scaleY,
           transformOrigin: "top",
-          boxShadow:       "2px 0 12px rgba(0,229,192,0.4)",
+          boxShadow:       "2px 0 12px rgba(163,113,247,0.4)",
           willChange:      "transform",
+        }}
+      />
+
+      {/* Trailing glow at the tip of the fill */}
+      <motion.div
+        aria-hidden="true"
+        style={{
+          position:     "absolute",
+          left:         "50%",
+          top:          `${scrollPct * 100}%`,
+          transform:    "translate(-50%, -50%)",
+          width:        "6px",
+          height:       "6px",
+          borderRadius: "50%",
+          background:   "#A371F7",
+          boxShadow:    "0 0 8px rgba(163,113,247,0.8)",
+          willChange:   "top",
         }}
       />
 

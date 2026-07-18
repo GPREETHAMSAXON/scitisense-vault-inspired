@@ -130,7 +130,7 @@ function HCard({
       <div style={{ width: "44px", height: "44px", background: "rgba(0,229,192,0.10)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#00E5C0" }}>
         <Icon size={20} strokeWidth={1.8} />
       </div>
-      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#080808", marginBottom: "8px", lineHeight: 1.3 }}>
+      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#0D1117", marginBottom: "8px", lineHeight: 1.3 }}>
         {item.title}
       </h3>
       <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
@@ -186,7 +186,7 @@ function MobileCard({ item, index, isNavy, noMotion }: {
       <div style={{ width: "44px", height: "44px", background: "rgba(0,229,192,0.10)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", color: "#00E5C0" }}>
         <Icon size={20} strokeWidth={1.8} />
       </div>
-      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#080808", marginBottom: "8px", lineHeight: 1.3 }}>{item.title}</h3>
+      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#0D1117", marginBottom: "8px", lineHeight: 1.3 }}>{item.title}</h3>
       <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>{item.description}</p>
     </motion.div>
   );
@@ -211,9 +211,9 @@ export default function HorizontalScrollSection({
   }, []);
 
   const allItems   = [...items, ...(items2 ?? [])];
-  const headingColor = isNavy ? "#FFFFFF"                   : "#080808";
+  const headingColor = isNavy ? "#FFFFFF"                   : "#0D1117";
   const bodyColor    = isNavy ? "rgba(255,255,255,0.70)"    : "rgba(255,255,255,0.55)";
-  const bg           = isNavy ? "#080808"                    : "#080808";
+  const bg           = isNavy ? "#0D1117"                    : "#0D1117";
 
   const outerRef           = useRef<HTMLDivElement>(null);
   const [ready, setReady]  = useState(false);

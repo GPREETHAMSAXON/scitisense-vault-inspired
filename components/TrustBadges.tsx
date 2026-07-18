@@ -57,13 +57,26 @@ export default function TrustBadges() {
 
   return (
     <section
+      className="relative"
       style={{
-        background: "#080808",
+        background: "transparent",
         paddingBlock: "64px",
-        borderTop: "1px solid rgba(0,229,192,0.15)",
+        borderTop: "1px solid #30363D",
       }}
     >
-      <div className="container px-5 md:px-8">
+      {/* Ambient overlay — lets the starfield show through */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(163,113,247,0.06), transparent)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div className="relative container px-5 md:px-8" style={{ zIndex: 1 }}>
 
         {/* Desktop: 3-col grid — Mobile: single column */}
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] gap-10 md:gap-0">
@@ -72,7 +85,7 @@ export default function TrustBadges() {
           <motion.div
             {...fadeUp(noMotion, 0)}
             className="flex flex-col items-center md:items-start md:border-r md:pr-10 lg:pr-14"
-            style={{ borderColor: "rgba(255,255,255,0.08)" }}
+            style={{ borderColor: "#30363D" }}
           >
             <p style={{
               fontSize:      "0.65rem",
@@ -93,15 +106,17 @@ export default function TrustBadges() {
                     display:       "flex",
                     alignItems:    "center",
                     gap:           "8px",
-                    background:    "rgba(0,229,192,0.06)",
-                    border:        "1px solid rgba(0,229,192,0.20)",
+                    background:    "rgba(22,27,34,0.6)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    border:        "1px solid rgba(163,113,247,0.20)",
                     borderRadius:  "999px",
                     padding:       "8px 16px",
                     width:         "fit-content",
                   }}
                 >
-                  <Icon size={16} style={{ color: "#00E5C0", flexShrink: 0 }} strokeWidth={2} />
-                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#FFFFFF", whiteSpace: "nowrap" }}>
+                  <Icon size={16} style={{ color: "#A371F7", flexShrink: 0 }} strokeWidth={2} />
+                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#E6EDF3", whiteSpace: "nowrap" }}>
                     {label}
                   </span>
                 </div>
@@ -113,7 +128,7 @@ export default function TrustBadges() {
           <motion.div
             {...fadeUp(noMotion, 0.1)}
             className="flex flex-col items-center md:border-r md:px-8 lg:px-12"
-            style={{ borderColor: "rgba(255,255,255,0.08)" }}
+            style={{ borderColor: "#30363D" }}
           >
             <div
               className="grid grid-cols-3 w-full"
@@ -125,14 +140,17 @@ export default function TrustBadges() {
                   style={{
                     textAlign:   "center",
                     padding:     "20px 12px",
-                    borderRight: last ? "none" : "1px solid rgba(255,255,255,0.08)",
+                    background:  "rgba(22,27,34,0.6)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    borderRadius: "12px",
+                    borderRight: last ? "none" : "1px solid #30363D",
                   }}
                 >
-                  <span style={{
+                  <span className="text-gradient" style={{
                     display:    "block",
                     fontSize:   "1.9rem",
                     fontWeight: 800,
-                    color:      "#00E5C0",
                     lineHeight: 1,
                     marginBottom: "6px",
                   }}>
@@ -142,7 +160,7 @@ export default function TrustBadges() {
                     display:    "block",
                     fontSize:   "0.78rem",
                     fontWeight: 600,
-                    color:      "#FFFFFF",
+                    color:      "#E6EDF3",
                     lineHeight: 1.3,
                     marginBottom: "4px",
                   }}>
@@ -151,7 +169,7 @@ export default function TrustBadges() {
                   <span style={{
                     display:  "block",
                     fontSize: "0.68rem",
-                    color:    "rgba(255,255,255,0.30)",
+                    color:    "#484F58",
                     lineHeight: 1.4,
                   }}>
                     {source}
@@ -186,8 +204,10 @@ export default function TrustBadges() {
                     display:       "flex",
                     alignItems:    "center",
                     gap:           "8px",
-                    background:    "rgba(255,255,255,0.04)",
-                    border:        "1px solid rgba(255,255,255,0.08)",
+                    background:    "rgba(22,27,34,0.6)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    border:        "1px solid #30363D",
                     borderRadius:  "999px",
                     padding:       "8px 16px",
                     width:         "fit-content",
@@ -198,7 +218,7 @@ export default function TrustBadges() {
                     strokeWidth={2.5}
                     style={{ color: "#00E5C0", flexShrink: 0 }}
                   />
-                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap" }}>
+                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#8B949E", whiteSpace: "nowrap" }}>
                     {partner}
                   </span>
                 </div>

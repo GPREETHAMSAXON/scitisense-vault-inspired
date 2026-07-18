@@ -28,8 +28,10 @@ function LogoPill({ name, file }: { name: string; file: string }) {
   return (
     <div
       style={{
-        background:     "rgba(255,255,255,0.04)",
-        border:         "1px solid rgba(255,255,255,0.08)",
+        background:     "rgba(22,27,34,0.6)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        border:         "1px solid #30363D",
         borderRadius:   "12px",
         padding:        "16px 28px",
         marginRight:    "32px",
@@ -44,16 +46,16 @@ function LogoPill({ name, file }: { name: string; file: string }) {
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLDivElement;
         el.style.transform  = "translateY(-5px) scale(1.03)";
-        el.style.borderColor = "rgba(0,229,192,0.20)";
-        el.style.background  = "rgba(0,229,192,0.04)";
+        el.style.borderColor = "rgba(163,113,247,0.3)";
+        el.style.background  = "rgba(163,113,247,0.1)";
         const img = el.querySelector("img");
         if (img) img.style.filter = "none";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLDivElement;
         el.style.transform  = "translateY(0) scale(1)";
-        el.style.borderColor = "rgba(255,255,255,0.08)";
-        el.style.background  = "rgba(255,255,255,0.04)";
+        el.style.borderColor = "#30363D";
+        el.style.background  = "rgba(22,27,34,0.6)";
         const img = el.querySelector("img");
         if (img) img.style.filter = "brightness(0) invert(1)";
       }}
@@ -84,7 +86,21 @@ export default function Logos() {
   };
 
   return (
-    <section style={{ paddingTop: "100px", paddingBottom: "100px", background: "#080808" }}>
+    <section className="relative overflow-hidden" style={{ paddingTop: "100px", paddingBottom: "100px", background: "transparent" }}>
+      {/* Bottom fade — smooths transition into next section */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "120px",
+          background: "linear-gradient(to bottom, transparent, rgba(13,17,23,0.3))",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+      />
       {/* Keyframe + hover-pause via class selector */}
       <style>{`
         @keyframes marquee {

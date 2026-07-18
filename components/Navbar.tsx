@@ -11,82 +11,12 @@ import {
   useMotionValue,
 } from "motion/react";
 import {
-  Settings2,
-  Activity,
-  Package,
-  Users,
-  Shield,
-  Headphones,
-  Zap,
-  Lock,
   ChevronDown,
   Menu,
   X,
   ArrowRight,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-interface ServiceItem {
-  id: string;
-  name: string;
-  icon: LucideIcon;
-  desc: string;
-}
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
-const SERVICE_ITEMS: ServiceItem[] = [
-  {
-    id: "itsm",
-    name: "ITSM",
-    icon: Settings2,
-    desc: "Streamline incident, change, and request workflows",
-  },
-  {
-    id: "itom",
-    name: "ITOM",
-    icon: Activity,
-    desc: "Monitor, predict, and resolve infrastructure events",
-  },
-  {
-    id: "itam",
-    name: "ITAM",
-    icon: Package,
-    desc: "Full lifecycle visibility of hardware and software assets",
-  },
-  {
-    id: "hrsd",
-    name: "HRSD",
-    icon: Users,
-    desc: "Unified employee self-service and case management",
-  },
-  {
-    id: "grc",
-    name: "GRC",
-    icon: Shield,
-    desc: "Automate policy, risk, and audit workflows at scale",
-  },
-  {
-    id: "csm",
-    name: "CSM",
-    icon: Headphones,
-    desc: "Deliver omnichannel support that drives loyalty",
-  },
-  {
-    id: "platform",
-    name: "Platform Optimization",
-    icon: Zap,
-    desc: "Maximize ROI on your existing platform investments",
-  },
-  {
-    id: "secops",
-    name: "SecOps",
-    icon: Lock,
-    desc: "Unify vulnerability response and threat intelligence",
-  },
-];
+import { SERVICES, SERVICE_ICON_MAP, hexToRgb } from "@/lib/services-data";
 
 const NAV_LINKS = [
   "Home",
@@ -98,10 +28,88 @@ const NAV_LINKS = [
 
 const NAV_HREFS: Record<string, string> = {
   "Home":            "/",
+  "Services":        "/services",
   "Success Stories": "/stories",
   "About":           "/aboutus",
   "Contact":         "/contact",
 };
+
+// ─── Magnetic nav-link hook ─────────────────────────────────────────────────
+
+function useMagneticY(max = 4) {
+  const rawY = useMotionValue(0);
+  const y = useSpring(rawY, { stiffness: 400, damping: 25 });
+
+  function onMove(e: React.MouseEvent<HTMLElement>) {
+    const r = e.currentTarget.getBoundingClientRect();
+    const relY = (e.clientY - (r.top + r.height / 2)) / (r.height / 2); // -1..1
+    rawY.set(relY * max);
+  }
+  function onLeave() {
+    rawY.set(0);
+  }
+
+  return { y, onMove, onLeave };
+}
+
+// ─── Underline that grows from center on hover ──────────────────────────────
+// Plain CSS group-hover — more reliable than Motion gesture propagation for a
+// simple always-on-hover cue, and avoids depending on pointer-event nuances.
+
+function HoverUnderline() {
+  return (
+    <span
+      aria-hidden="true"
+      className="absolute left-0 right-0 origin-center scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"
+      style={{
+        bottom: "-4px",
+        height: "1px",
+        background: "linear-gradient(90deg, #A371F7, #00E5C0)",
+      }}
+    />
+  );
+}
+
+// ─── Nav link — magnetic + center-grow underline ────────────────────────────
+
+function NavLink({
+  href,
+  label,
+  onHoverStart,
+}: {
+  href: string;
+  label: string;
+  onHoverStart?: () => void;
+}) {
+  const mag = useMagneticY();
+
+  return (
+    <motion.a
+      href={href}
+      className="group"
+      style={{
+        position: "relative",
+        fontSize: "0.875rem",
+        fontWeight: 500,
+        color: "#8B949E",
+        textDecoration: "none",
+        y: mag.y,
+      }}
+      onMouseMove={mag.onMove}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLElement).style.color = "#E6EDF3";
+        onHoverStart?.();
+      }}
+      onMouseLeave={(e) => {
+        mag.onLeave();
+        (e.currentTarget as HTMLElement).style.color = "#8B949E";
+      }}
+    >
+      {label}
+      <HoverUnderline />
+    </motion.a>
+  );
+}
 
 // ─── Logo ─────────────────────────────────────────────────────────────────────
 
@@ -109,7 +117,7 @@ function LogoMark() {
   return (
     <span
       className="font-bold text-[1.05rem] tracking-[-0.03em]"
-      style={{ color: "#FFFFFF" }}
+      style={{ color: "#E6EDF3" }}
     >
       SCITISENSE <span style={{ color: "#00E5C0" }}>FUTURIZE</span>
     </span>
@@ -150,7 +158,7 @@ export default function Navbar() {
     if (servicesTrigger.current) {
       const rect = servicesTrigger.current.getBoundingClientRect();
       const center = rect.left + rect.width / 2;
-      const menuWidth = 640;
+      const menuWidth = 720;
       const left = Math.min(
         Math.max(center - menuWidth / 2, 16),
         window.innerWidth - menuWidth - 16,
@@ -200,10 +208,10 @@ export default function Navbar() {
         <motion.div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:           "rgba(8,8,8,0.85)",
+            background:           "rgba(13,17,23,0.92)",
             backdropFilter:       "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            borderBottom:         scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
+            borderBottom:         scrolled ? "1px solid #21262D" : "1px solid transparent",
             willChange:           "opacity",
           }}
           initial={{ opacity: 0 }}
@@ -238,16 +246,19 @@ export default function Navbar() {
                   onMouseEnter={openMega}
                   onMouseLeave={closeMega}
                 >
-                  <button
+                  <motion.a
+                    href="/services"
+                    className="group"
                     style={{
+                      position:     "relative",
                       fontSize:     "0.875rem",
                       fontWeight:   500,
-                      color:        megaOpen ? "#FFFFFF" : "rgba(255,255,255,0.65)",
+                      color:        megaOpen ? "#E6EDF3" : "#8B949E",
                       background:   "transparent",
                       display:      "flex",
                       alignItems:   "center",
                       gap:          "4px",
-                      border:       "none",
+                      textDecoration: "none",
                       cursor:       "pointer",
                       transition:   "color 0.2s ease",
                     }}
@@ -262,29 +273,16 @@ export default function Navbar() {
                     >
                       <ChevronDown size={13} strokeWidth={2.2} />
                     </motion.span>
-                  </button>
+                    <HoverUnderline />
+                  </motion.a>
                 </div>
               ) : (
-                <a
+                <NavLink
                   key={link}
                   href={NAV_HREFS[link] ?? `#${link.toLowerCase().replace(/\s+/g, "-")}`}
-                  style={{
-                    fontSize:      "0.875rem",
-                    fontWeight:    500,
-                    color:         "rgba(255,255,255,0.65)",
-                    textDecoration:"none",
-                    transition:    "color 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#FFFFFF";
-                    setMegaOpen(false);
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "rgba(255,255,255,0.65)";
-                  }}
-                >
-                  {link}
-                </a>
+                  label={link}
+                  onHoverStart={() => setMegaOpen(false)}
+                />
               )
             )}
           </nav>
@@ -298,9 +296,11 @@ export default function Navbar() {
               style={{
                 x:            btnX,
                 y:            btnY,
-                background:   "transparent",
-                border:       "1px solid rgba(255,255,255,0.25)",
-                color:        "#FFFFFF",
+                background:   "linear-gradient(135deg, #A371F7, #00E5C0)",
+                border:       "1px solid transparent",
+                color:        "#0D1117",
+                fontWeight:   700,
+                boxShadow:    "0 0 0 0px rgba(163,113,247,0.3)",
               }}
               onMouseMove={onBtnMove}
               onMouseLeave={onBtnLeave}
@@ -308,13 +308,20 @@ export default function Navbar() {
                 reducedMotion
                   ? {}
                   : {
-                      scale: 1.04,
-                      backgroundColor: "#00E5C0",
-                      borderColor: "#00E5C0",
-                      color: "#080808",
+                      scale: 1.03,
+                      boxShadow: "0 0 24px rgba(163,113,247,0.5)",
+                      transition: { duration: 0.3, ease: "easeOut" },
                     }
               }
-              whileTap={reducedMotion ? {} : { scale: 0.96 }}
+              whileTap={
+                reducedMotion
+                  ? {}
+                  : {
+                      scale: 0.96,
+                      boxShadow: "0 0 0 0px rgba(163,113,247,0.3)",
+                      transition: { duration: 0.15, ease: "easeOut" },
+                    }
+              }
               transition={tr(0.3)}
               aria-label="Book a consultation"
             >
@@ -325,7 +332,7 @@ export default function Navbar() {
             {/* Hamburger — mobile only */}
             <button
               className="md:hidden p-2 rounded-lg"
-              style={{ color: "rgba(255,255,255,0.65)" }}
+              style={{ color: "#8B949E" }}
               onClick={() => setMobileOpen((v) => !v)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
@@ -371,7 +378,7 @@ export default function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               transition={tr(0.38)}
               className="overflow-hidden md:hidden border-t relative"
-              style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}
+              style={{ borderColor: "#21262D" }}
             >
               <div className="px-5 py-4 flex flex-col gap-0.5">
                 {NAV_LINKS.map((link) =>
@@ -379,7 +386,7 @@ export default function Navbar() {
                     <div key={link}>
                       <button
                         className="w-full flex items-center justify-between px-3 py-3 text-sm rounded-lg transition-colors duration-200"
-                        style={{ color: "rgba(255,255,255,0.65)" }}
+                        style={{ color: "#8B949E" }}
                         onClick={() => setMobileServicesOpen((v) => !v)}
                         aria-expanded={mobileServicesOpen}
                       >
@@ -402,26 +409,30 @@ export default function Navbar() {
                             className="overflow-hidden"
                           >
                             <div className="mt-0.5 ml-3 mb-2 flex flex-col gap-0.5">
-                              {SERVICE_ITEMS.map((item) => (
-                                <a
-                                  key={item.id}
-                                  href={`#${item.id}`}
-                                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors duration-200"
-                                  style={{ color: "rgba(255,255,255,0.65)" }}
-                                  onClick={() => setMobileOpen(false)}
-                                >
-                                  <span
-                                    className="w-7 h-7 rounded-md flex items-center justify-center shrink-0"
-                                    style={{
-                                      background: "rgba(0,229,192,0.08)",
-                                      color: "#00E5C0",
-                                    }}
+                              {SERVICES.map((service) => {
+                                const Icon = SERVICE_ICON_MAP[service.icon];
+                                const rgb = hexToRgb(service.color);
+                                return (
+                                  <a
+                                    key={service.id}
+                                    href={`/services#${service.slug}`}
+                                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors duration-200"
+                                    style={{ color: "#8B949E" }}
+                                    onClick={() => setMobileOpen(false)}
                                   >
-                                    <item.icon size={14} />
-                                  </span>
-                                  <span className="text-sm">{item.name}</span>
-                                </a>
-                              ))}
+                                    <span
+                                      className="w-7 h-7 rounded-md flex items-center justify-center shrink-0"
+                                      style={{
+                                        background: `rgba(${rgb},0.08)`,
+                                        color: service.color,
+                                      }}
+                                    >
+                                      <Icon size={14} />
+                                    </span>
+                                    <span className="text-sm">{service.name}</span>
+                                  </a>
+                                );
+                              })}
                             </div>
                           </motion.div>
                         )}
@@ -432,7 +443,7 @@ export default function Navbar() {
                       key={link}
                       href={NAV_HREFS[link] ?? `#${link.toLowerCase().replace(/\s+/g, "-")}`}
                       className="px-3 py-3 text-sm rounded-lg transition-colors duration-200"
-                      style={{ color: "rgba(255,255,255,0.65)" }}
+                      style={{ color: "#8B949E" }}
                       onClick={() => setMobileOpen(false)}
                     >
                       {link}
@@ -443,14 +454,14 @@ export default function Navbar() {
                 {/* Mobile CTA */}
                 <div
                   className="mt-3 pt-4 border-t"
-                  style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}
+                  style={{ borderColor: "#21262D" }}
                 >
                   <a
                     href="/contact"
                     className="w-full flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold rounded-full"
                     style={{
-                      backgroundColor: "#00E5C0",
-                      color: "#080808",
+                      background: "linear-gradient(135deg, #A371F7, #00E5C0)",
+                      color: "#0D1117",
                     }}
                     onClick={() => setMobileOpen(false)}
                   >
@@ -475,11 +486,11 @@ export default function Navbar() {
             style={{
               top:          "5.5rem",
               left:         megaLeft,
-              width:        "640px",
-              background:   "#0F0F0F",
-              border:       "1px solid rgba(255,255,255,0.08)",
+              width:        "720px",
+              background:   "#161B22",
+              border:       "1px solid #30363D",
               borderRadius: "16px",
-              boxShadow:    "0 24px 60px rgba(0,0,0,0.8)",
+              boxShadow:    "0 24px 60px rgba(0,0,0,0.5)",
               padding:      "32px",
             }}
             onMouseEnter={openMega}
@@ -500,63 +511,120 @@ export default function Navbar() {
                 marginBottom:  "20px",
               }}
             >
-              Our Services
+              AI Research & Services
             </p>
 
-            {/* 2-col grid */}
+            {/* 2-col grid — Training spans full width at the bottom */}
             <div className="grid grid-cols-2" style={{ gap: "8px" }}>
-              {SERVICE_ITEMS.map((item) => (
+              {SERVICES.filter((s) => s.id !== "training-consultancy").map((service) => {
+                const Icon = SERVICE_ICON_MAP[service.icon];
+                const rgb = hexToRgb(service.color);
+                return (
+                  <a
+                    key={service.id}
+                    href={`/services#${service.slug}`}
+                    className="flex items-start group"
+                    style={{
+                      gap:            "12px",
+                      padding:        "12px 16px",
+                      borderRadius:   "10px",
+                      textDecoration: "none",
+                      transition:     "background 0.15s ease",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = `rgba(${rgb},0.06)`)}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                    onClick={() => setMegaOpen(false)}
+                  >
+                    {/* Icon box */}
+                    <span
+                      className="flex items-center justify-center shrink-0"
+                      style={{
+                        width:        "36px",
+                        height:       "36px",
+                        background:   `rgba(${rgb},0.08)`,
+                        border:       `1px solid rgba(${rgb},0.15)`,
+                        borderRadius: "8px",
+                        color:        service.color,
+                      }}
+                    >
+                      <Icon size={18} strokeWidth={1.8} />
+                    </span>
+
+                    {/* Text */}
+                    <span>
+                      <span
+                        className="block"
+                        style={{ fontSize: "0.875rem", fontWeight: 600, color: "#E6EDF3" }}
+                      >
+                        {service.name}
+                      </span>
+                      <span
+                        className="block"
+                        style={{ fontSize: "0.78rem", color: "#8B949E", marginTop: "2px", lineHeight: 1.5 }}
+                      >
+                        {service.tagline}
+                      </span>
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* Training & Consultancy — full width */}
+            {(() => {
+              const training = SERVICES.find((s) => s.id === "training-consultancy")!;
+              const Icon = SERVICE_ICON_MAP[training.icon];
+              const rgb = hexToRgb(training.color);
+              return (
                 <a
-                  key={item.id}
-                  href={item.id === "platform" ? "/whatwedo/platform-optimization" : `/whatwedo/${item.id}`}
+                  href={`/services#${training.slug}`}
                   className="flex items-start group"
                   style={{
                     gap:            "12px",
                     padding:        "12px 16px",
                     borderRadius:   "10px",
                     textDecoration: "none",
-                    transition:     "background 0.15s ease",
+                    marginTop:      "8px",
+                    border:         "1px solid #30363D",
+                    transition:     "background 0.15s ease, border-color 0.15s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,229,192,0.06)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = `rgba(${rgb},0.06)`;
+                    e.currentTarget.style.borderColor = `rgba(${rgb},0.3)`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "#30363D";
+                  }}
                   onClick={() => setMegaOpen(false)}
                 >
-                  {/* Icon box */}
                   <span
                     className="flex items-center justify-center shrink-0"
                     style={{
                       width:        "36px",
                       height:       "36px",
-                      background:   "rgba(0,229,192,0.08)",
-                      border:       "1px solid rgba(0,229,192,0.15)",
+                      background:   `rgba(${rgb},0.08)`,
+                      border:       `1px solid rgba(${rgb},0.15)`,
                       borderRadius: "8px",
-                      color:        "#00E5C0",
+                      color:        training.color,
                     }}
                   >
-                    <item.icon size={18} strokeWidth={1.8} />
+                    <Icon size={18} strokeWidth={1.8} />
                   </span>
-
-                  {/* Text */}
                   <span>
-                    <span
-                      className="block"
-                      style={{ fontSize: "0.875rem", fontWeight: 600, color: "#FFFFFF" }}
-                    >
-                      {item.name}
+                    <span className="block" style={{ fontSize: "0.875rem", fontWeight: 600, color: "#E6EDF3" }}>
+                      {training.name}
                     </span>
-                    <span
-                      className="block"
-                      style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.55)", marginTop: "2px", lineHeight: 1.5 }}
-                    >
-                      {item.desc}
+                    <span className="block" style={{ fontSize: "0.78rem", color: "#8B949E", marginTop: "2px", lineHeight: 1.5 }}>
+                      {training.tagline}
                     </span>
                   </span>
                 </a>
-              ))}
-            </div>
+              );
+            })()}
 
             {/* Footer CTA */}
-            <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "16px 16px 0" }}>
+            <div style={{ borderTop: "1px solid #30363D", padding: "16px 16px 0" }}>
               <a
                 href="/contact"
                 className="flex items-center gap-1.5 text-sm font-medium transition-opacity duration-200 hover:opacity-80"

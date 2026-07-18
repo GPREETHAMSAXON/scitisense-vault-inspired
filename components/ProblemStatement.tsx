@@ -34,9 +34,9 @@ export default function ProblemStatement() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ background: "#080808", paddingBlock: "120px" }}
+      style={{ background: "transparent", paddingBlock: "120px" }}
     >
-      {/* ── Ambient teal glow ── */}
+      {/* ── Ambient purple glow ── */}
       <div aria-hidden="true" style={{
         position:   "absolute",
         top:        "50%",
@@ -46,7 +46,7 @@ export default function ProblemStatement() {
         height:     "600px",
         zIndex:     0,
         pointerEvents: "none",
-        background: "radial-gradient(circle, rgba(0,229,192,0.04) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(163,113,247,0.06) 0%, transparent 70%)",
         filter:     "blur(120px)",
       }} />
 
@@ -93,7 +93,7 @@ export default function ProblemStatement() {
           style={{
             fontSize:      "clamp(2rem, 4vw, 3.2rem)",
             fontWeight:    800,
-            color:         "#FFFFFF",
+            color:         "#E6EDF3",
             lineHeight:    1.08,
             letterSpacing: "-0.025em",
             marginBottom:  "64px",
@@ -113,12 +113,25 @@ export default function ProblemStatement() {
               transition={{ duration: 0.65, delay: i * 0.12, ease }}
               className="card-vault"
               style={{
-                background:    "rgba(255,255,255,0.03)",
-                border:        "1px solid rgba(255,255,255,0.08)",
-                borderRadius:  "20px",
-                padding:       "36px 32px",
-                textAlign:     "left",
+                background:      "rgba(22,27,34,0.75)",
+                border:          "1px solid rgba(48,54,61,0.8)",
+                backdropFilter:  "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                borderRadius:    "20px",
+                padding:         "36px 32px",
+                textAlign:       "left",
                 transformOrigin: "50% 0%",
+                transition:      "border-color 0.3s ease, box-shadow 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.borderColor = "rgba(163,113,247,0.35)";
+                el.style.boxShadow = "0 0 30px rgba(163,113,247,0.08), inset 0 1px 0 rgba(255,255,255,0.05)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.borderColor = "rgba(48,54,61,0.8)";
+                el.style.boxShadow = "none";
               }}
             >
               {/* Icon */}
@@ -126,7 +139,7 @@ export default function ProblemStatement() {
                 width:          "52px",
                 height:         "52px",
                 borderRadius:   "14px",
-                background:     "rgba(0,229,192,0.08)",
+                background:     "linear-gradient(135deg, rgba(163,113,247,0.15), rgba(0,229,192,0.08))",
                 border:         "1px solid rgba(0,229,192,0.15)",
                 display:        "flex",
                 alignItems:     "center",
@@ -140,7 +153,7 @@ export default function ProblemStatement() {
               <h3 style={{
                 fontSize:      "1.05rem",
                 fontWeight:    700,
-                color:         "#FFFFFF",
+                color:         "#E6EDF3",
                 marginBottom:  "12px",
                 lineHeight:    1.3,
               }}>
@@ -150,7 +163,7 @@ export default function ProblemStatement() {
               {/* Body */}
               <p style={{
                 fontSize:   "0.9rem",
-                color:      "rgba(255,255,255,0.55)",
+                color:      "#8B949E",
                 lineHeight: 1.72,
                 margin:     0,
               }}>
@@ -171,7 +184,7 @@ export default function ProblemStatement() {
           <p style={{
             fontSize:   "1.1rem",
             fontStyle:  "italic",
-            color:      "rgba(255,255,255,0.4)",
+            color:      "#8B949E",
             lineHeight: 1.6,
             marginBottom: "20px",
           }}>

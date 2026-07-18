@@ -13,17 +13,19 @@ export default function CTABand() {
       id="cta"
       className="relative overflow-hidden"
       style={{
-        background: "#080808",
+        background: "transparent",
         padding: "100px 24px",
+        borderTop:    "1px solid rgba(163,113,247,0.15)",
+        borderBottom: "1px solid rgba(163,113,247,0.15)",
       }}
     >
-      {/* Large teal radial glow */}
+      {/* Ambient glow — lets the starfield show through */}
       <div
         aria-hidden="true"
         style={{
           position:      "absolute",
           inset:         0,
-          background:    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,229,192,0.10) 0%, transparent 70%)",
+          background:    "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(163,113,247,0.18) 0%, rgba(0,229,192,0.08) 50%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -45,6 +47,7 @@ export default function CTABand() {
       {/* ── Content ── */}
       <motion.div
         className="relative container text-center flex flex-col items-center"
+        style={{ zIndex: 1 }}
         initial={noMotion ? false : { opacity: 0, y: 40 }}
         whileInView={noMotion ? undefined : { opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "-80px" }}
@@ -56,12 +59,12 @@ export default function CTABand() {
           style={{
             fontSize:   "clamp(2rem, 4vw, 3.5rem)",
             lineHeight: 1.08,
-            color:      "#FFFFFF",
+            color:      "#E6EDF3",
           }}
         >
-          Ready to Transform
+          Ready to
           <br className="hidden sm:block" />
-          {" "}<span style={{ color: "#00E5C0" }}>Your IT Operations?</span>
+          {" "}<span className="text-gradient">Co-Innovate With Us?</span>
         </h2>
 
         {/* Subtext */}
@@ -69,13 +72,14 @@ export default function CTABand() {
           className="mb-10"
           style={{
             fontSize:   "clamp(1rem, 1.8vw, 1.15rem)",
-            color:      "rgba(255,255,255,0.5)",
+            color:      "#8B949E",
             lineHeight: 1.7,
             maxWidth:   "560px",
             margin:     "0 auto 40px",
           }}
         >
-          Let&apos;s build something that scales — together.
+          Partner with Scitisense Futurize for cutting-edge scientific research,
+          AI product development, and medical IT solutions.
         </p>
 
         {/* Buttons */}
@@ -86,16 +90,32 @@ export default function CTABand() {
             href="/contact"
             className="flex items-center gap-2 font-bold"
             style={{
-              background:   "#00E5C0",
-              color:        "#080808",
+              background:   "linear-gradient(135deg, #A371F7, #00E5C0)",
+              color:        "#0D1117",
               fontWeight:   700,
               padding:      "14px 32px",
               borderRadius: "999px",
               fontSize:     "0.95rem",
-              boxShadow:    "0 0 40px rgba(0,229,192,0.3)",
+              boxShadow:    "0 0 40px rgba(163,113,247,0.3)",
             }}
-            whileHover={noMotion ? {} : { scale: 1.05, boxShadow: "0 0 56px rgba(0,229,192,0.5)" }}
-            whileTap={noMotion ? {} : { scale: 0.97 }}
+            whileHover={
+              noMotion
+                ? {}
+                : {
+                    scale: 1.05,
+                    boxShadow: "0 0 56px rgba(163,113,247,0.5)",
+                    transition: { duration: 0.3, ease: "easeOut" },
+                  }
+            }
+            whileTap={
+              noMotion
+                ? {}
+                : {
+                    scale: 0.96,
+                    boxShadow: "0 0 40px rgba(163,113,247,0.3)",
+                    transition: { duration: 0.15, ease: "easeOut" },
+                  }
+            }
             transition={{ duration: 0.2, ease }}
           >
             Book a Free Consult
@@ -108,18 +128,33 @@ export default function CTABand() {
             className="flex items-center gap-2 font-semibold"
             style={{
               background:   "transparent",
-              color:        "#FFFFFF",
-              border:       "1px solid rgba(255,255,255,0.2)",
+              color:        "#E6EDF3",
+              border:       "1px solid #30363D",
               padding:      "14px 32px",
               borderRadius: "999px",
               fontSize:     "0.95rem",
+              boxShadow:    "0 0 0 0px rgba(163,113,247,0.3)",
             }}
             whileHover={
               noMotion
                 ? {}
-                : { scale: 1.04, borderColor: "#00E5C0", color: "#00E5C0" }
+                : {
+                    scale: 1.04,
+                    borderColor: "#A371F7",
+                    color: "#A371F7",
+                    boxShadow: "0 0 0 4px rgba(163,113,247,0.15)",
+                    transition: { duration: 0.3, ease: "easeOut" },
+                  }
             }
-            whileTap={noMotion ? {} : { scale: 0.97 }}
+            whileTap={
+              noMotion
+                ? {}
+                : {
+                    scale: 0.96,
+                    boxShadow: "0 0 0 0px rgba(163,113,247,0.3)",
+                    transition: { duration: 0.15, ease: "easeOut" },
+                  }
+            }
             transition={{ duration: 0.2, ease }}
           >
             View Success Stories

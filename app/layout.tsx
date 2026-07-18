@@ -37,22 +37,24 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Scitisense Futurize — Enterprise IT Consulting & Managed Services",
+    default: "Scitisense Futurize Pvt Ltd — Scientific R&D & Medical IT",
     template: "%s | Scitisense Futurize",
   },
   description:
-    "Scitisense Futurize delivers enterprise IT consulting, ServiceNow implementations, and managed services that accelerate digital transformation. Specialists in ITSM, ITOM, GRC, SecOps, and platform optimization.",
+    "Scitisense Futurize Private Limited is a DPIIT-recognized leader in Scientific R&D and Medical Information Technology, delivering AI research, healthcare IT solutions, and technology consulting from Visakhapatnam, India.",
   keywords: [
-    "IT consulting",
-    "ServiceNow",
+    "Scientific R&D",
+    "Medical IT",
+    "healthcare technology",
+    "AI research",
+    "DPIIT recognized",
+    "Startup India",
     "ITSM",
     "ITOM",
     "GRC",
     "SecOps",
     "enterprise IT",
     "digital transformation",
-    "managed services",
-    "IT service management",
   ],
   authors: [{ name: "Scitisense Futurize" }],
   creator: "Scitisense Futurize",
@@ -60,21 +62,21 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Scitisense Futurize — Enterprise IT Consulting",
+    title: "Scitisense Futurize Pvt Ltd — Scientific R&D & Medical IT",
     description:
-      "Enterprise IT consulting, ServiceNow implementations, and managed services that accelerate digital transformation.",
+      "DPIIT-recognized leader in Scientific R&D and Medical Information Technology, delivering AI research and healthcare IT solutions from Visakhapatnam, India.",
     siteName: "Scitisense Futurize",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scitisense Futurize — Enterprise IT Consulting",
+    title: "Scitisense Futurize Pvt Ltd — Scientific R&D & Medical IT",
     description:
-      "Enterprise IT consulting, ServiceNow implementations, and managed services.",
+      "DPIIT-recognized leader in Scientific R&D and Medical Information Technology.",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#080808",
+  themeColor: "#0D1117",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,

@@ -7,7 +7,7 @@ import RevealBlock from "@/components/RevealBlock";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const PRIMARY_STAT = { value: 150, suffix: "+", label: "Projects Delivered" };
+const PRIMARY_STAT = { value: 150, suffix: "+", label: "Projects Completed" };
 
 const PILLS = [
   {
@@ -15,28 +15,28 @@ const PILLS = [
     text: "GROWTH by 40% per year",
     tag: "8+ Years of Craft",
     position: { top: "6%", left: "2%" },
-    duration: 3,
+    duration: 3.2,
   },
   {
     id: "clients",
     text: "80+ Happy Clients",
     tag: "Enterprise Scale",
     position: { top: "10%", right: "0%" },
-    duration: 4,
+    duration: 4.1,
   },
   {
     id: "trained",
     text: "200+ Professionals Trained",
     tag: "Expert Team",
     position: { bottom: "8%", left: "4%" },
-    duration: 3.5,
+    duration: 3.7,
   },
   {
     id: "active",
     text: "50+ Professionals",
     tag: "Active Team",
     position: { bottom: "4%", right: "2%" },
-    duration: 4.5,
+    duration: 4.6,
   },
 ] as const;
 
@@ -56,9 +56,9 @@ export default function Stats() {
       ref={sectionRef}
       id="stats"
       className="relative overflow-hidden"
-      style={{ background: "#080808", padding: "120px 24px" }}
+      style={{ background: "transparent", padding: "120px 24px" }}
     >
-      {/* ── Ambient teal glow behind stats ── */}
+      {/* ── Ambient purple glow behind stats ── */}
       <div
         aria-hidden="true"
         style={{
@@ -68,7 +68,7 @@ export default function Stats() {
           transform: "translate(-50%, -50%)",
           width: "800px",
           height: "800px",
-          background: "radial-gradient(circle, rgba(0,229,192,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(163,113,247,0.06) 0%, transparent 70%)",
           filter: "blur(80px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -93,7 +93,7 @@ export default function Stats() {
             </p>
             <h2
               style={{
-                color: "#FFFFFF",
+                color: "#E6EDF3",
                 fontSize: "clamp(1.8rem, 3vw, 2.5rem)",
                 fontWeight: 700,
                 lineHeight: 1.15,
@@ -137,23 +137,24 @@ export default function Stats() {
             viewport={{ once: false, margin: "-60px" }}
             transition={{ duration: 0.7, ease }}
           >
-            <span
-              className="block tabular-nums"
+            <motion.span
+              className="block tabular-nums text-gradient"
               style={{
                 fontFamily: "'Geist Mono', monospace",
                 fontWeight: 800,
                 lineHeight: 1,
                 fontSize: "clamp(4rem, 10vw, 8rem)",
-                color: "#00E5C0",
               }}
+              animate={noMotion ? {} : { scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
             >
               {display}
               {PRIMARY_STAT.suffix}
-            </span>
+            </motion.span>
             <span
               className="block"
               style={{
-                color: "rgba(255,255,255,0.5)",
+                color: "#8B949E",
                 fontSize: "1rem",
                 fontWeight: 500,
                 marginTop: "8px",
@@ -184,12 +185,14 @@ export default function Stats() {
                 >
                   <span
                     style={{
-                      background: "rgba(255,255,255,0.06)",
-                      border: "1px solid rgba(255,255,255,0.12)",
+                      background: "rgba(22,27,34,0.6)",
+                      backdropFilter: "blur(8px)",
+                      WebkitBackdropFilter: "blur(8px)",
+                      border: "1px solid #30363D",
                       borderRadius: "999px",
                       padding: "8px 16px",
                       fontSize: "0.75rem",
-                      color: "rgba(255,255,255,0.7)",
+                      color: "#8B949E",
                       whiteSpace: "nowrap",
                     }}
                   >
@@ -197,8 +200,8 @@ export default function Stats() {
                   </span>
                   <span
                     style={{
-                      background: "#00E5C0",
-                      color: "#080808",
+                      background: "linear-gradient(135deg, #A371F7, #00E5C0)",
+                      color: "#0D1117",
                       borderRadius: "999px",
                       padding: "4px 12px",
                       fontSize: "0.7rem",
@@ -221,20 +224,22 @@ export default function Stats() {
             <div
               key={pill.id}
               style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "rgba(22,27,34,0.6)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+                border: "1px solid #30363D",
                 borderRadius: "16px",
                 padding: "16px",
                 textAlign: "center",
               }}
             >
-              <p style={{ color: "#FFFFFF", fontSize: "0.8rem", fontWeight: 600, marginBottom: "6px" }}>
+              <p style={{ color: "#E6EDF3", fontSize: "0.8rem", fontWeight: 600, marginBottom: "6px" }}>
                 {pill.text}
               </p>
               <span
                 style={{
-                  background: "#00E5C0",
-                  color: "#080808",
+                  background: "linear-gradient(135deg, #A371F7, #00E5C0)",
+                  color: "#0D1117",
                   borderRadius: "999px",
                   padding: "3px 10px",
                   fontSize: "0.65rem",

@@ -20,7 +20,7 @@ export default function ServiceDeepDive({ sections }: Props) {
   const noMotion = useReducedMotion() === true;
 
   return (
-    <section style={{ backgroundColor: "#080808", padding: "80px 24px" }}>
+    <section className="relative" style={{ backgroundColor: "transparent", padding: "80px 24px" }}>
       <div className="container">
         <div className="flex flex-col gap-5">
           {sections.map((sec, i) => {
@@ -36,8 +36,10 @@ export default function ServiceDeepDive({ sections }: Props) {
                 transition={{ duration: 0.55, delay: i * 0.05, ease }}
                 className="card-3d"
                 style={{
-                  background:   "#0F0F0F",
-                  border:       "1px solid rgba(255,255,255,0.08)",
+                  background:   "rgba(22,27,34,0.75)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  border:       "1px solid #30363D",
                   padding:      "36px 40px",
                 }}
               >
@@ -79,7 +81,7 @@ export default function ServiceDeepDive({ sections }: Props) {
                         style={{
                           fontSize:  "1.1rem",
                           fontWeight: 700,
-                          color:     "#FFFFFF",
+                          color:     "#E6EDF3",
                           lineHeight: 1.3,
                         }}
                       >
@@ -91,12 +93,12 @@ export default function ServiceDeepDive({ sections }: Props) {
                   {/* Divider */}
                   <div
                     className="hidden md:block self-stretch"
-                    style={{ width: "1px", background: "rgba(255,255,255,0.08)", flexShrink: 0 }}
+                    style={{ width: "1px", background: "#30363D", flexShrink: 0 }}
                   />
 
                   {/* Body side */}
                   <div className="md:flex-1">
-                    <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.95rem", lineHeight: 1.82 }}>
+                    <p style={{ color: "#8B949E", fontSize: "0.95rem", lineHeight: 1.82 }}>
                       {sec.body}
                     </p>
                   </div>

@@ -51,12 +51,7 @@ export default function Contact() {
     {
       country: "India",
       icon: MapPin,
-      address: "MIG-678, Midhilapuri Vuda Colony, Madhurawada, Visakhapatnam, Andhra Pradesh",
-    },
-    {
-      country: "USA",
-      icon: MapPin,
-      address: "2492 Waterbury Ln, Buffalo Grove, IL 60089",
+      address: "House No 65-6-131, New Gajuwaka MH Colony, Visakhapatnam, Andhra Pradesh 530026",
     },
   ];
 
@@ -64,7 +59,7 @@ export default function Contact() {
     <>
       <Navbar />
 
-      <main style={{ backgroundColor: "var(--bg-base)" }}>
+      <main className="relative" style={{ backgroundColor: "transparent" }}>
 
         {/* ── Hero ──────────────────────────────────────────────────────────── */}
         <section
@@ -161,7 +156,7 @@ export default function Contact() {
                           value={form.name}
                           onChange={handleChange}
                           style={inputBase}
-                          onFocus={(e) => { e.target.style.borderColor = "rgba(0,229,192,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(0,229,192,0.10)"; }}
+                          onFocus={(e) => { e.target.style.borderColor = "rgba(163,113,247,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(163,113,247,0.15)"; }}
                           onBlur={(e)  => { e.target.style.borderColor = "var(--border)"; e.target.style.boxShadow = "none"; }}
                         />
                       </div>
@@ -179,11 +174,11 @@ export default function Contact() {
                           name="phone"
                           type="tel"
                           required
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 8500631655"
                           value={form.phone}
                           onChange={handleChange}
                           style={inputBase}
-                          onFocus={(e) => { e.target.style.borderColor = "rgba(0,229,192,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(0,229,192,0.10)"; }}
+                          onFocus={(e) => { e.target.style.borderColor = "rgba(163,113,247,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(163,113,247,0.15)"; }}
                           onBlur={(e)  => { e.target.style.borderColor = "var(--border)"; e.target.style.boxShadow = "none"; }}
                         />
                       </div>
@@ -205,7 +200,7 @@ export default function Contact() {
                           value={form.email}
                           onChange={handleChange}
                           style={inputBase}
-                          onFocus={(e) => { e.target.style.borderColor = "rgba(0,229,192,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(0,229,192,0.10)"; }}
+                          onFocus={(e) => { e.target.style.borderColor = "rgba(163,113,247,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(163,113,247,0.15)"; }}
                           onBlur={(e)  => { e.target.style.borderColor = "var(--border)"; e.target.style.boxShadow = "none"; }}
                         />
                       </div>
@@ -227,7 +222,7 @@ export default function Contact() {
                           value={form.message}
                           onChange={handleChange}
                           style={{ ...inputBase, resize: "vertical" }}
-                          onFocus={(e) => { e.target.style.borderColor = "rgba(0,229,192,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(0,229,192,0.10)"; }}
+                          onFocus={(e) => { e.target.style.borderColor = "rgba(163,113,247,0.50)"; e.target.style.boxShadow = "0 0 0 3px rgba(163,113,247,0.15)"; }}
                           onBlur={(e)  => { e.target.style.borderColor = "var(--border)"; e.target.style.boxShadow = "none"; }}
                         />
                       </div>
@@ -235,8 +230,8 @@ export default function Contact() {
                       <motion.button
                         type="submit"
                         className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-sm font-semibold"
-                        style={{ backgroundColor: "var(--accent)", color: "#080808", fontWeight: 700, boxShadow: "0 0 30px rgba(0,229,192,0.3)" }}
-                        whileHover={noMotion ? {} : { scale: 1.02, boxShadow: "0 0 48px rgba(0,229,192,0.5)" }}
+                        style={{ background: "linear-gradient(135deg, #A371F7, #00E5C0)", color: "#0D1117", fontWeight: 700, boxShadow: "0 0 30px rgba(163,113,247,0.3)" }}
+                        whileHover={noMotion ? {} : { scale: 1.02, boxShadow: "0 0 48px rgba(163,113,247,0.5)" }}
                         whileTap={noMotion ? {}  : { scale: 0.97 }}
                         transition={{ duration: 0.2, ease }}
                       >
@@ -263,7 +258,7 @@ export default function Contact() {
                   </p>
                   <div className="flex flex-col" style={{ gap: "20px" }}>
                     <a
-                      href="mailto:info@colabnowit.com"
+                      href="mailto:info@scitisensefuturize.in"
                       className="flex items-start gap-3 group"
                     >
                       <span
@@ -283,13 +278,13 @@ export default function Contact() {
                           className="text-sm"
                           style={{ color: "var(--text-secondary)" }}
                         >
-                          info@colabnowit.com
+                          info@scitisensefuturize.in
                         </span>
                       </span>
                     </a>
 
                     <a
-                      href="tel:+917207165899"
+                      href="tel:+918500631655"
                       className="flex items-start gap-3 group"
                     >
                       <span
@@ -309,7 +304,7 @@ export default function Contact() {
                           className="text-sm"
                           style={{ color: "var(--text-secondary)" }}
                         >
-                          +91 72071 65899
+                          +91 8500631655
                         </span>
                       </span>
                     </a>

@@ -70,7 +70,7 @@ function circuitShape(): Float32Array {
 function makeColors(): Float32Array {
   const colors = new Float32Array(N * 3);
   const bs  = new THREE.Color("#00E5C0"); // butterscotch 60%
-  const nav = new THREE.Color("#080808"); // navy         25%
+  const nav = new THREE.Color("#0D1117"); // navy         25%
   const amb = new THREE.Color("#00C4A6"); // amber        15%
   for (let i = 0; i < N; i++) {
     const rng = Math.random();
@@ -233,7 +233,7 @@ export default function WebGLBackground({ noMotion }: { noMotion: boolean }) {
   const creamBg: React.CSSProperties = {
     position: "absolute",
     inset:    0,
-    background: "linear-gradient(160deg, #080808 0%, #FFFFFF 60%, #080808 100%)",
+    background: "linear-gradient(160deg, #0D1117 0%, #FFFFFF 60%, #0D1117 100%)",
   };
 
   if (noMotion) return <div style={creamBg} />;

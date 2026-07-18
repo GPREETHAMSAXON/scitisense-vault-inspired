@@ -15,10 +15,10 @@ export default function ServiceDetailHero({ title, tagline }: Props) {
   return (
     <section
       style={{
-        background:    "#080808",
+        background:    "transparent",
         paddingTop:    "160px",
         paddingBottom: "80px",
-        borderBottom:  "1px solid rgba(255,255,255,0.08)",
+        borderBottom:  "1px solid #30363D",
         position:      "relative",
         overflow:      "hidden",
       }}
@@ -40,13 +40,13 @@ export default function ServiceDetailHero({ title, tagline }: Props) {
           initial={noMotion ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease }}
-          style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem", marginBottom: "20px" }}
+          style={{ color: "#8B949E", fontSize: "0.8rem", marginBottom: "20px" }}
         >
           <a
             href="/whatwedo"
-            style={{ color: "rgba(255,255,255,0.4)", textDecoration: "none", transition: "color 0.15s" }}
+            style={{ color: "#8B949E", textDecoration: "none", transition: "color 0.15s" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#00E5C0")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#8B949E")}
           >
             What We Do
           </a>
@@ -62,7 +62,7 @@ export default function ServiceDetailHero({ title, tagline }: Props) {
           style={{
             fontSize:      "clamp(2.2rem, 5vw, 3.5rem)",
             fontWeight:    800,
-            color:         "#FFFFFF",
+            color:         "#E6EDF3",
             marginBottom:  "20px",
             lineHeight:    1.1,
             letterSpacing: "-0.025em",
@@ -78,7 +78,7 @@ export default function ServiceDetailHero({ title, tagline }: Props) {
           transition={{ duration: 0.6, delay: 0.14, ease }}
           style={{
             fontSize:  "1.15rem",
-            color:     "rgba(255,255,255,0.55)",
+            color:     "#8B949E",
             maxWidth:  "700px",
             lineHeight: 1.78,
           }}

@@ -16,36 +16,43 @@
   --font-mono:         var(--font-geist-mono);
 }
 
-/* ─── Design Tokens — Vault dark + teal ──────────────────────────────────── */
+/* ─── Design Tokens — GitHub-inspired navy + purple/teal dual accent ───────── */
 :root {
   /* ── Backgrounds ── */
-  --bg-base:            #080808;
-  --bg-elevated:        #0F0F0F;
-  --bg-navy:            #0F0F0F;
-  --bg-surface:         rgba(255, 255, 255, 0.04);
-  --bg-surface-hover:   rgba(255, 255, 255, 0.07);
+  --bg-base:            #0D1117;
+  --bg-elevated:        #161B22;
+  --bg-navy:            #161B22;
+  --bg-overlay:         #21262D;
+  --bg-footer:          #010409;
+  --bg-surface:         rgba(255, 255, 255, 0.05);
+  --bg-surface-hover:   rgba(255, 255, 255, 0.08);
 
   /* ── Borders ── */
-  --border:             rgba(255, 255, 255, 0.08);
+  --border:             #30363D;
+  --border-muted:       #21262D;
   --border-strong:      rgba(255, 255, 255, 0.15);
-  --border-accent:      rgba(0, 229, 192, 0.25);
+  --border-accent:      rgba(163, 113, 247, 0.25);
 
-  /* ── Accent / Brand — Vault teal ── */
+  /* ── Accent / Brand — dual purple + teal ── */
   --accent:             #00E5C0;
   --accent-dim:         rgba(0, 229, 192, 0.10);
   --accent-glow:        rgba(0, 229, 192, 0.25);
   --accent-secondary:   #00C4A6;
-  --accent-navy:        #0F0F0F;
-  --accent-navy-light:  #1A1A1A;
+  --accent-navy:        #161B22;
+  --accent-navy-light:  #21262D;
+
+  --accent-purple:      #A371F7;
+  --accent-purple-glow: rgba(163, 113, 247, 0.20);
+  --accent-blue:        #58A6FF;
 
   /* ── Text ── */
-  --text-primary:       #FFFFFF;
-  --text-secondary:     rgba(255, 255, 255, 0.55);
-  --text-muted:         rgba(255, 255, 255, 0.30);
+  --text-primary:       #E6EDF3;
+  --text-secondary:     #8B949E;
+  --text-muted:         #484F58;
 
   /* ── On-navy text (kept for compat, now same as primary) ── */
-  --text-on-navy:        #FFFFFF;
-  --text-on-navy-muted:  rgba(255, 255, 255, 0.55);
+  --text-on-navy:        #E6EDF3;
+  --text-on-navy-muted:  #8B949E;
 
   /* ── Type Scale ── */
   --text-xs:    0.75rem;
@@ -116,7 +123,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   tab-size: 4;
-  background: #080808;
+  background: #0D1117;
 }
 
 body {
@@ -184,8 +191,8 @@ button {
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -193,18 +200,18 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 229, 192, 0.30);
+  background: linear-gradient(to bottom, #A371F7, #00E5C0);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 229, 192, 0.50);
+  background: linear-gradient(to bottom, #B78AFA, #00C4A6);
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 229, 192, 0.30) transparent;
+  scrollbar-color: rgba(163, 113, 247, 0.30) transparent;
 }
 
 /* ─── Layout Utilities ───────────────────────────────────────────────────── */
@@ -243,10 +250,10 @@ button {
 .card-3d,
 .card-vault {
   background:    var(--bg-elevated);
-  border:        1px solid rgba(255, 255, 255, 0.08);
+  border:        1px solid #30363D;
   border-radius: var(--radius-card);
   box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.8),
+    0 4px 24px rgba(0, 0, 0, 0.4),
     0 1px 0 rgba(255, 255, 255, 0.06) inset;
   transform:   translateZ(0);
   transition:
@@ -256,27 +263,37 @@ button {
 }
 .card-3d:hover,
 .card-vault:hover {
-  border-color: rgba(0, 229, 192, 0.25);
+  border-color: rgba(163, 113, 247, 0.4);
   box-shadow:
-    0 8px 48px rgba(0, 229, 192, 0.10),
-    0 0 0 1px rgba(0, 229, 192, 0.15),
+    0 8px 40px rgba(163, 113, 247, 0.12),
+    0 0 0 1px rgba(163, 113, 247, 0.15),
     0 1px 0 rgba(255, 255, 255, 0.08) inset;
-  transform: translateY(-6px) translateZ(0);
+  transform: translateY(-4px) translateZ(0);
 }
 
 /* ─── Gradient Text ──────────────────────────────────────────────────────── */
 .text-gradient {
-  background: linear-gradient(135deg, #00E5C0 0%, #FFFFFF 60%);
+  background: linear-gradient(135deg, #A371F7 0%, #00E5C0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* ─── Sparkle star shape ─────────────────────────────────────────────────── */
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
 /* ─── Section Backgrounds ────────────────────────────────────────────────── */
-.section-light { background-color: #080808; }
-.section-white { background-color: #080808; }
-.section-navy  { background-color: #080808; }
-.section-dark  { background-color: #080808; }
+.section-light { background-color: #0D1117; }
+.section-white { background-color: #0D1117; }
+.section-navy  { background-color: #0D1117; }
+.section-dark  { background-color: #0D1117; }
 
 /* ─── Accent Glow ────────────────────────────────────────────────────────── */
 .glow-accent,

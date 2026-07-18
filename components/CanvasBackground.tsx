@@ -27,7 +27,7 @@ const PALETTE: [number, number, number][] = [
   [224, 148, 31],   // amber
 ];
 
-const BASE_BG = "linear-gradient(160deg, #080808 0%, #F0E8D8 50%, #080808 100%)";
+const BASE_BG = "linear-gradient(160deg, #0D1117 0%, #F0E8D8 50%, #0D1117 100%)";
 
 export default function CanvasBackground({ noMotion }: { noMotion: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

@@ -67,7 +67,7 @@ export default function Stories() {
     <>
       <Navbar />
 
-      <main style={{ backgroundColor: "var(--bg-base)" }}>
+      <main className="relative" style={{ backgroundColor: "transparent" }}>
 
         {/* ── Hero ──────────────────────────────────────────────────────────── */}
         <section
@@ -129,10 +129,12 @@ export default function Stories() {
                   className="rounded-full text-xs transition-all duration-200"
                   style={{
                     padding:         "8px 18px",
-                    backgroundColor: active === i ? "#00E5C0"              : "rgba(255,255,255,0.04)",
-                    color:           active === i ? "#080808"              : "rgba(255,255,255,0.55)",
+                    background:      active === i ? "linear-gradient(135deg, #A371F7, #00E5C0)" : "rgba(22,27,34,0.6)",
+                    backdropFilter:  active === i ? undefined : "blur(8px)",
+                    WebkitBackdropFilter: active === i ? undefined : "blur(8px)",
+                    color:           active === i ? "#0D1117"              : "#8B949E",
                     fontWeight:      active === i ? 700                    : 500,
-                    border:          active === i ? "none"                 : "1px solid rgba(255,255,255,0.08)",
+                    border:          active === i ? "none"                 : "1px solid #30363D",
                   }}
                 >
                   {s.tag}

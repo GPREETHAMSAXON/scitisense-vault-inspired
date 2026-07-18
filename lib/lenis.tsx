@@ -11,12 +11,13 @@ export default function SmoothScrollProvider({
 }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.6,
+      duration: 1.8,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.75,
-      touchMultiplier: 1.2,
+      wheelMultiplier: 0.65,
+      touchMultiplier: 1.4,
+      infinite: false,
       prevent: (node: Element) => node.hasAttribute("data-lenis-prevent"),
     });
 
@@ -35,7 +36,7 @@ export default function SmoothScrollProvider({
 
   return (
     <MotionConfig
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       reducedMotion="user"
     >
       {children}
