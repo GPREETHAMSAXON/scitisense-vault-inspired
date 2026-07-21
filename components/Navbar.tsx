@@ -21,7 +21,7 @@ import { SERVICES, SERVICE_ICON_MAP, hexToRgb } from "@/lib/services-data";
 const NAV_LINKS = [
   "Home",
   "Services",
-  "Success Stories",
+  "Announcements",
   "About",
   "Contact",
 ] as const;
@@ -29,7 +29,7 @@ const NAV_LINKS = [
 const NAV_HREFS: Record<string, string> = {
   "Home":            "/",
   "Services":        "/services",
-  "Success Stories": "/stories",
+  "Announcements":   "/stories",
   "About":           "/aboutus",
   "Contact":         "/contact",
 };
