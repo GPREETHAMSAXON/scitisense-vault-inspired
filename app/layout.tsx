@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Space_Grotesk, DM_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk, DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import Starfield from "@/components/Starfield";
@@ -33,6 +33,13 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600"],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-plus-jakarta-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -88,7 +95,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${dmSans.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${dmSans.variable} ${plusJakartaSans.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen flex flex-col">
