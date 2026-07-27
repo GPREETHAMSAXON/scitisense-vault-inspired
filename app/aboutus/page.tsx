@@ -141,52 +141,8 @@ export default function AboutUs() {
     <>
       <main className="relative" style={{ backgroundColor: "transparent" }}>
 
-        {/* ── Hero ──────────────────────────────────────────────────────────── */}
-        <section
-          className="relative text-center overflow-hidden"
-          style={{
-            paddingTop: "160px",
-            paddingBottom: "80px",
-            background: "linear-gradient(180deg, #F5F5F7 0%, #FAFAFA 60%, #FFFFFF 100%)",
-          }}
-        >
-          <div className="container px-5 md:px-8">
-            <motion.p
-              className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-4"
-              style={{ color: "var(--accent)" }}
-              {...fadeUp(noMotion)}
-            >
-              Who We Are
-            </motion.p>
-            <motion.h1
-              className="font-bold tracking-[-0.028em] mb-6"
-              style={{
-                fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
-                color: "var(--text-primary)",
-                lineHeight: 1.08,
-              }}
-              {...fadeUp(noMotion, 0.08)}
-            >
-              About Scitisense Futurize
-            </motion.h1>
-            <motion.p
-              className="text-gradient font-semibold"
-              style={{
-                fontSize:  "clamp(1.1rem, 2vw, 1.4rem)",
-                lineHeight: 1.6,
-                maxWidth:  "600px",
-                margin:    "0 auto",
-                textAlign: "center",
-              }}
-              {...fadeUp(noMotion, 0.16)}
-            >
-              Accelerating the pace of innovation
-            </motion.p>
-          </div>
-        </section>
-
         {/* ── Company description ──────────────────────────────────────────── */}
-        <section style={{ paddingTop: "40px", paddingBottom: "100px" }}>
+        <section style={{ paddingTop: "160px", paddingBottom: "100px" }}>
           <div className="container px-5 md:px-8" style={{ maxWidth: "820px", marginInline: "auto" }}>
             <div className="flex flex-col" style={{ gap: "24px" }}>
               {DESCRIPTION_PARAGRAPHS.map((p, i) => (

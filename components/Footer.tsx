@@ -100,7 +100,7 @@ export default function Footer() {
                 }}
               />
               <span style={{ fontSize: 16, fontWeight: 800, color: "#1D1D1F", letterSpacing: "-0.02em" }}>
-                Scitisense Futurize
+                Scitisense Futurize Pvt. Ltd.
               </span>
             </Link>
 

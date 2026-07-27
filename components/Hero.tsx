@@ -228,7 +228,7 @@ export default function Hero() {
           }}
         >
           Scitisense Futurize delivers end-to-end AI research, product development, and technology
-          consulting across industries, academia, healthcare, manufacturing, defense, and smart cities.
+          consulting across industries, academia, healthcare, manufacturing, defense and smart cities.
         </p>
 
         {/* Research domain pills */}

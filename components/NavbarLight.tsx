@@ -74,7 +74,7 @@ export default function NavbarLight() {
               fontFamily: "var(--font-plus-jakarta-sans)",
               lineHeight: 1.2,
             }}>
-              Scitisense Futurize Pvt Ltd
+              Scitisense Futurize Pvt. Ltd.
             </span>
           </Link>
 
