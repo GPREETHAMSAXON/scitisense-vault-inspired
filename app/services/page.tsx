@@ -309,20 +309,6 @@ export default function ServicesPage() {
             From foundational AI research to production deployments — serving industries,
             academia, healthcare, defense, and government organizations.
           </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/contact" className="btn-primary-light" style={{ padding: '12px 28px', fontSize: 14, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              Start Your Project <ArrowRight size={14} />
-            </Link>
-            <a href="#services-grid" style={{
-              padding: '12px 28px', fontSize: 14,
-              border: '1px solid rgba(0,0,0,0.15)',
-              borderRadius: 980, color: '#1D1D1F',
-              textDecoration: 'none', fontWeight: 600,
-              transition: 'all 0.2s ease',
-            }}>
-              Explore Services
-            </a>
-          </div>
         </div>
       </section>
 
