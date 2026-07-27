@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { SERVICES, SERVICE_ICON_MAP, hexToRgb } from "@/lib/services-data";
+import { SERVICES, SERVICE_ICON_MAP } from "@/lib/services-data";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const CORE_SERVICES = SERVICES.filter(
@@ -14,7 +14,6 @@ const CORE_SERVICES = SERVICES.filter(
 
 function ServiceCard({ service, index }: { service: (typeof SERVICES)[number]; index: number }) {
   const Icon = SERVICE_ICON_MAP[service.icon];
-  const rgb = hexToRgb(service.color);
 
   return (
     <Link
@@ -34,8 +33,8 @@ function ServiceCard({ service, index }: { service: (typeof SERVICES)[number]; i
         <div
           style={{
             width: 48, height: 48, borderRadius: 14,
-            background: `rgba(${rgb},0.12)`,
-            border: `1px solid rgba(${rgb},0.25)`,
+            background: `${service.color}18`,
+            border: `1px solid ${service.color}30`,
             display: "flex", alignItems: "center", justifyContent: "center",
             flexShrink: 0,
           }}
@@ -43,10 +42,10 @@ function ServiceCard({ service, index }: { service: (typeof SERVICES)[number]; i
           <Icon size={22} strokeWidth={1.8} style={{ color: service.color }} />
         </div>
         <div>
-          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#86868B", marginBottom: 3 }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#86868B", marginBottom: 4 }}>
             Research Area {String(index + 1).padStart(2, "0")}
           </div>
-          <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#0A0A0A", margin: 0, lineHeight: 1.3 }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1D1D1F", margin: 0, lineHeight: 1.3 }}>
             {service.name}
           </h3>
         </div>
@@ -55,7 +54,7 @@ function ServiceCard({ service, index }: { service: (typeof SERVICES)[number]; i
       {/* Description — 2-line clamp */}
       <p
         style={{
-          fontSize: "0.85rem", color: "#6E6E73", lineHeight: 1.6,
+          fontSize: 13, color: "#6E6E73", lineHeight: 1.6,
           overflow: "hidden", display: "-webkit-box",
           WebkitLineClamp: 2, WebkitBoxOrient: "vertical",
         } as React.CSSProperties}
@@ -105,7 +104,7 @@ export default function Services() {
       id="services"
       ref={sectionRef}
       className="relative overflow-hidden"
-      style={{ background: "#FFFFFF", paddingBlock: 120 }}
+      style={{ background: "#FFFFFF", paddingBlock: 80 }}
     >
       <div className="container px-5 md:px-8" style={{ position: "relative", zIndex: 1 }}>
         {/* Header */}

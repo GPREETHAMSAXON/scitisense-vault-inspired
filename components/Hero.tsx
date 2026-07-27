@@ -44,14 +44,14 @@ export default function Hero() {
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = section.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width  - 0.5;
-      const py = (e.clientY - rect.top)  / rect.height - 0.5;
+      const nx = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+      const ny = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
 
       if (orbARef.current) {
-        orbARef.current.style.transform = `translate(${px * 40}px, ${py * 40}px)`;
+        orbARef.current.style.transform = `translate(${nx * -20}px, ${ny * -20}px)`;
       }
       if (orbBRef.current) {
-        orbBRef.current.style.transform = `translate(${px * -30}px, ${py * -30}px)`;
+        orbBRef.current.style.transform = `translate(${nx * 15}px, ${ny * 15}px)`;
       }
     };
 
@@ -77,11 +77,10 @@ export default function Hero() {
         ref={orbARef}
         aria-hidden="true"
         style={{
-          position: "absolute", top: "10%", left: "8%",
-          width: 420, height: 420, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(0,113,227,0.14) 0%, transparent 70%)",
-          filter: "blur(40px)",
-          transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)",
+          position: "absolute", top: "25%", left: "25%",
+          width: 600, height: 600, borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(0,113,227,0.08) 0%, transparent 70%)",
+          transition: "transform 0.8s cubic-bezier(0.23,1,0.32,1)",
           pointerEvents: "none",
         }}
       />
@@ -89,20 +88,19 @@ export default function Hero() {
         ref={orbBRef}
         aria-hidden="true"
         style={{
-          position: "absolute", top: "20%", right: "5%",
-          width: 380, height: 380, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(52,170,220,0.16) 0%, transparent 70%)",
-          filter: "blur(40px)",
-          transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)",
+          position: "absolute", bottom: "33%", right: "25%",
+          width: 400, height: 400, borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(52,170,220,0.07) 0%, transparent 70%)",
+          transition: "transform 1s cubic-bezier(0.23,1,0.32,1)",
           pointerEvents: "none",
         }}
       />
 
       {/* Vertical beams */}
       <div className="beam" style={{ left: "15%", top: 0 }} aria-hidden="true" />
-      <div className="beam beam-delay-1" style={{ left: "38%", top: 0 }} aria-hidden="true" />
-      <div className="beam beam-delay-2" style={{ left: "64%", top: 0 }} aria-hidden="true" />
-      <div className="beam beam-delay-3" style={{ left: "86%", top: 0 }} aria-hidden="true" />
+      <div className="beam beam-delay-1" style={{ left: "35%", top: 0 }} aria-hidden="true" />
+      <div className="beam beam-delay-2" style={{ left: "65%", top: 0 }} aria-hidden="true" />
+      <div className="beam beam-delay-3" style={{ left: "85%", top: 0 }} aria-hidden="true" />
 
       <div className="relative container px-5 md:px-8" style={{ zIndex: 1, textAlign: "center" }}>
         {/* Eyebrow pill */}
@@ -193,7 +191,7 @@ export default function Hero() {
                 key={m.label}
                 style={{
                   textAlign: "center",
-                  padding: "28px 16px",
+                  padding: "28px 0",
                   borderRight: i < METRICS.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none",
                 }}
               >

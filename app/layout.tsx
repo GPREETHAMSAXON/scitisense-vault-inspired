@@ -4,6 +4,7 @@ import "./globals.css";
 import NavbarLight from "@/components/NavbarLight";
 import SmoothScrollProvider from "@/lib/lenis";
 import PageTransition from "@/components/PageTransition";
+import SiteEffects from "@/components/SiteEffects";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -107,6 +108,7 @@ export default function RootLayout({
           <NavbarLight />
           <PageTransition>{children}</PageTransition>
         </SmoothScrollProvider>
+        <SiteEffects />
       </body>
     </html>
   );

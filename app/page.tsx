@@ -6,7 +6,7 @@ import Logos from "@/components/Logos";
 import Stats from "@/components/Stats";
 import CTABand from "@/components/CTABand";
 import Footer from "@/components/Footer";
-import { SERVICES, hexToRgb } from "@/lib/services-data";
+import { SERVICES } from "@/lib/services-data";
 
 // ─── Why Choose — reuses the real copy published on /aboutus ─────────────────
 
@@ -28,6 +28,7 @@ const FEATURED_PROJECTS = [
     category: "Computer Vision",
     title: "Smart Attendance System using Face Recognition",
     outcome: "Automated identity verification for daily attendance tracking",
+    metric: "Real-Time Recognition",
   },
   {
     slug: "nlp-llm-research",
@@ -35,6 +36,7 @@ const FEATURED_PROJECTS = [
     category: "NLP & LLM",
     title: "Hospital Knowledge Base Chatbot with RAG",
     outcome: "Grounded query resolution over verified hospital documentation",
+    metric: "Grounded, Verified Answers",
   },
   {
     slug: "iot-wearable-sensors",
@@ -42,6 +44,7 @@ const FEATURED_PROJECTS = [
     category: "IoT & Wearables",
     title: "Smart Wearable ECG & SpO2 Monitoring System",
     outcome: "Continuous cardiac vitals monitoring with real-time alerting",
+    metric: "Real-Time Vitals Alerts",
   },
 ];
 
@@ -55,7 +58,8 @@ export default function Home() {
       <Stats />
 
       {/* ── Why Choose ── */}
-      <section className="relative overflow-hidden" style={{ background: "#FFFFFF", paddingBlock: 120 }}>
+      <div className="section-divider" style={{ margin: "0 40px" }} />
+      <section className="relative overflow-hidden" style={{ background: "#FFFFFF", paddingBlock: 80 }}>
         <div className="container px-5 md:px-8">
           <div className="animate-on-scroll" style={{ marginBottom: 56, textAlign: "center" }}>
             <span className="tag-pill-light" style={{ marginBottom: 16, display: "inline-flex" }}>
@@ -69,22 +73,21 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 20, maxWidth: 880, margin: "0 auto" }}>
             {WHY_CHOOSE.map((card, i) => {
               const Icon = card.icon;
-              const rgb = hexToRgb(card.color);
               return (
                 <div
                   key={card.title}
-                  className="animate-on-scroll service-card-light"
-                  style={{ padding: 28, display: "flex", flexDirection: "column", gap: 14, animationDelay: `${i * 0.08}s` }}
+                  className="animate-on-scroll spotlight-card service-card-light"
+                  style={{ padding: 32, display: "flex", flexDirection: "column", gap: 14, animationDelay: `${i * 0.08}s` }}
                 >
                   <div style={{
-                    width: 44, height: 44, borderRadius: 12,
-                    background: `rgba(${rgb},0.1)`, border: `1px solid rgba(${rgb},0.25)`,
+                    width: 48, height: 48, borderRadius: 12,
+                    background: "rgba(0,113,227,0.08)", border: "1px solid rgba(0,113,227,0.15)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                   }}>
                     <Icon size={20} strokeWidth={1.8} style={{ color: card.color }} />
                   </div>
-                  <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#0A0A0A" }}>{card.title}</h3>
-                  <p style={{ fontSize: "0.9rem", color: "#6E6E73", lineHeight: 1.65 }}>{card.body}</p>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1D1D1F" }}>{card.title}</h3>
+                  <p style={{ fontSize: 14, color: "#6E6E73", lineHeight: 1.65 }}>{card.body}</p>
                 </div>
               );
             })}
@@ -93,7 +96,7 @@ export default function Home() {
       </section>
 
       {/* ── Featured Projects ── */}
-      <section className="relative overflow-hidden" style={{ background: "#F5F5F7", paddingBlock: 120 }}>
+      <section className="relative overflow-hidden" style={{ background: "#F5F5F7", paddingBlock: 80 }}>
         <div className="container px-5 md:px-8">
           <div className="animate-on-scroll" style={{ marginBottom: 56, textAlign: "center" }}>
             <span className="tag-pill-light" style={{ marginBottom: 16, display: "inline-flex" }}>
@@ -108,21 +111,36 @@ export default function Home() {
             {FEATURED_PROJECTS.map((p, i) => (
               <div
                 key={p.title}
-                className="animate-on-scroll service-card-light"
-                style={{ padding: 28, display: "flex", flexDirection: "column", gap: 14, animationDelay: `${i * 0.08}s` }}
+                className="animate-on-scroll spotlight-card service-card-light"
+                style={{ padding: 32, display: "flex", flexDirection: "column", gap: 14, animationDelay: `${i * 0.08}s` }}
               >
                 <span
                   className="tag-pill-light"
-                  style={{ width: "fit-content", color: p.color, borderColor: `${p.color}40`, background: `${p.color}18` }}
+                  style={{ width: "fit-content", color: p.color, borderColor: `${p.color}30`, background: `${p.color}15` }}
                 >
                   {p.category}
                 </span>
-                <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#0A0A0A", lineHeight: 1.3 }}>{p.title}</h3>
-                <p style={{ fontSize: "0.85rem", color: "#6E6E73", lineHeight: 1.6, marginTop: -4 }}>{p.outcome}</p>
+                <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "#1D1D1F", lineHeight: 1.3, letterSpacing: "-0.01em" }}>{p.title}</h3>
+                <p style={{ fontSize: 14, color: "#6E6E73", lineHeight: 1.6, marginTop: -4 }}>{p.outcome}</p>
+                <span
+                  className="inline-flex items-center"
+                  style={{
+                    width: "fit-content",
+                    background: "rgba(0,113,227,0.06)",
+                    border: "1px solid rgba(0,113,227,0.15)",
+                    borderRadius: 999,
+                    padding: "4px 12px",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: "#0071E3",
+                  }}
+                >
+                  {p.metric}
+                </span>
                 <Link
                   href={`/services#${p.slug}`}
                   className="inline-flex items-center gap-1.5"
-                  style={{ fontSize: "0.85rem", fontWeight: 600, color: p.color, marginTop: "auto" }}
+                  style={{ fontSize: 13, fontWeight: 600, color: p.color, marginTop: "auto" }}
                 >
                   View Details <ArrowRight size={14} strokeWidth={2.5} />
                 </Link>
@@ -131,6 +149,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="section-divider" style={{ margin: "0 40px" }} />
 
       <CTABand
         heading={<>Ready to Build <span className="text-gradient-teal">the Future?</span></>}

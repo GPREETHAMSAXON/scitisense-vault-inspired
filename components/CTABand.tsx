@@ -35,12 +35,23 @@ export default function CTABand({
       id="cta"
       className="relative overflow-hidden"
       style={{
-        background:   "#F5F5F7",
+        background:   "linear-gradient(135deg, #F0F7FF 0%, #F5F5F7 50%, #F0F7FF 100%)",
         padding:      "100px 24px",
         borderTop:    "1px solid rgba(0,0,0,0.06)",
         borderBottom: "1px solid rgba(0,0,0,0.06)",
       }}
     >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", top: "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: 800, height: 400,
+          background: "radial-gradient(ellipse, rgba(0,113,227,0.06), transparent 60%)",
+          filter: "blur(40px)",
+          pointerEvents: "none",
+        }}
+      />
       <div
         ref={ref}
         className={`relative container text-center flex flex-col items-center reveal-up${visible ? " revealed" : ""}`}

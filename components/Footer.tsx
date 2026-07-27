@@ -34,10 +34,10 @@ const FOOTER_ADDRESS = "House No 65-6-131, New Gajuwaka MH Colony, Visakhapatnam
 // ─── Shared heading style ─────────────────────────────────────────────────────
 
 const colHeadingStyle: React.CSSProperties = {
-  color:          "#0A0A0A",
-  fontSize:       "0.75rem",
+  color:          "#86868B",
+  fontSize:       "0.6875rem",
   fontWeight:     700,
-  letterSpacing:  "0.1em",
+  letterSpacing:  "0.08em",
   textTransform:  "uppercase",
   marginBottom:   "20px",
   display:        "block",
@@ -60,7 +60,7 @@ export default function Footer() {
       style={{
         backgroundColor: "#FFFFFF",
         borderTop:       "1px solid rgba(0,0,0,0.08)",
-        padding:         "80px 0 0 0",
+        padding:         "60px 0 0 0",
       }}
     >
       <div className="relative container px-5 md:px-8" style={{ zIndex: 1 }}>
@@ -194,7 +194,7 @@ export default function Footer() {
         {/* ── Bottom bar ────────────────────────────────────────────────────── */}
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "24px", marginTop: "60px", paddingBottom: "32px" }}
+          style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "24px", marginTop: "48px", paddingBottom: "40px" }}
         >
           <p style={{ color: "#86868B", fontSize: "0.8rem" }}>
             © {year} Scitisense Futurize Pvt. Ltd. All rights reserved.

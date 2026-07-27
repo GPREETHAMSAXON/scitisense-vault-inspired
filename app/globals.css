@@ -441,7 +441,7 @@ button {
 }
 .beam-delay-1 { animation-delay: 2.5s; }
 .beam-delay-2 { animation-delay: 5s; }
-.beam-delay-3 { animation-delay: 1.2s; }
+.beam-delay-3 { animation-delay: 7.5s; }
 
 .text-hero-xl {
   font-size: clamp(2.75rem, 7vw, 5.5rem);
@@ -531,6 +531,7 @@ button {
 .service-card-light:hover {
   border-color: rgba(0,113,227,0.25);
   box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,113,227,0.08);
+  transform: translateY(-4px) scale(1.005);
 }
 
 .grid-bg-light {
@@ -551,6 +552,8 @@ button {
 }
 
 .animate-on-scroll {
+  opacity: 0;
+  animation: animation-in 0.9s cubic-bezier(0.23,1,0.32,1) both;
   animation-play-state: paused !important;
 }
 .animate-on-scroll.animate {
