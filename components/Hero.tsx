@@ -75,8 +75,8 @@ export default function Hero() {
       {/* Top-left Logo Watermark */}
       <div style={{
         position: "absolute",
-        top: "60px",
-        left: "-20px",
+        top: "40px",
+        left: "-40px",
         zIndex: 1,
         pointerEvents: "none",
         userSelect: "none",
@@ -86,11 +86,11 @@ export default function Hero() {
           alt=""
           aria-hidden="true"
           style={{
-            width: "420px",
+            width: "650px",
             height: "auto",
             objectFit: "contain",
             opacity: 0,
-            animation: "logoFadeIn 2s cubic-bezier(0.22,1,0.36,1) 0.5s forwards",
+            animation: "logoFadeIn 2s cubic-bezier(0.22,1,0.36,1) 0.5s forwards, logoFloat 6s ease-in-out 2.5s infinite",
           }}
         />
       </div>
