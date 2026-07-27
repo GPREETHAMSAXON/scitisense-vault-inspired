@@ -48,13 +48,31 @@ export default function NavbarLight() {
           justifyContent: 'space-between',
         }}>
           {/* Logo */}
-          <Link href="/" style={{ textDecoration: "none" }}>
+          <Link href="/" style={{
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+          }}>
+            {/* Logo image */}
+            <img
+              src="/logosci.png"
+              alt="Scitisense Futurize Logo"
+              style={{
+                height: "48px",
+                width: "auto",
+                objectFit: "contain",
+              }}
+            />
+
+            {/* Company name text */}
             <span style={{
-              fontSize: "18px",
+              fontSize: "16px",
               fontWeight: 800,
               color: "#1D1D1F",
               letterSpacing: "-0.02em",
               fontFamily: "var(--font-plus-jakarta-sans)",
+              lineHeight: 1.2,
             }}>
               Scitisense Futurize Pvt Ltd
             </span>
