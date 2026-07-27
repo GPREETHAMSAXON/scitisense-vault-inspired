@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Lightbulb, ShieldCheck, Layers, Zap, ArrowRight, type LucideIcon } from "lucide-react";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Logos from "@/components/Logos";
 import Stats from "@/components/Stats";
 import CTABand from "@/components/CTABand";
 import Footer from "@/components/Footer";
@@ -53,7 +52,6 @@ export default function Home() {
     <>
     <main>
       <Hero />
-      <Logos />
       <Services />
       <Stats />
 

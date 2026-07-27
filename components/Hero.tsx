@@ -72,6 +72,29 @@ export default function Hero() {
         paddingBottom: 0,
       }}
     >
+      {/* Top-left Logo Watermark */}
+      <div style={{
+        position: "absolute",
+        top: "80px",
+        left: "40px",
+        zIndex: 1,
+        pointerEvents: "none",
+        userSelect: "none",
+      }}>
+        <img
+          src="/logo.jpeg"
+          alt=""
+          aria-hidden="true"
+          style={{
+            width: "180px",
+            height: "auto",
+            objectFit: "contain",
+            opacity: 0,
+            animation: "logoFadeIn 2s cubic-bezier(0.22,1,0.36,1) 0.5s forwards",
+          }}
+        />
+      </div>
+
       {/* Background Logo Watermark */}
       <div style={{
         position: "absolute",
@@ -223,9 +246,6 @@ export default function Hero() {
         >
           <Link href="/services" className="btn-primary-light" style={{ padding: "14px 28px", fontSize: 15, display: "inline-flex", alignItems: "center", gap: 8 }}>
             Explore Research Services <ArrowRight size={15} />
-          </Link>
-          <Link href="/contact" className="btn-outline-light" style={{ padding: "14px 28px", fontSize: 15, display: "inline-flex", alignItems: "center" }}>
-            Request Consultation
           </Link>
         </div>
 

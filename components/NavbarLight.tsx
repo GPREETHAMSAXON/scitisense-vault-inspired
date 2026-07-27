@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X, ArrowRight } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -56,7 +56,7 @@ export default function NavbarLight() {
               src="/logo.jpeg"
               alt="Scitisense Futurize"
               style={{
-                height: "44px",
+                height: "64px",
                 width: "auto",
                 objectFit: "contain"
               }}
@@ -83,35 +83,6 @@ export default function NavbarLight() {
               </Link>
             ))}
           </nav>
-
-          {/* CTA — desktop only */}
-          <Link
-            href="/contact"
-            className="hidden md:inline-flex"
-            style={{
-              background: '#0071E3',
-              color: '#FFFFFF',
-              padding: '10px 20px',
-              borderRadius: 980,
-              fontSize: 14,
-              fontWeight: 600,
-              textDecoration: 'none',
-              alignItems: 'center',
-              gap: 6,
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.background = '#0077ED'
-              ;(e.currentTarget as HTMLElement).style.transform = 'scale(1.02)'
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.background = '#0071E3'
-              ;(e.currentTarget as HTMLElement).style.transform = 'scale(1)'
-            }}
-          >
-            Request Consultation
-            <ArrowRight size={14} />
-          </Link>
 
           {/* Hamburger — mobile only */}
           <button
@@ -158,27 +129,6 @@ export default function NavbarLight() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                background: '#0071E3',
-                color: '#FFFFFF',
-                padding: '10px 20px',
-                borderRadius: 980,
-                fontSize: 14,
-                fontWeight: 600,
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 6,
-                marginTop: 12,
-              }}
-            >
-              Request Consultation
-              <ArrowRight size={14} />
-            </Link>
           </div>
         )}
       </header>
