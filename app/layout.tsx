@@ -5,6 +5,7 @@ import NavbarLight from "@/components/NavbarLight";
 import SmoothScrollProvider from "@/lib/lenis";
 import PageTransition from "@/components/PageTransition";
 import SiteEffects from "@/components/SiteEffects";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,6 +110,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </SmoothScrollProvider>
         <SiteEffects />
+        <WhatsAppButton />
       </body>
     </html>
   );
