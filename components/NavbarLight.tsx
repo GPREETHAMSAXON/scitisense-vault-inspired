@@ -52,30 +52,15 @@ export default function NavbarLight() {
             display: 'flex', alignItems: 'center',
             gap: '10px', textDecoration: 'none',
           }}>
-            <div style={{
-              width: 36, height: 36,
-              background: 'linear-gradient(135deg, #0071E3, #34AADC)',
-              borderRadius: 10,
-              display: 'flex', alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <span style={{
-                color: '#fff', fontSize: 14,
-                fontWeight: 800, letterSpacing: '-0.05em',
-              }}>SF</span>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{
-                fontSize: 13, fontWeight: 700,
-                color: '#1D1D1F', lineHeight: 1.2,
-                letterSpacing: '-0.01em',
-              }}>Scitisense</span>
-              <span style={{
-                fontSize: 9, fontWeight: 600,
-                color: '#0071E3', letterSpacing: '0.12em',
-                textTransform: 'uppercase', lineHeight: 1.2,
-              }}>Futurize</span>
-            </div>
+            <img
+              src="/logo.jpeg"
+              alt="Scitisense Futurize"
+              style={{
+                height: "44px",
+                width: "auto",
+                objectFit: "contain"
+              }}
+            />
           </Link>
 
           {/* Desktop Nav */}

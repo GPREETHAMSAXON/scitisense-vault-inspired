@@ -72,6 +72,76 @@ export default function Hero() {
         paddingBottom: 0,
       }}
     >
+      {/* Background Logo Watermark */}
+      <div style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        zIndex: 0,
+        pointerEvents: "none",
+        userSelect: "none",
+      }}>
+        <img
+          src="/logo.jpeg"
+          alt=""
+          aria-hidden="true"
+          style={{
+            width: "600px",
+            height: "auto",
+            opacity: 0.04,
+            filter: "blur(2px) grayscale(30%)",
+            objectFit: "contain",
+          }}
+        />
+      </div>
+
+      <div style={{
+        position: "absolute",
+        top: "10%",
+        right: "-100px",
+        zIndex: 0,
+        pointerEvents: "none",
+        userSelect: "none",
+      }}>
+        <img
+          src="/logo.jpeg"
+          alt=""
+          aria-hidden="true"
+          style={{
+            width: "400px",
+            height: "auto",
+            opacity: 0.025,
+            filter: "blur(3px)",
+            objectFit: "contain",
+            transform: "rotate(15deg)",
+          }}
+        />
+      </div>
+
+      <div style={{
+        position: "absolute",
+        bottom: "5%",
+        left: "-60px",
+        zIndex: 0,
+        pointerEvents: "none",
+        userSelect: "none",
+      }}>
+        <img
+          src="/logo.jpeg"
+          alt=""
+          aria-hidden="true"
+          style={{
+            width: "280px",
+            height: "auto",
+            opacity: 0.03,
+            filter: "blur(2px)",
+            objectFit: "contain",
+            transform: "rotate(-10deg)",
+          }}
+        />
+      </div>
+
       {/* Mouse-reactive parallax orbs */}
       <div
         ref={orbARef}

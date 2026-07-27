@@ -63,6 +63,25 @@ export default function Footer() {
         padding:         "60px 0 0 0",
       }}
     >
+      {/* Background logo watermark */}
+      <img
+        src="/logo.jpeg"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          right: "40px",
+          bottom: "20px",
+          width: "120px",
+          height: "auto",
+          opacity: 0.06,
+          filter: "blur(1px)",
+          objectFit: "contain",
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
+      />
+
       <div className="relative container px-5 md:px-8" style={{ zIndex: 1 }}>
 
         {/* ── 4-column grid ─────────────────────────────────────────────────── */}
@@ -71,18 +90,15 @@ export default function Footer() {
           {/* Col 1 — Brand */}
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5 mb-5" aria-label="Scitisense Futurize home">
-              <div style={{
-                width: 36, height: 36,
-                background: "linear-gradient(135deg, #0071E3, #34AADC)",
-                borderRadius: 10,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                flexShrink: 0,
-              }}>
-                <span style={{ color: "#fff", fontSize: 14, fontWeight: 800, letterSpacing: "-0.05em" }}>SF</span>
-              </div>
-              <span style={{ color: "#0A0A0A", fontWeight: 700, fontSize: "1.05rem", letterSpacing: "-0.03em" }}>
-                Scitisense <span style={{ color: "#0071E3" }}>Futurize</span>
-              </span>
+              <img
+                src="/logo.jpeg"
+                alt="Scitisense Futurize"
+                style={{
+                  height: "40px",
+                  width: "auto",
+                  objectFit: "contain"
+                }}
+              />
             </Link>
 
             <p style={{ color: "#6E6E73", fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "10px" }}>
