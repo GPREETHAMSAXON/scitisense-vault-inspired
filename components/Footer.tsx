@@ -91,12 +91,12 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5 mb-5" aria-label="Scitisense Futurize home">
               <img
-                src="/logo.jpeg"
+                src="/logos/applogo.png"
                 alt="Scitisense Futurize"
                 style={{
                   height: "40px",
                   width: "auto",
-                  objectFit: "contain"
+                  objectFit: "contain",
                 }}
               />
             </Link>

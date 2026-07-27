@@ -325,8 +325,8 @@ button {
     transform: translateY(-20px) scale(0.95);
   }
   to {
-    opacity: 0.15;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+    opacity: 0.08;
+    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.08));
     transform: translateY(0) scale(1);
   }
 }

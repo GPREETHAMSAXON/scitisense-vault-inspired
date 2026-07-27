@@ -75,8 +75,8 @@ export default function Hero() {
       {/* Top-left Logo Watermark */}
       <div style={{
         position: "absolute",
-        top: "80px",
-        left: "40px",
+        top: "60px",
+        left: "-20px",
         zIndex: 1,
         pointerEvents: "none",
         userSelect: "none",
@@ -86,7 +86,7 @@ export default function Hero() {
           alt=""
           aria-hidden="true"
           style={{
-            width: "180px",
+            width: "420px",
             height: "auto",
             objectFit: "contain",
             opacity: 0,
