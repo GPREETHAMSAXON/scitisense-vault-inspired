@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceFeatureGrid from "@/components/ServiceFeatureGrid";
 import ServiceDeepDive from "@/components/ServiceDeepDive";
@@ -31,7 +30,6 @@ const DEEP_DIVE = [
 export default function ITSMPage() {
   return (
     <>
-      <Navbar />
       <ServiceDetailHero
         title="IT Service Management"
         tagline="We deliver end-to-end ITSM design and optimization services aligned with best practices like ITIL. Our goal is to streamline service delivery, improve efficiency, and enhance user satisfaction."

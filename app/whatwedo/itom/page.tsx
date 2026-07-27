@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceFeatureGrid from "@/components/ServiceFeatureGrid";
 import ServiceDeepDive from "@/components/ServiceDeepDive";
@@ -31,7 +30,6 @@ const DEEP_DIVE = [
 export default function ITOMPage() {
   return (
     <>
-      <Navbar />
       <ServiceDetailHero
         title="IT Operations Management"
         tagline="Monitors and manages IT infrastructure, cloud resources, and services to ensure optimal performance and availability."

@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceFeatureGrid from "@/components/ServiceFeatureGrid";
 import ServiceDeepDive from "@/components/ServiceDeepDive";
@@ -58,13 +57,13 @@ function GroupLabel({ label }: { label: string }) {
       <div className="container">
         <p
           style={{
-            color:         "#A371F7",
+            color:         "#0071E3",
             fontSize:      "0.75rem",
             fontWeight:    700,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             paddingBottom: "24px",
-            borderBottom:  "1px solid #30363D",
+            borderBottom:  "1px solid #D2D2D7",
           }}
         >
           {label}
@@ -77,7 +76,6 @@ function GroupLabel({ label }: { label: string }) {
 export default function ITAMPage() {
   return (
     <>
-      <Navbar />
       <ServiceDetailHero
         title="IT Asset Management"
         tagline="Enterprise asset management, simplified. We bring full lifecycle visibility to your hardware and software so every dollar and every device is accounted for."

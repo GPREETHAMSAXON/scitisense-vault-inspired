@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Lightbulb, ShieldCheck, Layers, Zap, FlaskConical, HeartPulse } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { hexToRgb } from "@/lib/services-data";
 
@@ -37,25 +36,25 @@ interface PartnerCard {
 const PARTNER_CARDS: PartnerCard[] = [
   {
     icon: Lightbulb,
-    color: "#A371F7",
+    color: "#0071E3",
     title: "Innovation First",
     body: "Recognized by DPIIT and Startup India for our unique contributions to the industry.",
   },
   {
     icon: ShieldCheck,
-    color: "#00E5C0",
+    color: "#0071E3",
     title: "Trusted & Compliant",
     body: "Fully registered with MCA and MSME, ensuring a secure and professional partnership.",
   },
   {
     icon: Layers,
-    color: "#58A6FF",
+    color: "#0071E3",
     title: "Multi-Disciplinary Expertise",
     body: "From the laboratory bench to the cloud, our team spans the full spectrum of R&D and HealthTech.",
   },
   {
     icon: Zap,
-    color: "#E5B800",
+    color: "#0071E3",
     title: "Agile & Reliable",
     body: "We combine the agility of a startup with the reliability of a certified enterprise.",
   },
@@ -71,13 +70,13 @@ interface WhatWeDoCard {
 const WHAT_WE_DO_CARDS: WhatWeDoCard[] = [
   {
     icon: FlaskConical,
-    color: "#A371F7",
+    color: "#0071E3",
     title: "Scientific R&D",
     body: "We conduct and facilitate cutting-edge research, offering consultation for experimental design, data analysis, and product development across multiple scientific sectors.",
   },
   {
     icon: HeartPulse,
-    color: "#00E5C0",
+    color: "#0071E3",
     title: "Medical Information Technology",
     body: "We digitize the healthcare experience, creating robust IT solutions that manage medical data, improve patient outcomes, and streamline clinical workflows.",
   },
@@ -95,23 +94,22 @@ function InfoCard({
     <motion.div
       {...fadeUp(noMotion, delay)}
       style={{
-        background: "rgba(22,27,34,0.75)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        border: "1px solid #30363D",
+        background: "#FFFFFF",
+        border: "1px solid #D2D2D7",
         borderRadius: "16px",
         padding: "28px",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)",
         transition: "border-color 0.3s ease, box-shadow 0.3s ease",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = `rgba(${rgb},0.4)`;
-        el.style.boxShadow = `0 12px 40px rgba(${rgb},0.12)`;
+        el.style.borderColor = `rgba(${rgb},0.35)`;
+        el.style.boxShadow = `0 12px 32px rgba(${rgb},0.12)`;
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = "#30363D";
-        el.style.boxShadow = "none";
+        el.style.borderColor = "#D2D2D7";
+        el.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)";
       }}
     >
       <div
@@ -128,8 +126,8 @@ function InfoCard({
       >
         <Icon size={22} strokeWidth={1.8} style={{ color }} />
       </div>
-      <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#E6EDF3", marginBottom: "10px" }}>{title}</p>
-      <p style={{ fontSize: "0.9rem", color: "#8B949E", lineHeight: 1.75 }}>{body}</p>
+      <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#0A0A0A", marginBottom: "10px" }}>{title}</p>
+      <p style={{ fontSize: "0.9rem", color: "#6E6E73", lineHeight: 1.75 }}>{body}</p>
     </motion.div>
   );
 }
@@ -141,8 +139,6 @@ export default function AboutUs() {
 
   return (
     <>
-      <Navbar />
-
       <main className="relative" style={{ backgroundColor: "transparent" }}>
 
         {/* ── Hero ──────────────────────────────────────────────────────────── */}
@@ -151,9 +147,7 @@ export default function AboutUs() {
           style={{
             paddingTop: "160px",
             paddingBottom: "80px",
-            backgroundImage:
-              "radial-gradient(ellipse at 20% 60%, rgba(163,113,247,0.08) 0%, transparent 55%), " +
-              "radial-gradient(ellipse at 80% 30%, rgba(0,229,192,0.04) 0%, transparent 55%)",
+            background: "linear-gradient(180deg, #F5F5F7 0%, #FAFAFA 60%, #FFFFFF 100%)",
           }}
         >
           <div className="container px-5 md:px-8">
@@ -314,7 +308,7 @@ export default function AboutUs() {
                 style={{
                   display: "block",
                   fontSize: "6rem",
-                  color: "rgba(163,113,247,0.2)",
+                  color: "rgba(0,113,227,0.2)",
                   lineHeight: 0,
                   marginBottom: "24px",
                   fontFamily: "Georgia, serif",
@@ -325,7 +319,7 @@ export default function AboutUs() {
               <p
                 style={{
                   fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)",
-                  color: "#E6EDF3",
+                  color: "#0A0A0A",
                   fontStyle: "italic",
                   lineHeight: 1.6,
                   textAlign: "center",

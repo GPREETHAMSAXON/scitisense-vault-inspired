@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceFeatureGrid from "@/components/ServiceFeatureGrid";
 import ServiceDeepDive from "@/components/ServiceDeepDive";
@@ -36,7 +35,6 @@ const DEEP_DIVE = [
 export default function PlatformOptimizationPage() {
   return (
     <>
-      <Navbar />
       <ServiceDetailHero
         title="Platform Optimization"
         tagline="Monitors and manages your ServiceNow platform to ensure optimal performance, usability, and ROI on every license."

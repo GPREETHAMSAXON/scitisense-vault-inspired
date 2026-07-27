@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceFeatureGrid from "@/components/ServiceFeatureGrid";
 import ServiceDeepDive from "@/components/ServiceDeepDive";
@@ -36,7 +35,6 @@ const DEEP_DIVE = [
 export default function SecOpsPage() {
   return (
     <>
-      <Navbar />
       <ServiceDetailHero
         title="Security Operations (SecOps)"
         tagline="Intelligent security response. Replace manual coordination with automated playbooks. We bridge the gap between security and IT to resolve vulnerabilities and incidents before they impact your bottom line."

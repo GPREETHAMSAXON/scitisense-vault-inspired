@@ -28,36 +28,35 @@ function LogoPill({ name, file }: { name: string; file: string }) {
   return (
     <div
       style={{
-        background:     "rgba(22,27,34,0.6)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-        border:         "1px solid #30363D",
+        background:     "#FFFFFF",
+        border:         "1px solid #D2D2D7",
         borderRadius:   "12px",
         padding:        "16px 28px",
-        marginRight:    "32px",
+        marginRight:    "20px",
         flexShrink:     0,
         display:        "flex",
         alignItems:     "center",
         justifyContent: "center",
         minWidth:       "120px",
-        transition:     "transform 0.2s ease, border-color 0.2s ease, background 0.2s ease",
+        boxShadow:      "0 1px 3px rgba(0,0,0,0.04)",
+        transition:     "transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease",
         cursor:         "default",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLDivElement;
         el.style.transform  = "translateY(-5px) scale(1.03)";
-        el.style.borderColor = "rgba(163,113,247,0.3)";
-        el.style.background  = "rgba(163,113,247,0.1)";
+        el.style.borderColor = "rgba(0,113,227,0.3)";
+        el.style.boxShadow   = "0 8px 24px rgba(0,113,227,0.1)";
         const img = el.querySelector("img");
         if (img) img.style.filter = "none";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLDivElement;
         el.style.transform  = "translateY(0) scale(1)";
-        el.style.borderColor = "#30363D";
-        el.style.background  = "rgba(22,27,34,0.6)";
+        el.style.borderColor = "#D2D2D7";
+        el.style.boxShadow   = "0 1px 3px rgba(0,0,0,0.04)";
         const img = el.querySelector("img");
-        if (img) img.style.filter = "brightness(0) invert(1)";
+        if (img) img.style.filter = "grayscale(1) opacity(0.6)";
       }}
     >
       <Image
@@ -65,7 +64,7 @@ function LogoPill({ name, file }: { name: string; file: string }) {
         alt={name}
         width={130}
         height={50}
-        style={{ objectFit: "contain", filter: "brightness(0) invert(1)", transition: "filter 0.2s ease" }}
+        style={{ objectFit: "contain", filter: "grayscale(1) opacity(0.6)", transition: "filter 0.2s ease" }}
         draggable={false}
       />
     </div>
@@ -86,7 +85,7 @@ export default function Logos() {
   };
 
   return (
-    <section className="relative overflow-hidden" style={{ paddingTop: "100px", paddingBottom: "100px", background: "transparent" }}>
+    <section className="relative overflow-hidden" style={{ paddingTop: "100px", paddingBottom: "100px", background: "#FFFFFF" }}>
       {/* Bottom fade — smooths transition into next section */}
       <div
         aria-hidden="true"
@@ -96,7 +95,7 @@ export default function Logos() {
           left: 0,
           right: 0,
           height: "120px",
-          background: "linear-gradient(to bottom, transparent, rgba(13,17,23,0.3))",
+          background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.03))",
           pointerEvents: "none",
           zIndex: 2,
         }}

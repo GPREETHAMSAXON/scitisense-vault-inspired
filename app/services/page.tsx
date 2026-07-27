@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { ChevronDown, ChevronUp, ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
-import NavbarLight from "@/components/NavbarLight"
+import Footer from "@/components/Footer"
 
 const services = [
   {
@@ -186,6 +186,36 @@ const services = [
     deliverables: ['Multi-Agent System Design','Agent Workflow Development','MCP Integration','Tool & API Integration','Cloud Deployment','Performance Benchmarking','Technical Documentation','Publication Support'],
     tools: ['Python','LangGraph','CrewAI','OpenAI','LangChain','Docker','Kubernetes','AWS'],
   },
+  {
+    id: 'medical-it',
+    icon: 'heart',
+    color: '#F85149',
+    title: 'Medical Information Technology',
+    area: '07',
+    overview: `Scitisense Futurize delivers next-generation Medical IT solutions that bridge the gap between clinical workflows and modern technology infrastructure. We design, develop, and deploy robust healthcare information systems — from Electronic Health Records (EHR) and Hospital Management Systems (HMS) to AI-powered diagnostic tools and telemedicine platforms. Our solutions are built with strict adherence to healthcare data standards including HL7, FHIR, and DICOM, ensuring interoperability, compliance, and security at enterprise scale.`,
+    industries: ['Hospitals','Clinics','Diagnostic Centers','Pharmaceutical','Medical Devices','Telemedicine','Government Health','Research Institutes','Insurance','Wellness'],
+    algorithms: {
+      'EHR & HMS': ['HL7 FHIR','DICOM','ICD-10','SNOMED CT','OpenMRS','OpenEMR'],
+      'Medical AI': ['Medical Image Analysis','Clinical NLP','Predictive Analytics','Drug Discovery AI','Pathology AI'],
+      'Data & Integration': ['Health Data Lakes','API Integration','Interoperability','ETL Pipelines','IoMT'],
+      'Security & Compliance': ['HIPAA Compliance','Data Encryption','Role-Based Access','Audit Trails','Secure Cloud'],
+      'Telemedicine': ['WebRTC','Video Consultation','Remote Patient Monitoring','mHealth','Wearable Integration'],
+    },
+    projects: [
+      'Electronic Health Records (EHR) System',
+      'Hospital Management System (HMS)',
+      'AI-Powered Medical Image Diagnosis Platform',
+      'Telemedicine & Video Consultation Platform',
+      'Remote Patient Monitoring with IoT Wearables',
+      'Clinical Decision Support System',
+      'Pharmacy & Drug Inventory Management',
+      'Medical Laboratory Information System (LIS)',
+      'Patient Appointment & Workflow Automation',
+      'Healthcare Analytics & Reporting Dashboard',
+    ],
+    deliverables: ['System Architecture','Full Development','FHIR Integration','Cloud Deployment','Security Audit','Staff Training','Technical Documentation','Ongoing Support'],
+    tools: ['Python','React','Node.js','PostgreSQL','MongoDB','Docker','AWS','Azure Health'],
+  },
 ]
 
 function ServiceIcon({ name, size = 22, color }: {
@@ -198,6 +228,7 @@ function ServiceIcon({ name, size = 22, color }: {
     message: <svg width={size} height={size} fill="none" stroke={color} strokeWidth="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
     sparkles: <svg width={size} height={size} fill="none" stroke={color} strokeWidth="2" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>,
     bot: <svg width={size} height={size} fill="none" stroke={color} strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>,
+    heart: <svg width={size} height={size} fill="none" stroke={color} strokeWidth="2" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l1-2 2 4 1-2h4.28"/></svg>,
   }
   return <>{icons[name] || icons.eye}</>
 }
@@ -237,7 +268,6 @@ export default function ServicesPage() {
       minHeight: '100vh',
       fontFamily: "var(--font-plus-jakarta-sans), -apple-system, BlinkMacSystemFont, sans-serif"
     }}>
-      <NavbarLight />
 
       {/* HERO */}
       <section style={{
@@ -311,7 +341,7 @@ export default function ServicesPage() {
             { value: '18+', label: 'Projects Delivered' },
             { value: '5+', label: 'Industry Clients' },
             { value: '4+', label: 'Workshops Conducted' },
-            { value: '6', label: 'Research Domains' },
+            { value: '7', label: 'Research Domains' },
           ].map((stat, i) => (
             <div key={stat.label} style={{
               textAlign: 'center',
@@ -347,7 +377,7 @@ export default function ServicesPage() {
             fontWeight: 800, color: '#1D1D1F',
             letterSpacing: '-0.03em', marginBottom: 16,
           }}>
-            Six Research{' '}
+            Seven Research{' '}
             <span className="text-gradient-teal">Domains</span>
           </h2>
           <p style={{ color: '#6E6E73', fontSize: '1.05rem', maxWidth: 600, margin: '0 auto' }}>
@@ -367,6 +397,7 @@ export default function ServicesPage() {
             return (
               <div
                 key={svc.id}
+                id={svc.id}
                 className={`animate-on-scroll spotlight-card service-card-light`}
                 style={{
                   animationDelay: `${i * 0.08}s`,
@@ -690,6 +721,8 @@ export default function ServicesPage() {
           </span>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }

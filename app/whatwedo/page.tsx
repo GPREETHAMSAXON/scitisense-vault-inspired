@@ -6,7 +6,6 @@ import {
   Shield, Headphones, Zap, Lock,
   ChevronRight,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -61,8 +60,6 @@ export default function WhatWeDo() {
 
   return (
     <>
-      <Navbar />
-
       <main className="relative" style={{ backgroundColor: "transparent" }}>
 
         {/* ── Hero banner ───────────────────────────────────────────────────── */}
@@ -71,9 +68,7 @@ export default function WhatWeDo() {
           style={{
             paddingTop: "160px",
             paddingBottom: "80px",
-            backgroundImage:
-              "radial-gradient(ellipse at 30% 60%, rgba(0,229,192,0.08) 0%, transparent 55%), " +
-              "radial-gradient(ellipse at 75% 30%, rgba(0,229,192,0.04) 0%, transparent 55%)",
+            background: "linear-gradient(180deg, #F5F5F7 0%, #FAFAFA 60%, #FFFFFF 100%)",
           }}
         >
           <div className="container px-5 md:px-8">
@@ -128,18 +123,13 @@ export default function WhatWeDo() {
                       ? {}
                       : {
                           y: -6,
-                          boxShadow: "0 8px 40px rgba(163,113,247,0.12)",
+                          boxShadow: "0 8px 32px rgba(0,113,227,0.1)",
                         }
                   }
                   transition={{ duration: 0.3, ease }}
-                  className="card-vault"
+                  className="service-card-light"
                   style={{
-                    background:   "rgba(22,27,34,0.75)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    borderRadius: "20px",
                     padding:      "40px 44px",
-                    border:       "1px solid #30363D",
                     position:     "relative",
                     overflow:     "hidden",
                     cursor:       "default",
@@ -154,7 +144,7 @@ export default function WhatWeDo() {
                       right:        "40px",
                       fontSize:     "3rem",
                       fontWeight:   800,
-                      color:        "rgba(163,113,247,0.08)",
+                      color:        "rgba(0,113,227,0.06)",
                       lineHeight:   1,
                       pointerEvents:"none",
                       userSelect:   "none",
@@ -168,7 +158,7 @@ export default function WhatWeDo() {
                     style={{
                       width:        "48px",
                       height:       "4px",
-                      background:   "linear-gradient(90deg, #A371F7, #00E5C0)",
+                      background:   "linear-gradient(90deg, #0071E3, #34AADC)",
                       borderRadius: "999px",
                       marginBottom: "24px",
                     }}
@@ -178,7 +168,7 @@ export default function WhatWeDo() {
                     style={{
                       fontSize:     "1.5rem",
                       fontWeight:   700,
-                      color:        "#E6EDF3",
+                      color:        "#0A0A0A",
                       marginBottom: "16px",
                       lineHeight:   1.2,
                     }}
@@ -188,7 +178,7 @@ export default function WhatWeDo() {
                   <p
                     style={{
                       fontSize:  "1rem",
-                      color:     "#8B949E",
+                      color:     "#6E6E73",
                       lineHeight: 1.8,
                       maxWidth:  "780px",
                     }}
@@ -207,14 +197,14 @@ export default function WhatWeDo() {
           style={{
             paddingTop:      "100px",
             paddingBottom:   "120px",
-            backgroundColor: "transparent",
-            borderTop:       "1px solid #30363D",
+            backgroundColor: "#FFFFFF",
+            borderTop:       "1px solid rgba(0,0,0,0.08)",
           }}
         >
           <div className="container px-5 md:px-8">
             <motion.p
               className="text-[0.68rem] font-semibold tracking-[0.16em] uppercase mb-3"
-              style={{ color: "#A371F7" }}
+              style={{ color: "#0071E3" }}
               {...fadeUp(noMotion)}
             >
               Our Solutions
@@ -238,43 +228,42 @@ export default function WhatWeDo() {
                   key={sol.id}
                   {...fadeUp(noMotion, i * 0.05)}
                   style={{
-                    background:    "rgba(22,27,34,0.6)",
-                    backdropFilter: "blur(8px)",
-                    WebkitBackdropFilter: "blur(8px)",
+                    background:    "#FFFFFF",
                     borderRadius:  "16px",
                     padding:       "28px 24px",
-                    border:        "1px solid #30363D",
+                    border:        "1px solid #D2D2D7",
+                    boxShadow:     "0 1px 3px rgba(0,0,0,0.04)",
                     display:       "flex",
                     flexDirection: "column",
                     cursor:        "default",
-                    transition:    "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease",
+                    transition:    "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, border-color 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
                     if (noMotion) return;
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.transform   = "translateY(-4px)";
-                    el.style.borderColor = "rgba(163,113,247,0.4)";
-                    el.style.boxShadow   = "0 8px 40px rgba(163,113,247,0.12)";
+                    el.style.borderColor = "rgba(0,113,227,0.3)";
+                    el.style.boxShadow   = "0 8px 32px rgba(0,113,227,0.1)";
                   }}
                   onMouseLeave={(e) => {
                     if (noMotion) return;
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.transform   = "translateY(0)";
-                    el.style.borderColor = "#30363D";
-                    el.style.boxShadow   = "none";
+                    el.style.borderColor = "#D2D2D7";
+                    el.style.boxShadow   = "0 1px 3px rgba(0,0,0,0.04)";
                   }}
                 >
                   <div
                     style={{
                       width:          "40px",
                       height:         "40px",
-                      background:     "rgba(0,229,192,0.08)",
+                      background:     "rgba(0,113,227,0.08)",
                       borderRadius:   "10px",
                       display:        "flex",
                       alignItems:     "center",
                       justifyContent: "center",
                       marginBottom:   "16px",
-                      color:          "#00E5C0",
+                      color:          "#0071E3",
                       flexShrink:     0,
                     }}
                   >
@@ -285,7 +274,7 @@ export default function WhatWeDo() {
                     style={{
                       fontSize:     "0.9rem",
                       fontWeight:   700,
-                      color:        "#E6EDF3",
+                      color:        "#0A0A0A",
                       marginBottom: "8px",
                     }}
                   >
@@ -294,7 +283,7 @@ export default function WhatWeDo() {
                   <p
                     style={{
                       fontSize:    "0.8rem",
-                      color:       "#8B949E",
+                      color:       "#6E6E73",
                       lineHeight:  1.65,
                       flexGrow:    1,
                       marginBottom:"20px",
@@ -308,7 +297,7 @@ export default function WhatWeDo() {
                     style={{
                       fontSize:   "0.8rem",
                       fontWeight: 600,
-                      color:      "#00E5C0",
+                      color:      "#0071E3",
                       marginTop:  "auto",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}

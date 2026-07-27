@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceFeatureGrid from "@/components/ServiceFeatureGrid";
 import ServiceDeepDive from "@/components/ServiceDeepDive";
@@ -36,7 +35,6 @@ const DEEP_DIVE = [
 export default function GRCPage() {
   return (
     <>
-      <Navbar />
       <ServiceDetailHero
         title="Governance, Risk and Compliance"
         tagline="Enterprise GRC, simplified. We transform fragmented compliance rules and hidden risks into a unified, automated framework — delivering real-time protection without the manual overhead."

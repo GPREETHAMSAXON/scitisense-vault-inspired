@@ -1,25 +1,27 @@
 "use client";
 
-import { motion } from "motion/react";
+import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const COMPANY_LINKS = [
-  { label: "Home",           href: "/"         },
-  { label: "What We Do",     href: "/whatwedo"  },
-  { label: "About Us",       href: "/aboutus"   },
-  { label: "Announcements",  href: "/stories"   },
-  { label: "Contact",        href: "/contact"   },
+  { label: "Home",          href: "/"         },
+  { label: "Services",      href: "/services" },
+  { label: "Announcements", href: "/stories"  },
+  { label: "About",         href: "/aboutus"  },
+  { label: "Contact",       href: "/contact"  },
 ];
 
 const SERVICE_LINKS = [
-  { label: "ITSM",                  href: "/whatwedo" },
-  { label: "ITOM",                  href: "/whatwedo" },
-  { label: "ITAM",                  href: "/whatwedo" },
-  { label: "HRSD",                  href: "/whatwedo" },
-  { label: "GRC",                   href: "/whatwedo" },
-  { label: "CSM",                   href: "/whatwedo" },
+  { label: "Computer Vision",       href: "/services#computer-vision" },
+  { label: "IoT & Wearable",        href: "/services#iot-wearable"     },
+  { label: "ML & DL",               href: "/services#ml-dl"            },
+  { label: "NLP & LLM",             href: "/services#nlp-llm"          },
+  { label: "Generative AI",         href: "/services#generative-ai"   },
+  { label: "Agentic AI",            href: "/services#agentic-ai"      },
+  { label: "Medical IT",            href: "/services#medical-it"      },
+  { label: "Training",              href: "/whatwedo"                 },
 ];
 
 const CONTACT_ITEMS = [
@@ -29,13 +31,10 @@ const CONTACT_ITEMS = [
 
 const FOOTER_ADDRESS = "House No 65-6-131, New Gajuwaka MH Colony, Visakhapatnam, AP 530026";
 
-// ─── Logo mark SVG ────────────────────────────────────────────────────────────
-
-
 // ─── Shared heading style ─────────────────────────────────────────────────────
 
 const colHeadingStyle: React.CSSProperties = {
-  color:          "#E6EDF3",
+  color:          "#0A0A0A",
   fontSize:       "0.75rem",
   fontWeight:     700,
   letterSpacing:  "0.1em",
@@ -47,7 +46,7 @@ const colHeadingStyle: React.CSSProperties = {
 // ─── Link hover helper — direct DOM, no re-render ────────────────────────────
 
 function linkHover(e: React.MouseEvent<HTMLAnchorElement>, enter: boolean) {
-  e.currentTarget.style.color = enter ? "#E6EDF3" : "#8B949E";
+  e.currentTarget.style.color = enter ? "#0071E3" : "#6E6E73";
 }
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
@@ -59,26 +58,11 @@ export default function Footer() {
     <footer
       className="relative overflow-hidden"
       style={{
-        backgroundColor: "rgba(1,4,9,0.97)",
-        borderTop:       "1px solid #21262D",
+        backgroundColor: "#FFFFFF",
+        borderTop:       "1px solid rgba(0,0,0,0.08)",
         padding:         "80px 0 0 0",
       }}
     >
-      {/* Top connection glow — blends with CTABand above */}
-      <div
-        aria-hidden="true"
-        style={{
-          position:      "absolute",
-          top:           0,
-          left:          "50%",
-          transform:     "translateX(-50%)",
-          width:         "600px",
-          height:        "200px",
-          background:    "radial-gradient(ellipse at 50% 0%, rgba(163,113,247,0.08) 0%, transparent 70%)",
-          pointerEvents: "none",
-          zIndex:        0,
-        }}
-      />
       <div className="relative container px-5 md:px-8" style={{ zIndex: 1 }}>
 
         {/* ── 4-column grid ─────────────────────────────────────────────────── */}
@@ -86,33 +70,59 @@ export default function Footer() {
 
           {/* Col 1 — Brand */}
           <div>
-            <a href="/" className="inline-flex items-center gap-2.5 mb-5" aria-label="Scitisense Futurize home">
-              <span style={{ color: "#E6EDF3", fontWeight: 700, fontSize: "1.05rem", letterSpacing: "-0.03em" }}>
-                SCITISENSE <span style={{ color: "#00E5C0" }}>FUTURIZE</span>
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-5" aria-label="Scitisense Futurize home">
+              <div style={{
+                width: 36, height: 36,
+                background: "linear-gradient(135deg, #0071E3, #34AADC)",
+                borderRadius: 10,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0,
+              }}>
+                <span style={{ color: "#fff", fontSize: 14, fontWeight: 800, letterSpacing: "-0.05em" }}>SF</span>
+              </div>
+              <span style={{ color: "#0A0A0A", fontWeight: 700, fontSize: "1.05rem", letterSpacing: "-0.03em" }}>
+                Scitisense <span style={{ color: "#0071E3" }}>Futurize</span>
               </span>
-            </a>
+            </Link>
 
-            <p style={{ color: "#8B949E", fontSize: "0.875rem", lineHeight: 1.75, maxWidth: "240px", marginBottom: "24px" }}>
+            <p style={{ color: "#6E6E73", fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "10px" }}>
+              AI Research &amp; Technology
+            </p>
+
+            <p style={{ color: "#6E6E73", fontSize: "0.875rem", lineHeight: 1.75, maxWidth: "260px", marginBottom: "24px" }}>
               Recognized leader in Scientific R&amp;D and Information Technology — solving complex challenges in modern science and healthcare.
             </p>
 
             {/* LinkedIn */}
-            <motion.a
+            <a
               href="https://linkedin.com/company/scitisense-futurize"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Scitisense Futurize on LinkedIn"
               className="inline-flex items-center justify-center w-9 h-9 rounded-lg"
-              style={{ backgroundColor: "#161B22", border: "1px solid #30363D", color: "#8B949E" }}
-              whileHover={{ color: "#00E5C0", backgroundColor: "rgba(0,229,192,0.10)", boxShadow: "0 0 14px rgba(0,229,192,0.20)" }}
-              transition={{ duration: 0.2 }}
+              style={{
+                backgroundColor: "#F5F5F7",
+                border: "1px solid #D2D2D7",
+                color: "#6E6E73",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#0071E3";
+                e.currentTarget.style.backgroundColor = "rgba(0,113,227,0.08)";
+                e.currentTarget.style.borderColor = "rgba(0,113,227,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "#6E6E73";
+                e.currentTarget.style.backgroundColor = "#F5F5F7";
+                e.currentTarget.style.borderColor = "#D2D2D7";
+              }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                 <rect width="4" height="12" x="2" y="9" />
                 <circle cx="4" cy="4" r="2" />
               </svg>
-            </motion.a>
+            </a>
           </div>
 
           {/* Col 2 — Company links */}
@@ -121,14 +131,14 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
-                    style={{ color: "#8B949E", fontSize: "0.875rem", transition: "color 0.18s" }}
+                    style={{ color: "#6E6E73", fontSize: "0.875rem", transition: "color 0.18s" }}
                     onMouseEnter={(e) => linkHover(e, true)}
                     onMouseLeave={(e) => linkHover(e, false)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -140,14 +150,14 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5">
               {SERVICE_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
-                    style={{ color: "#8B949E", fontSize: "0.875rem", transition: "color 0.18s" }}
+                    style={{ color: "#6E6E73", fontSize: "0.875rem", transition: "color 0.18s" }}
                     onMouseEnter={(e) => linkHover(e, true)}
                     onMouseLeave={(e) => linkHover(e, false)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -159,10 +169,10 @@ export default function Footer() {
             <ul className="flex flex-col gap-4">
               {CONTACT_ITEMS.map(({ icon: Icon, text, href }) => (
                 <li key={text} className="flex items-start gap-3">
-                  <Icon size={15} strokeWidth={1.8} style={{ color: "#00E5C0", marginTop: "2px", flexShrink: 0 }} />
+                  <Icon size={15} strokeWidth={1.8} style={{ color: "#0071E3", marginTop: "2px", flexShrink: 0 }} />
                   <a
                     href={href}
-                    style={{ color: "#8B949E", fontSize: "0.875rem", lineHeight: 1.6, transition: "color 0.18s" }}
+                    style={{ color: "#6E6E73", fontSize: "0.875rem", lineHeight: 1.6, transition: "color 0.18s" }}
                     onMouseEnter={(e) => linkHover(e, true)}
                     onMouseLeave={(e) => linkHover(e, false)}
                   >
@@ -171,8 +181,8 @@ export default function Footer() {
                 </li>
               ))}
               <li className="flex items-start gap-3">
-                <MapPin size={15} strokeWidth={1.8} style={{ color: "#00E5C0", marginTop: "2px", flexShrink: 0 }} />
-                <span style={{ fontSize: "0.8rem", color: "#484F58", lineHeight: 1.5 }}>
+                <MapPin size={15} strokeWidth={1.8} style={{ color: "#0071E3", marginTop: "2px", flexShrink: 0 }} />
+                <span style={{ fontSize: "0.8rem", color: "#86868B", lineHeight: 1.5 }}>
                   {FOOTER_ADDRESS}
                 </span>
               </li>
@@ -184,19 +194,19 @@ export default function Footer() {
         {/* ── Bottom bar ────────────────────────────────────────────────────── */}
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid #21262D", paddingTop: "24px", marginTop: "60px", paddingBottom: "32px" }}
+          style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "24px", marginTop: "60px", paddingBottom: "32px" }}
         >
-          <p style={{ color: "#484F58", fontSize: "0.8rem" }}>
-            © {year} Scitisense Futurize Pvt Ltd. All rights reserved.
+          <p style={{ color: "#86868B", fontSize: "0.8rem" }}>
+            © {year} Scitisense Futurize Pvt. Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            {(["Privacy Policy", "Terms of Service"] as const).map((label) => (
+            {(["Privacy Policy", "Terms"] as const).map((label) => (
               <a
                 key={label}
                 href="#"
-                style={{ color: "#8B949E", fontSize: "0.8rem", transition: "color 0.18s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#E6EDF3")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#8B949E")}
+                style={{ color: "#6E6E73", fontSize: "0.8rem", transition: "color 0.18s" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#0A0A0A")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#6E6E73")}
               >
                 {label}
               </a>

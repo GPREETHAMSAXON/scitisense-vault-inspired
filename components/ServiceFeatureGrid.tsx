@@ -41,7 +41,7 @@ function FeatureCard({ name, index, noMotion }: { name: string; index: number; n
     rotXRaw.set(0);
     rotYRaw.set(0);
     if (glowRef.current) glowRef.current.style.opacity = "0";
-    (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
+    (e.currentTarget as HTMLDivElement).style.boxShadow = "0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)";
   };
 
   return (
@@ -57,23 +57,21 @@ function FeatureCard({ name, index, noMotion }: { name: string; index: number; n
           rotateX:        rotX,
           rotateY:        rotY,
           transformStyle: "preserve-3d",
-          background:     "rgba(22,27,34,0.75)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          border:         "1px solid #30363D",
+          background:     "#FFFFFF",
+          border:         "1px solid #D2D2D7",
           borderRadius:   "16px",
           padding:        "28px",
           height:         "100%",
           position:       "relative",
           overflow:       "hidden",
           cursor:         "default",
-          boxShadow:      "0 4px 24px rgba(0,0,0,0.4)",
+          boxShadow:      "0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)",
           transition:     "box-shadow 0.2s ease",
         }}
         onMouseMove={onMove}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLDivElement).style.boxShadow =
-            "0 8px 32px rgba(163,113,247,0.14), 0 24px 48px rgba(163,113,247,0.10)";
+            "0 8px 32px rgba(0,113,227,0.1), 0 2px 8px rgba(0,113,227,0.08)";
         }}
         onMouseLeave={onLeave}
       >
@@ -84,7 +82,7 @@ function FeatureCard({ name, index, noMotion }: { name: string; index: number; n
             position:     "absolute",
             inset:        0,
             borderRadius: "16px",
-            background:   "radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(0,229,192,0.09), transparent 65%)",
+            background:   "radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(0,113,227,0.08), transparent 65%)",
             opacity:      0,
             transition:   "opacity 0.28s",
             pointerEvents:"none",
@@ -97,22 +95,22 @@ function FeatureCard({ name, index, noMotion }: { name: string; index: number; n
             style={{
               width:          "44px",
               height:         "44px",
-              background:     "rgba(0,229,192,0.10)",
+              background:     "rgba(0,113,227,0.1)",
               borderRadius:   "12px",
               display:        "flex",
               alignItems:     "center",
               justifyContent: "center",
               marginBottom:   "16px",
-              color:          "#00E5C0",
+              color:          "#0071E3",
             }}
           >
             <Icon size={20} strokeWidth={1.8} />
           </div>
 
-          <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#E6EDF3", marginBottom: "8px", lineHeight: 1.3 }}>
+          <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#0A0A0A", marginBottom: "8px", lineHeight: 1.3 }}>
             {name}
           </h3>
-          <p style={{ fontSize: "0.82rem", color: "#8B949E", lineHeight: 1.65 }}>
+          <p style={{ fontSize: "0.82rem", color: "#6E6E73", lineHeight: 1.65 }}>
             Enterprise-grade {name.toLowerCase()} configuration and optimization.
           </p>
         </div>
@@ -136,7 +134,7 @@ export default function ServiceFeatureGrid({ features }: Props) {
           viewport={{ once: false, margin: "-60px" }}
           transition={{ duration: 0.5, ease }}
           style={{
-            color:         "#00E5C0",
+            color:         "#0071E3",
             fontSize:      "0.75rem",
             fontWeight:    600,
             letterSpacing: "0.15em",

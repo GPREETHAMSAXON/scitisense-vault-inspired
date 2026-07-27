@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Space_Grotesk, DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import CustomCursor from "@/components/CustomCursor";
-import Starfield from "@/components/Starfield";
+import NavbarLight from "@/components/NavbarLight";
 import SmoothScrollProvider from "@/lib/lenis";
 import PageTransition from "@/components/PageTransition";
-import ScrollProgressLine from "@/components/ScrollProgressLine";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,11 +42,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Scitisense Futurize Pvt Ltd — Scientific R&D & Medical IT",
+    default: "Scitisense Futurize — AI Research & Technology",
     template: "%s | Scitisense Futurize",
   },
   description:
-    "Scitisense Futurize Private Limited is a DPIIT-recognized leader in Scientific R&D and Medical Information Technology, delivering AI research, healthcare IT solutions, and technology consulting from Visakhapatnam, India.",
+    "DPIIT-recognized AI Research & Product Development company delivering Computer Vision, IoT, NLP, Generative AI, and Agentic AI solutions.",
   keywords: [
     "Scientific R&D",
     "Medical IT",
@@ -69,22 +67,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Scitisense Futurize Pvt Ltd — Scientific R&D & Medical IT",
+    title: "Scitisense Futurize — AI Research & Technology",
     description:
-      "DPIIT-recognized leader in Scientific R&D and Medical Information Technology, delivering AI research and healthcare IT solutions from Visakhapatnam, India.",
+      "DPIIT-recognized AI Research & Product Development company delivering Computer Vision, IoT, NLP, Generative AI, and Agentic AI solutions.",
     siteName: "Scitisense Futurize",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scitisense Futurize Pvt Ltd — Scientific R&D & Medical IT",
+    title: "Scitisense Futurize — AI Research & Technology",
     description:
-      "DPIIT-recognized leader in Scientific R&D and Medical Information Technology.",
+      "DPIIT-recognized AI Research & Product Development company delivering Computer Vision, IoT, NLP, Generative AI, and Agentic AI solutions.",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0D1117",
-  colorScheme: "dark",
+  themeColor: "#FAFAFA",
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
 };
@@ -106,9 +104,7 @@ export default function RootLayout({
           }}
         />
         <SmoothScrollProvider>
-          <CustomCursor />
-          <Starfield />
-          <ScrollProgressLine />
+          <NavbarLight />
           <PageTransition>{children}</PageTransition>
         </SmoothScrollProvider>
       </body>

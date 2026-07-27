@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceFeatureGrid from "@/components/ServiceFeatureGrid";
 import ServiceDeepDive from "@/components/ServiceDeepDive";
@@ -36,7 +35,6 @@ const DEEP_DIVE = [
 export default function HRSDPage() {
   return (
     <>
-      <Navbar />
       <ServiceDetailHero
         title="Human Resource Service Delivery"
         tagline="We help HR teams deliver consumer-grade employee experiences — unifying case management, self-service, and lifecycle events on a single platform."

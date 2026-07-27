@@ -15,24 +15,14 @@ export default function ServiceDetailHero({ title, tagline }: Props) {
   return (
     <section
       style={{
-        background:    "transparent",
+        background:    "linear-gradient(180deg, #F5F5F7 0%, #FAFAFA 60%, #FFFFFF 100%)",
         paddingTop:    "160px",
         paddingBottom: "80px",
-        borderBottom:  "1px solid #30363D",
+        borderBottom:  "1px solid rgba(0,0,0,0.08)",
         position:      "relative",
         overflow:      "hidden",
       }}
     >
-      {/* Ambient teal glow */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "radial-gradient(ellipse 60% 50% at 30% 20%, rgba(0,229,192,0.08) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
       <div className="relative container px-5 md:px-8">
 
         {/* Breadcrumb */}
@@ -40,13 +30,13 @@ export default function ServiceDetailHero({ title, tagline }: Props) {
           initial={noMotion ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease }}
-          style={{ color: "#8B949E", fontSize: "0.8rem", marginBottom: "20px" }}
+          style={{ color: "#6E6E73", fontSize: "0.8rem", marginBottom: "20px" }}
         >
           <a
             href="/whatwedo"
-            style={{ color: "#8B949E", textDecoration: "none", transition: "color 0.15s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#00E5C0")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#8B949E")}
+            style={{ color: "#6E6E73", textDecoration: "none", transition: "color 0.15s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0071E3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#6E6E73")}
           >
             What We Do
           </a>
@@ -62,7 +52,7 @@ export default function ServiceDetailHero({ title, tagline }: Props) {
           style={{
             fontSize:      "clamp(2.2rem, 5vw, 3.5rem)",
             fontWeight:    800,
-            color:         "#E6EDF3",
+            color:         "#0A0A0A",
             marginBottom:  "20px",
             lineHeight:    1.1,
             letterSpacing: "-0.025em",
@@ -78,7 +68,7 @@ export default function ServiceDetailHero({ title, tagline }: Props) {
           transition={{ duration: 0.6, delay: 0.14, ease }}
           style={{
             fontSize:  "1.15rem",
-            color:     "#8B949E",
+            color:     "#6E6E73",
             maxWidth:  "700px",
             lineHeight: 1.78,
           }}

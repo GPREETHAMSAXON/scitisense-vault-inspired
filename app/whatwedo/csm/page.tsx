@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceFeatureGrid from "@/components/ServiceFeatureGrid";
 import ServiceDeepDive from "@/components/ServiceDeepDive";
@@ -36,7 +35,6 @@ const DEEP_DIVE = [
 export default function CSMPage() {
   return (
     <>
-      <Navbar />
       <ServiceDetailHero
         title="Customer Service Management"
         tagline="Monitors and manages customer-facing operations to ensure fast, consistent, and proactive service experiences."

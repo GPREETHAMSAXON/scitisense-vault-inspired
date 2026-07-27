@@ -25,11 +25,16 @@ Before making ANY design decision, query the ui-ux-pro-max skill:
 ALWAYS run these queries first, then apply what they return.
 
 ## Design System (locked)
-- Background: #0A0B0F | Navy: #0D1424 | Accent: #22D3EE
-- Motion curve: cubic-bezier(0.22, 1, 0.36, 1), 0.4–0.8s
-- Cards: glassmorphic (rgba(255,255,255,0.04) + backdrop-blur-md)
+- Background: #FAFAFA | Card/Surface: #FFFFFF | Secondary surface: #F5F5F7
+- Foreground: #0A0A0A | Muted foreground: #6E6E73
+- Primary/Accent: #0071E3 (Apple blue) → #34AADC gradient | Primary-foreground: #FFFFFF
+- Border: #D2D2D7 | Radius: 0.875rem (cards), 980px (pill buttons)
+- Font: Plus Jakarta Sans (single family, weights 400–800)
+- Motion curve: cubic-bezier(0.22, 1, 0.36, 1) / cubic-bezier(0.23, 1, 0.32, 1), 0.4–0.9s
+- Reveal pattern: IntersectionObserver + CSS transition (`.animate-on-scroll`/`.reveal-up`), not Framer Motion, for new sections
+- Cards: `.service-card-light` / `.spotlight-card` (white bg, #D2D2D7 border, soft shadow, blue spotlight hover glow)
 - Section padding: 120px desktop, 64px mobile
-- Max width: 1200px
+- Max width: 1200px (1280px on some full-bleed sections)
 
 ## Components (one file each)
 /components/Navbar.tsx
