@@ -56,7 +56,7 @@ export default function NavbarLight() {
           }}>
             {/* Logo image */}
             <img
-              src="/logosci.png"
+              src="/logosci2.png"
               alt="Scitisense Futurize Logo"
               style={{
                 height: "48px",
