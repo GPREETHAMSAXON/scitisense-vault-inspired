@@ -48,40 +48,16 @@ export default function NavbarLight() {
           justifyContent: 'space-between',
         }}>
           {/* Logo */}
-          <Link href="/" style={{
-            display: 'flex', alignItems: 'center',
-            gap: '10px', textDecoration: 'none',
-          }}>
-            <img
-              src="/logos/applogo.png"
-              alt="Scitisense Futurize"
-              style={{
-                height: "36px",
-                width: "auto",
-                objectFit: "contain",
-              }}
-            />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{
-                fontSize: 16,
-                fontWeight: 800,
-                color: "#1D1D1F",
-                letterSpacing: "-0.02em",
-                lineHeight: 1.2,
-              }}>
-                Scitisense
-              </span>
-              <span style={{
-                fontSize: 10,
-                fontWeight: 700,
-                color: "#0071E3",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                lineHeight: 1.2,
-              }}>
-                Futurize
-              </span>
-            </div>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <span style={{
+              fontSize: "18px",
+              fontWeight: 800,
+              color: "#1D1D1F",
+              letterSpacing: "-0.02em",
+              fontFamily: "var(--font-plus-jakarta-sans)",
+            }}>
+              Scitisense Futurize Pvt Ltd
+            </span>
           </Link>
 
           {/* Desktop Nav */}

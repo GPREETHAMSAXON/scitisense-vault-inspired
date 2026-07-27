@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 const HEADLINE_LINES = [
   { text: "Building the",         gradient: false },
@@ -18,13 +17,6 @@ const DOMAIN_PILLS = [
   "Generative AI",
   "Agentic AI",
   "Training & Consulting",
-];
-
-const METRICS = [
-  { value: "18+", label: "Projects" },
-  { value: "5+",  label: "Clients" },
-  { value: "4+",  label: "Workshops" },
-  { value: "7",   label: "Domains" },
 ];
 
 export default function Hero() {
@@ -239,16 +231,6 @@ export default function Hero() {
           consulting across industries, academia, healthcare, manufacturing, defense, and smart cities.
         </p>
 
-        {/* CTAs */}
-        <div
-          className={revealCls}
-          style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 36, ...step(5) }}
-        >
-          <Link href="/services" className="btn-primary-light" style={{ padding: "14px 28px", fontSize: 15, display: "inline-flex", alignItems: "center", gap: 8 }}>
-            Explore Research Services <ArrowRight size={15} />
-          </Link>
-        </div>
-
         {/* Research domain pills */}
         <div
           className={revealCls}
@@ -259,41 +241,6 @@ export default function Hero() {
               {label}
             </Link>
           ))}
-        </div>
-
-        {/* Metrics bar — frosted glass */}
-        <div
-          style={{
-            background: "rgba(255,255,255,0.8)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            borderTop: "1px solid rgba(0,0,0,0.08)",
-          }}
-        >
-          <div
-            style={{
-              maxWidth: 1000, margin: "0 auto",
-              display: "grid", gridTemplateColumns: `repeat(${METRICS.length}, 1fr)`,
-            }}
-          >
-            {METRICS.map((m, i) => (
-              <div
-                key={m.label}
-                style={{
-                  textAlign: "center",
-                  padding: "28px 0",
-                  borderRight: i < METRICS.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none",
-                }}
-              >
-                <div style={{ fontSize: "clamp(1.6rem, 3vw, 2.25rem)", fontWeight: 800, color: "#0071E3", letterSpacing: "-0.03em" }}>
-                  {m.value}
-                </div>
-                <div style={{ fontSize: 12, color: "#6E6E73", marginTop: 4, fontWeight: 500 }}>
-                  {m.label}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

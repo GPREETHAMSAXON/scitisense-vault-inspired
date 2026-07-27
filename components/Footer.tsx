@@ -91,14 +91,17 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5 mb-5" aria-label="Scitisense Futurize home">
               <img
-                src="/logos/applogo.png"
+                src="/logo.jpeg"
                 alt="Scitisense Futurize"
                 style={{
-                  height: "40px",
+                  height: "80px",
                   width: "auto",
                   objectFit: "contain",
                 }}
               />
+              <span style={{ fontSize: 16, fontWeight: 800, color: "#1D1D1F", letterSpacing: "-0.02em" }}>
+                Scitisense Futurize
+              </span>
             </Link>
 
             <p style={{ color: "#6E6E73", fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "10px" }}>

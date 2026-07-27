@@ -326,41 +326,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* STATS ROW */}
-      <div style={{
-        borderTop: '1px solid rgba(0,0,0,0.06)',
-        borderBottom: '1px solid rgba(0,0,0,0.06)',
-        background: '#FFFFFF',
-      }}>
-        <div style={{
-          maxWidth: 1280, margin: '0 auto',
-          padding: '0 40px',
-          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-        }}>
-          {[
-            { value: '18+', label: 'Projects Delivered' },
-            { value: '5+', label: 'Industry Clients' },
-            { value: '4+', label: 'Workshops Conducted' },
-            { value: '7', label: 'Research Domains' },
-          ].map((stat, i) => (
-            <div key={stat.label} style={{
-              textAlign: 'center',
-              padding: '28px 24px',
-              borderRight: i < 3 ? '1px solid rgba(0,0,0,0.06)' : 'none',
-            }}>
-              <div className="number-accent" style={{
-                fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
-                fontWeight: 800, color: '#0071E3',
-                letterSpacing: '-0.04em', lineHeight: 1,
-              }}>{stat.value}</div>
-              <div style={{ fontSize: 13, color: '#6E6E73', marginTop: 4, fontWeight: 500 }}>
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* ACCORDION CARDS */}
       <section id="services-grid" ref={sectionRef} style={{
         padding: '80px 40px',
@@ -661,64 +626,6 @@ export default function ServicesPage() {
               </div>
             )
           })}
-        </div>
-      </section>
-
-      {/* BOTTOM CTA */}
-      <section style={{
-        paddingBlock: 100, paddingInline: 40,
-        textAlign: 'center',
-        borderTop: '1px solid rgba(0,0,0,0.06)',
-        background: '#FFFFFF',
-      }}>
-        <span className="tag-pill-light" style={{ marginBottom: 20, display: 'inline-flex' }}>
-          Ready to Collaborate?
-        </span>
-        <h2 style={{
-          fontSize: 'clamp(1.8rem, 4vw, 3rem)',
-          fontWeight: 800, color: '#1D1D1F',
-          letterSpacing: '-0.03em', marginBottom: 16,
-        }}>
-          Transform Your Vision into{' '}
-          <span className="text-gradient-teal">Intelligent Reality</span>
-        </h2>
-        <p style={{
-          color: '#6E6E73', fontSize: '1.05rem',
-          maxWidth: 560, margin: '0 auto 40px', lineHeight: 1.7,
-        }}>
-          Whether you need AI research, product development, training, or consulting —
-          Scitisense Futurize delivers. Let&apos;s discuss your requirements.
-        </p>
-        <div style={{
-          display: 'flex', gap: 12,
-          justifyContent: 'center', flexWrap: 'wrap',
-          marginBottom: 32,
-        }}>
-          <Link href="/contact" className="btn-primary-light" style={{
-            padding: '12px 28px', fontSize: 14,
-            display: 'inline-flex', alignItems: 'center', gap: 6,
-          }}>
-            Request Consultation <ArrowRight size={14} />
-          </Link>
-          <Link href="/contact" style={{
-            padding: '12px 28px', fontSize: 14,
-            border: '1px solid rgba(0,0,0,0.15)',
-            borderRadius: 980, color: '#1D1D1F',
-            textDecoration: 'none', fontWeight: 600,
-          }}>
-            Send Project Brief
-          </Link>
-        </div>
-        <div style={{
-          display: 'flex', gap: 32,
-          justifyContent: 'center', flexWrap: 'wrap',
-        }}>
-          <span style={{ fontSize: 13, color: '#86868B' }}>
-            info@scitisensefuturize.in
-          </span>
-          <span style={{ fontSize: 13, color: '#86868B' }}>
-            +91 8500631655
-          </span>
         </div>
       </section>
 

@@ -2,8 +2,6 @@ import Link from "next/link";
 import { Lightbulb, ShieldCheck, Layers, Zap, ArrowRight, type LucideIcon } from "lucide-react";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Stats from "@/components/Stats";
-import CTABand from "@/components/CTABand";
 import Footer from "@/components/Footer";
 import { SERVICES } from "@/lib/services-data";
 
@@ -53,7 +51,6 @@ export default function Home() {
     <main>
       <Hero />
       <Services />
-      <Stats />
 
       {/* ── Why Choose ── */}
       <div className="section-divider" style={{ margin: "0 40px" }} />
@@ -147,14 +144,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="section-divider" style={{ margin: "0 40px" }} />
-
-      <CTABand
-        heading={<>Ready to Build <span className="text-gradient-teal">the Future?</span></>}
-        subtext="Partner with our research team to turn ambitious ideas into deployed, production-grade AI and Medical IT systems."
-        primary={{ label: "Book a Free Consultation", href: "/contact" }}
-        secondary={{ label: "Explore Our Services", href: "/services" }}
-      />
     </main>
     <Footer />
     </>
